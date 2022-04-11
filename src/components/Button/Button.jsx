@@ -6,7 +6,7 @@ function Button({ href, text, onClick }) {
     <button
       type="submit"
       className={styles.button}
-      onClick={onclick ? onClick : ''}
+      onClick={() => (onClick ? onClick() : null)}
     >
       {onClick ? (
         <div>
