@@ -3,10 +3,14 @@ import styles from './button.module.scss';
 
 function Button({ href, text, onClick }) {
   return (
-    <button type="submit" className={styles.button}>
+    <button
+      type="submit"
+      className={styles.button}
+      onClick={onclick ? onClick : ''}
+    >
       {onClick ? (
-        <div role="button" onClick={onClick}>
-          {text}
+        <div>
+          <p>{text}</p>
         </div>
       ) : (
         <Link href={href}>{text}</Link>
