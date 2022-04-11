@@ -1,0 +1,15 @@
+.NavigationItem {
+  list-style: none;
+
+  a {
+    padding: 3px 12px;
+    border-radius: 16px;
+    font-size: 16px;
+    font-weight: 600;
+  }
+}
+
+.itemActive {
+  background-color: black;
+  color: white;
+}

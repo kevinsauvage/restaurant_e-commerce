@@ -1,0 +1,74 @@
+.CardItems {
+  display: flex;
+  padding: 8px;
+  background-color: white;
+  border-radius: 8px;
+}
+.image {
+  position: relative;
+  min-width: 130px;
+  min-height: 130px;
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+}
+.details {
+  padding: 8px;
+  padding-right: 16px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.name {
+  margin-bottom: 4px;
+  font-size: 16px;
+  font-weight: 600;
+}
+.description {
+  opacity: 0.6;
+  font-size: 14px;
+}
+.price {
+  margin-top: auto;
+  font-size: 14px;
+}
+.addBtn {
+  position: absolute;
+  z-index: 9999;
+  bottom: 6px;
+  left: 6px;
+  right: 6px;
+  background-color: black;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  padding: 5px;
+  justify-content: center;
+  font-weight: 600;
+  cursor: pointer;
+
+  svg {
+    margin-right: 4px;
+  }
+}
+
+.quantity {
+  position: absolute;
+  z-index: 9999;
+  bottom: 6px;
+  left: 6px;
+  right: 6px;
+  background-color: black;
+  color: white;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 5px;
+  border-radius: 20px;
+
+  svg {
+    cursor: pointer;
+  }
+}

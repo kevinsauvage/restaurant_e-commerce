@@ -1,0 +1,39 @@
+.Banner {
+  width: 100%;
+  position: relative;
+  background-color: white;
+}
+.BannerImg {
+  height: 300px;
+  width: 100%;
+  position: relative;
+}
+.logo {
+  width: 260px;
+  height: 260px;
+  border-radius: 50%;
+  z-index: 9999;
+  position: absolute;
+  left: 50%;
+  bottom: -20%;
+  transform: translate(-50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.titleContainer {
+  padding-top: 60px;
+  padding-bottom: 25px;
+  text-align: center;
+  border-bottom: 0.1px solid gray;
+}
+.title {
+  font-size: 26px;
+}
+.subtitle {
+  font-size: 16px;
+  font-weight: 500;
+  margin-top: 6px;
+  opacity: 0.5;
+}

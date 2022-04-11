@@ -1,0 +1,43 @@
+.Navigation {
+  display: flex;
+  align-items: center;
+  padding: 20px 0;
+  background-color: white;
+}
+
+.NavigationList {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cart {
+  position: relative;
+  svg {
+    font-size: 24px;
+  }
+}
+
+.totalItems {
+  background-color: black;
+  color: white;
+  border-radius: 50%;
+  padding: 3px;
+  width: 18px;
+  height: 18px;
+  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 600;
+  top: -9px;
+  right: -9px;
+  position: absolute;
+}

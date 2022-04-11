@@ -1,0 +1,32 @@
+.Cart {
+  background-color: white;
+  position: sticky;
+  top: 20px;
+  height: fit-content;
+  margin-top: 160px;
+  border-radius: 8px;
+  padding: 24px;
+  min-width: 300px;
+}
+.header {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  font-weight: 700;
+}
+
+.title {
+  font-size: 20px;
+}
+
+.items {
+  padding: 12px 0;
+  margin-bottom: 40px;
+}
+.item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 0.1px solid gainsboro;
+  padding: 2px 0;
+}
