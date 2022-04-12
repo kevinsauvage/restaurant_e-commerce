@@ -1,6 +1,4 @@
 import { useSelector } from 'react-redux';
-import { MdArrowBack } from 'react-icons/md';
-import { useRouter } from 'next/router';
 import axios from 'axios';
 import useTotalPrice from '../../hooks/useTotalPrice';
 import Page from '../../layout/Page/Page';
@@ -11,7 +9,6 @@ import getStripe from '../../utils/get-stripe';
 
 function Order() {
   const { items } = useSelector((state) => state.cart);
-  const router = useRouter();
   const total = useTotalPrice(items);
 
   const redirectToCheckout = async () => {
@@ -31,19 +28,15 @@ function Order() {
   return (
     <Page>
       <div className={styles.container}>
-        <button
-          className={styles.backNav}
-          onClick={() => router.back()}
-          type="submit"
-        >
-          <MdArrowBack />
-          <p>Back</p>
-        </button>
         <div className={styles.order}>
           <h3 className={styles.title}>MY ORDER</h3>
           {items.length > 0 ? (
             items.map((item) => (
-              <CardItems item={item.product} quantity={item.quantity} />
+              <CardItems
+                key={item.product.id}
+                item={item.product}
+                quantity={item.quantity}
+              />
             ))
           ) : (
             <div className={styles.noItems}>

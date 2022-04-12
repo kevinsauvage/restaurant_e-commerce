@@ -1,14 +1,20 @@
-.Navigation {
+.navigation {
   display: flex;
   align-items: center;
   padding: 20px 0;
   background-color: white;
+  box-shadow: $box-shadow-primary;
 }
 
-.NavigationList {
+.navigationList {
   display: flex;
   align-items: center;
   gap: 40px;
+}
+.navigationRight {
+  display: flex;
+  align-items: center;
+  gap: 20px;
 }
 
 .container {
@@ -21,6 +27,12 @@
   position: relative;
   svg {
     font-size: 24px;
+  }
+}
+
+.user {
+  svg {
+    font-size: 20px;
   }
 }
 

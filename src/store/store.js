@@ -2,9 +2,11 @@ import { createStore, applyMiddleware, combineReducers } from 'redux';
 import { HYDRATE, createWrapper } from 'next-redux-wrapper';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import cart from './cart/reducer';
+import user from './user/reducer';
 
 const combinedReducer = combineReducers({
   cart,
+  user,
 });
 
 const masterReducer = (state, action) => {

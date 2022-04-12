@@ -15,11 +15,11 @@ function Banner() {
         />
 
         <div className={styles.logo}>
-          <Image src={Logo} layout="fill" objectFit="scale-down" />
+          <Image src={Logo} layout="fill" objectFit="cover" />
         </div>
       </div>
       <div className={styles.titleContainer}>
-        <h1 className={styles.title}>CHEZ LOUIS</h1>
+        <h1 className={styles.title}>UpToGo</h1>
         <h2 className={styles.subtitle}>
           20 Rue Saint-Martin, 75004 Paris, France
         </h2>

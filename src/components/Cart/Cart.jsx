@@ -17,7 +17,7 @@ function Cart() {
       <div className={styles.items}>
         {items &&
           items.map((el) => (
-            <div className={styles.item}>
+            <div key={el.product.id} className={styles.item}>
               <p className={styles.itemName}>{el.product.name}</p>
               <p className={styles.itemQuantity}>x {el.quantity}</p>
             </div>

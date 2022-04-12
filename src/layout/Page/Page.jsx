@@ -9,15 +9,7 @@ import { getItem } from '../../utils/storage';
 import Container from '../Container/Container';
 import styles from './Page.module.scss';
 
-function Page({
-  children,
-  title,
-  description,
-  style,
-  renderCart,
-  navItems,
-  displayCartIcon,
-}) {
+function Page({ children, title, description, style, renderCart }) {
   const dispatch = useDispatch();
   const { items } = useSelector((state) => state.cart);
 
@@ -36,9 +28,7 @@ function Page({
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Banner />
-      {navItems && (
-        <Navigation items={navItems} displayCartIcon={displayCartIcon} />
-      )}
+      <Navigation />
       <Container style={styles.container}>
         {children}
         {renderCart && <Cart />}

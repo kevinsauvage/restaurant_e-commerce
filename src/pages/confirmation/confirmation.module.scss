@@ -1,0 +1,27 @@
+.confirmation {
+  margin: 50px auto;
+  background-color: white;
+  max-width: 500px;
+  width: 100%;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: $box-shadow-primary;
+  text-align: center;
+}
+
+.title {
+  color: $color-primary;
+  font-size: 26px;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.image {
+  position: relative;
+  height: 300px;
+}

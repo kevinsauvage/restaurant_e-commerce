@@ -12,8 +12,8 @@ export default async function handler(req, res) {
         mode: 'payment',
         payment_method_types: ['card'],
         line_items: items ?? [],
-        success_url: `${origin}/success?session_id={CHECKOUT_SESSION_ID}`,
-        cancel_url: `${origin}/order`,
+        success_url: `${origin}/confirmation?success=true&session_id={CHECKOUT_SESSION_ID}`,
+        cancel_url: `${origin}/confirmation?success=false`,
       });
 
       res.status(200).json(session);
