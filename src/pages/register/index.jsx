@@ -16,9 +16,9 @@ function Register() {
   const handleRegister = async (formData) => {
     const res = await apiHelper('/api/register', formData);
 
-    if (res && res.succes) return router.push('/login');
+    if (res && res.success) return router.push('/login');
 
-    if (res && res.error.code === 11000)
+    if (res && res.error?.code === 11000)
       return toast.error('Email already registered', {
         position: 'bottom-right',
         autoClose: 5000,

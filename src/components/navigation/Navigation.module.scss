@@ -25,12 +25,16 @@
 
 .cart {
   position: relative;
+  display: flex;
+  align-items: center;
   svg {
     font-size: 24px;
   }
 }
 
 .user {
+  display: flex;
+  align-items: center;
   svg {
     font-size: 20px;
   }
@@ -52,4 +56,15 @@
   top: -9px;
   right: -9px;
   position: absolute;
+}
+
+.logBtn {
+  background-color: black;
+  color: white;
+  border-radius: 20px;
+  border: none;
+  padding: 5px 10px;
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
 }

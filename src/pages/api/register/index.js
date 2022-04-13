@@ -1,3 +1,4 @@
+import { hashPassword } from '../../../utils/bcrypt';
 import connectToDatabase from '../../../utils/mongo';
 
 export default async function handler(req, res) {
@@ -12,11 +13,11 @@ export default async function handler(req, res) {
       if (!firstName || !lastName || !email || !password)
         return res.status(400).json({ message: 'missing field' });
 
-      const user = { firstName, lastName, email, password };
+      const hash = await hashPassword(password);
 
-      const response = await db
-        .collection('users')
-        .insertOne(user, { unique: true });
+      const user = { firstName, lastName, email, password: hash };
+
+      const response = await db.collection('users').insertOne(user);
 
       return res.status(200).json({ success: true, response });
     } catch (error) {

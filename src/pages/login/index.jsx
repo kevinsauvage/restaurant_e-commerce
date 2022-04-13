@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import { useRouter } from 'next/router';
 import { ToastContainer, toast } from 'react-toastify';
+import { useDispatch } from 'react-redux';
 import Link from 'next/link';
 import Button from '../../components/Button/Button';
 import Input from '../../components/input/Input';
@@ -9,14 +10,23 @@ import Page from '../../layout/Page/Page';
 import styles from './login.module.scss';
 import 'react-toastify/dist/ReactToastify.css';
 import apiHelper from '../../helpers/apiHelper';
+import { addUser } from '../../store/user/action';
 
 function Login() {
   const router = useRouter();
+  const dispatch = useDispatch();
 
-  const handleRegister = async (formData) => {
+  const handleLogin = async (formData) => {
     const res = await apiHelper('/api/login', formData);
 
-    if (res && res.succes) return router.push('/');
+    if (res && res.success) {
+      dispatch(addUser(res.user));
+
+      if (router?.query?.redirectTo)
+        return router.push(router.query.redirectTo);
+
+      return router.push('/user');
+    }
 
     return toast.error('Oups, something went wrong, please try again.', {
       position: 'bottom-right',
@@ -30,7 +40,7 @@ function Login() {
     });
   };
 
-  const { handleInputChange, handleSubmit } = useForm(handleRegister);
+  const { handleInputChange, handleSubmit } = useForm(handleLogin);
 
   return (
     <Page>

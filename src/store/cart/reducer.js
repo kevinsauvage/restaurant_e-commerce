@@ -1,4 +1,3 @@
-import { setItem } from '../../utils/storage';
 import { cartActionTypes } from './action';
 
 const cartInitialState = {
@@ -23,16 +22,12 @@ export default function reducer(state = cartInitialState, action) {
           return el;
         });
 
-        setItem('cart_items', newItems);
-
         return {
           ...state,
           items: newItems,
         };
       }
       const newItems = [...state.items, { product: action.item, quantity: 1 }];
-
-      setItem('cart_items', newItems);
 
       return {
         ...state,
@@ -53,8 +48,6 @@ export default function reducer(state = cartInitialState, action) {
 
         return result;
       }, []);
-
-      setItem('cart_items', newItems);
 
       return {
         ...state,

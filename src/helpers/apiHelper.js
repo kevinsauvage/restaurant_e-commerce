@@ -10,6 +10,11 @@ const apiHelper = async (url, data = {}, method = 'POST') => {
 
   try {
     const res = await fetch(url, object);
+    if (Number(res.status) === 401) {
+      window.location.pathname = '/login';
+      return false;
+      // need to handle logout
+    }
     const result = await res.json();
     return result;
   } catch (error) {

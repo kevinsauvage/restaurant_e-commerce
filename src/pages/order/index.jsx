@@ -1,28 +1,37 @@
 import { useSelector } from 'react-redux';
-import axios from 'axios';
+import { useRouter } from 'next/router';
 import useTotalPrice from '../../hooks/useTotalPrice';
 import Page from '../../layout/Page/Page';
 import styles from './order.module.scss';
 import CardItems from '../../components/CardItem/CardItems';
 import Button from '../../components/Button/Button';
+import apiHelper from '../../helpers/apiHelper';
 import getStripe from '../../utils/get-stripe';
+import isNoUser from '../../helpers/isNoUser';
 
 function Order() {
-  const { items } = useSelector((state) => state.cart);
-  const total = useTotalPrice(items);
+  const { cart, user } = useSelector((state) => state);
+  const total = useTotalPrice(cart.items);
+  const router = useRouter();
 
   const redirectToCheckout = async () => {
-    const stripeItems = items.map((item) => ({
+    if (!isNoUser(user.user)) {
+      return router.push(`/login?redirectTo=${router.asPath}`);
+    }
+
+    const stripeItems = cart.items.map((item) => ({
       price: item.product.stripe_id,
       quantity: item.quantity,
     }));
 
-    const res = await axios.post('/api/checkout_sessions', {
+    const res = await apiHelper('/api/checkout_sessions', {
       items: stripeItems,
     });
 
+    if (!res) return null;
+
     const stripe = await getStripe();
-    await stripe.redirectToCheckout({ sessionId: res.data.id });
+    return stripe.redirectToCheckout({ sessionId: res.id });
   };
 
   return (
@@ -30,8 +39,8 @@ function Order() {
       <div className={styles.container}>
         <div className={styles.order}>
           <h3 className={styles.title}>MY ORDER</h3>
-          {items.length > 0 ? (
-            items.map((item) => (
+          {cart.items.length > 0 ? (
+            cart.items.map((item) => (
               <CardItems
                 key={item.product.id}
                 item={item.product}
@@ -49,7 +58,7 @@ function Order() {
             <p>TOTAL</p>
             <p>{total} €</p>
           </div>
-          {items.length > 0 && (
+          {cart.items.length > 0 && (
             <Button text="CONFIRM ORDER" onClick={redirectToCheckout} />
           )}
         </div>

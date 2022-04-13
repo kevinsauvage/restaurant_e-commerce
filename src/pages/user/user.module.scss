@@ -1,2 +1,22 @@
 .user {
+  display: flex;
+  margin-top: 60px;
+  gap: 30px;
+}
+
+.title {
+  font-size: 20px;
+  line-height: 20px;
+  margin-bottom: 20px;
+}
+
+.userInfo,
+.orderInfo {
+  background-color: white;
+  padding: 30px;
+  border-radius: 8px;
+}
+.userInfo {
+}
+.orderInfo {
 }

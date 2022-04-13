@@ -11,10 +11,7 @@ function CardItems({ item, quantity }) {
     <div className={styles.CardItems}>
       <div className={styles.details}>
         <p className={styles.name}>{item.name}</p>
-        <p className={styles.description}>{`${item.description?.substring(
-          0,
-          60
-        )}...`}</p>
+
         <p className={styles.price}>{item.price}€</p>
       </div>
       <div className={styles.image}>
