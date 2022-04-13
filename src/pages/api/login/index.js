@@ -45,6 +45,7 @@ export default async function handler(req, res) {
         .status(401)
         .json({ success: false, message: 'Wrong password' });
     } catch (error) {
+      console.log(error);
       return res.status(400).json(error);
     }
   } else {
