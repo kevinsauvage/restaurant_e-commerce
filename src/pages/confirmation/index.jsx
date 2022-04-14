@@ -34,7 +34,7 @@ function Confirmation() {
   }, [query]);
 
   return (
-    <Page>
+    <Page title="Payment confirmation">
       <div className={styles.confirmation}>
         {success === true && (
           <>

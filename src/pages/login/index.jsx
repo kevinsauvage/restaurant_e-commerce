@@ -25,7 +25,7 @@ function Login() {
       if (router?.query?.redirectTo)
         return router.push(router.query.redirectTo);
 
-      return router.push('/user');
+      return router.push('/');
     }
 
     return toast.error('Oups, something went wrong, please try again.', {
@@ -43,7 +43,7 @@ function Login() {
   const { handleInputChange, handleSubmit } = useForm(handleLogin);
 
   return (
-    <Page>
+    <Page title="Login">
       <form className={styles.form}>
         <h1 className={styles.title}>Login</h1>
 

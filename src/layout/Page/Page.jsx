@@ -18,8 +18,8 @@ function Page({
   return (
     <div style={style} className={styles.Page}>
       <Head>
-        <title>{title}</title>
-        <meta name="description" content={description} />
+        <title>{`UpToGo | ${title}`}</title>
+        <meta name="description" content={`UpToGo | ${description}`} />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Banner

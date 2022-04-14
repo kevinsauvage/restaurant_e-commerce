@@ -10,6 +10,8 @@ function Menu({ restaurant }) {
       restaurant={restaurant}
       bannerTitle={restaurant?.name}
       bannerSubtitle={restaurant?.address}
+      title={restaurant?.name}
+      description={` Buy Tostadas online at ${restaurant?.name} and receive it at home. Whatever you ask for, in minutes.`}
     >
       <div>
         {restaurant &&

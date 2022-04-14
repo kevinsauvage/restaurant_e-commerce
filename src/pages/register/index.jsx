@@ -44,7 +44,7 @@ function Register() {
   const { handleInputChange, handleSubmit } = useForm(handleRegister);
 
   return (
-    <Page>
+    <Page title="Register">
       <form className={styles.form}>
         <h1 className={styles.title}>Register</h1>
         <Input

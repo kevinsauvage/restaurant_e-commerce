@@ -30,6 +30,7 @@ function User() {
     <Page
       bannerTitle={`${user?.firstName} ${user?.lastName}`}
       bannerSubtitle={user?.email}
+      title="User account"
     >
       <div className={styles.user}>
         <div className={styles.orderInfo}>
