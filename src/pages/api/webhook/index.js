@@ -3,6 +3,8 @@ import Stripe from 'stripe';
 import { buffer } from 'micro';
 import connectToDatabase from '../../../utils/mongo';
 
+const { ObjectId } = require('mongodb');
+
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
 export const config = {
@@ -42,7 +44,12 @@ export default async function handler(req, res) {
 
         const userCollection = await db.collection('users');
 
-        const user = await userCollection.findOne({ _id: client_reference_id });
+        const userObjectId = ObjectId(client_reference_id);
+        console.log('userID: ', userObjectId);
+
+        const user = await userCollection.findOne({
+          _id: userObjectId,
+        });
 
         console.log('user db:', user);
 
@@ -53,7 +60,7 @@ export default async function handler(req, res) {
           payment_status,
         };
 
-        const userOrders = user.orders;
+        const userOrders = user?.orders;
 
         const newOrders =
           userOrders && Array.isArray(userOrders)
@@ -65,7 +72,7 @@ export default async function handler(req, res) {
         console.log('updating user');
 
         const response = await userCollection.updateOne(
-          { _id: id },
+          { _id: userObjectId },
           { $set: { orders: newOrders } }
         );
         console.log('res update user :', response);
