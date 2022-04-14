@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import Image from 'next/image';
 import Button from '../../components/Button/Button';
 import Page from '../../layout/Page/Page';
@@ -9,15 +9,15 @@ import styles from './confirmation.module.scss';
 import succesImg from '../../assets/images/success.png';
 import failImg from '../../assets/images/fail.png';
 import apiHelper from '../../helpers/apiHelper';
-import { addUser } from '../../store/user/action';
+// import { addUser } from '../../store/user/action';
 
 function Confirmation() {
   const { query } = useRouter();
   const dispatch = useDispatch();
   const [success, setSuccess] = useState(null);
-  const { user } = useSelector((state) => state.user);
+  // const { user } = useSelector((state) => state.user);
 
-  const updateUserOrders = async (newOrder) => {
+  /* const updateUserOrders = async (newOrder) => {
     const orders = [...user.orders, newOrder];
     const res = await apiHelper(
       '/api/user',
@@ -28,7 +28,7 @@ function Confirmation() {
     if (res && res.success) {
       dispatch(addUser(res.user));
     }
-  };
+  }; */
 
   useEffect(() => {
     const getSession = async () => {
@@ -41,7 +41,7 @@ function Confirmation() {
       if (res && res?.session?.payment_status === 'paid') {
         dispatch(setInitalState([]));
         setSuccess(true);
-        if (res?.session?.id) updateUserOrders(res.session.id);
+        // if (res?.session?.id) updateUserOrders(res.session.id);
       } else setSuccess(false);
     };
 

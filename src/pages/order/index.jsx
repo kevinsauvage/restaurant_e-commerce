@@ -21,6 +21,7 @@ function Order() {
 
     const res = await apiHelper('/api/checkout_sessions', {
       items: cart.items,
+      user: user.user,
     });
 
     if (!res || !res.id) return null;

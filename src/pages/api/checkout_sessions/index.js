@@ -6,7 +6,7 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 const handler = async (req, res) => {
   if (req.method === 'POST') {
     try {
-      const { items } = req.body;
+      const { items, user } = req.body;
       const { origin } = req.headers;
 
       const stripeItems = items.map((item) => {
@@ -30,6 +30,8 @@ const handler = async (req, res) => {
         mode: 'payment',
         payment_method_types: ['card'],
         line_items: stripeItems ?? [],
+        client_reference_id: user.id,
+        customer_email: user.email,
         success_url: `${origin}/confirmation?session_id={CHECKOUT_SESSION_ID}`,
         cancel_url: `${origin}/confirmation?success=false`,
       };
