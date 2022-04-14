@@ -5,7 +5,16 @@ import Navigation from '../../components/navigation/Navigation';
 import Container from '../Container/Container';
 import styles from './Page.module.scss';
 
-function Page({ children, title, description, style, renderCart }) {
+function Page({
+  children,
+  title,
+  description,
+  style,
+  renderCart,
+  restaurant,
+  bannerTitle,
+  bannerSubtitle,
+}) {
   return (
     <div style={style} className={styles.Page}>
       <Head>
@@ -13,8 +22,12 @@ function Page({ children, title, description, style, renderCart }) {
         <meta name="description" content={description} />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Banner />
-      <Navigation />
+      <Banner
+        restaurant={restaurant}
+        title={bannerTitle}
+        subtitle={bannerSubtitle}
+      />
+      <Navigation navItems={restaurant?.products} />
       <Container style={styles.container}>
         {children}
         {renderCart && <Cart />}

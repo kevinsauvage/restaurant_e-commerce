@@ -13,7 +13,11 @@ const nextConfig = {
     @import "animation.scss";`,
   },
   images: {
-    domains: ['images.unsplash.com', 'edamam-product-images.s3.amazonaws.com'],
+    domains: [
+      'images.unsplash.com',
+      'edamam-product-images.s3.amazonaws.com',
+      'res.cloudinary.com',
+    ],
   },
 };
 

@@ -24,7 +24,7 @@ function Cart() {
           ))}
       </div>
 
-      <Button href="/order" text="ORDER" />
+      <Button href="/order" text="ORDER" style={styles.btn} />
     </div>
   );
 }

@@ -19,18 +19,14 @@ function Order() {
       return router.push(`/login?redirectTo=${router.asPath}`);
     }
 
-    const stripeItems = cart.items.map((item) => ({
-      price: item.product.stripe_id,
-      quantity: item.quantity,
-    }));
-
     const res = await apiHelper('/api/checkout_sessions', {
-      items: stripeItems,
+      items: cart.items,
     });
 
-    if (!res) return null;
+    if (!res || !res.id) return null;
 
     const stripe = await getStripe();
+
     return stripe.redirectToCheckout({ sessionId: res.id });
   };
 
@@ -42,7 +38,7 @@ function Order() {
           {cart.items.length > 0 ? (
             cart.items.map((item) => (
               <CardItems
-                key={item.product.id}
+                key={item.product.name}
                 item={item.product}
                 quantity={item.quantity}
               />

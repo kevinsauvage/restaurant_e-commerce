@@ -41,7 +41,7 @@ function Confirmation() {
       if (res && res?.session?.payment_status === 'paid') {
         dispatch(setInitalState([]));
         setSuccess(true);
-        updateUserOrders(res.id);
+        if (res?.session?.id) updateUserOrders(res.session.id);
       } else setSuccess(false);
     };
 

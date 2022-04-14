@@ -4,21 +4,21 @@ import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import styles from './NavItem.module.scss';
 
-function NavItem({ item }) {
+function NavItem({ title }) {
   const router = useRouter();
 
   const [asPath, setAsPath] = useState('');
 
   useEffect(() => setAsPath(router.asPath), [router.asPath]);
 
+  const path = encodeURI(
+    `${router.pathname.replace('[id]', router.query.id)}#${title}`
+  );
+
   return (
     <li className={styles.NavigationItem}>
-      <Link href={item.path}>
-        <a
-          className={item.activePath?.includes(asPath) ? styles.itemActive : ''}
-        >
-          {item.title}
-        </a>
+      <Link href={path}>
+        <a className={path === asPath ? styles.itemActive : ''}>{title}</a>
       </Link>
     </li>
   );

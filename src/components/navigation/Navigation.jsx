@@ -4,16 +4,18 @@ import Link from 'next/link';
 import { MdOutlineShoppingCart } from 'react-icons/md';
 import { useDispatch, useSelector } from 'react-redux';
 import { FaRegUser } from 'react-icons/fa';
+import { useRouter } from 'next/router';
 import useTotalItems from '../../hooks/useTotalItems';
 import Container from '../../layout/Container/Container';
 import NavItem from '../NavItem/NavItem';
 import styles from './Navigation.module.scss';
-import items from '../../data/menuItems';
 import isNoUser from '../../helpers/isNoUser';
 import { addUser } from '../../store/user/action';
 
-function Navigation() {
+function Navigation({ navItems }) {
   const dispatch = useDispatch();
+  const router = useRouter();
+
   const { cart, user } = useSelector((state) => state);
 
   const totalItems = useTotalItems(cart.items);
@@ -22,18 +24,19 @@ function Navigation() {
     dispatch(addUser({}));
   };
 
-  const navItems = items.map((item) => ({
-    title: item.title,
-    path: item.path,
-    activePath: item.activePath,
-  }));
-
   return (
     <nav className={styles.navigation}>
       <Container style={styles.container}>
         <ul className={styles.navigationList}>
+          <li className={styles.navItem}>
+            <Link href="/">
+              <a className={router.asPath === '/' ? styles.itemActive : ''}>
+                Restaurants
+              </a>
+            </Link>
+          </li>
           {navItems &&
-            navItems.map((item, i) => <NavItem key={i} item={item} />)}
+            navItems.map((item, i) => <NavItem key={i} title={item.title} />)}
         </ul>
         <div className={styles.navigationRight}>
           <Link href="/order">
@@ -43,7 +46,7 @@ function Navigation() {
             </a>
           </Link>
           {!isNoUser(user.user) ? (
-            <Link href="/login">
+            <Link href={`/login?redirectTo=${router.asPath}`}>
               <a className={styles.logBtn}>Login</a>
             </Link>
           ) : (

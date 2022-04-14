@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-import { useEffect, useRef } from 'react';
+import { useLayoutEffect, useCallback,  useRef } from 'react';
 import useOnScreen from '../../hooks/useOnScreen';
 import useScrollDirection from '../../hooks/useScrollDirection';
 import CardItems from '../CardItem/CardItems';
@@ -8,11 +8,21 @@ import styles from './SectionItems.module.scss';
 function SectionItems({ title, items }) {
   const ref = useRef(null);
   const router = useRouter();
-  const onScreen = useOnScreen(ref, '0px', 0.5);
+  const onScreen = useOnScreen(ref, '0px 0px -80%', 0);
   const scrollDirection = useScrollDirection();
 
-  useEffect(() => {
-    if (!window.location.hash) return;
+  const handlePushHash = useCallback(
+    (path) => router.push(path, undefined, { shallow: true }),
+    []
+  );
+
+  const handlePathChange = useCallback(() => {
+    const actualPath = router.asPath;
+    const nextPath = encodeURI(
+      `${router.pathname.replace('[id]', `${router.query.id}`)}#${title}`
+    );
+
+    if (!window.location.hash) return handlePushHash(nextPath);
 
     const actualHashTop = document
       .querySelector(window.location.hash)
@@ -22,16 +32,17 @@ function SectionItems({ title, items }) {
       .querySelector(`#${title}`)
       .getBoundingClientRect().top;
 
-    if (actualHashTop > sectionHash && scrollDirection === 'down') return;
+    if (actualHashTop > sectionHash && scrollDirection === 'down') return null;
 
-    if (
-      onScreen &&
-      router.asPath !== '/' &&
-      router.asPath !== `/menu#${title}`
-    ) {
-      router.push(`/menu#${title}`, undefined, { shallow: true });
+    if (onScreen && actualPath !== nextPath) {
+      handlePushHash(nextPath);
     }
-  }, [onScreen]);
+    return null;
+  }, [onScreen, items]);
+
+  useLayoutEffect(() => {
+    handlePathChange();
+  }, [onScreen, items]);
 
   return (
     <section className={styles.SectionItems} id={title} ref={ref}>

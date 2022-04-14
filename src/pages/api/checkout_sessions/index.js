@@ -9,13 +9,32 @@ const handler = async (req, res) => {
       const { items } = req.body;
       const { origin } = req.headers;
 
-      const session = await stripe.checkout.sessions.create({
+      const stripeItems = items.map((item) => {
+        const formatedPrice = item.product.price.replace(',', '.').trim();
+        const price = formatedPrice * 100;
+
+        return {
+          price_data: {
+            currency: 'EUR',
+            product_data: {
+              name: item.product.name,
+              description: item.product.description,
+            },
+            unit_amount_decimal: price.toFixed(0),
+          },
+          quantity: item.quantity,
+        };
+      });
+
+      const stipeObject = {
         mode: 'payment',
         payment_method_types: ['card'],
-        line_items: items ?? [],
+        line_items: stripeItems ?? [],
         success_url: `${origin}/confirmation?session_id={CHECKOUT_SESSION_ID}`,
         cancel_url: `${origin}/confirmation?success=false`,
-      });
+      };
+
+      const session = await stripe.checkout.sessions.create(stipeObject);
 
       res.status(200).json(session);
     } catch (err) {

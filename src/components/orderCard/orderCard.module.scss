@@ -1,0 +1,10 @@
+.card {
+  background-color: white;
+  padding: 20px;
+  border-radius: $radius-1;
+  box-shadow: $box-shadow-primary;
+}
+.lineItem {
+  display: flex;
+  justify-content: space-between;
+}

@@ -1,8 +1,10 @@
 import { useEffect, useState } from 'react';
 import apiHelper from '../../helpers/apiHelper';
+import styles from './orderCard.module.scss';
 
 function OrderCard({ orderId }) {
   const [items, setItems] = useState([]);
+
   useEffect(() => {
     const getItems = async () => {
       const res = await apiHelper(
@@ -16,9 +18,9 @@ function OrderCard({ orderId }) {
   }, []);
 
   return (
-    <div>
+    <div className={styles.card}>
       {items.map((item) => (
-        <div>
+        <div className={styles.lineItem}>
           <p>{item.description}</p>
           <p>x {item.quantity}</p>
         </div>

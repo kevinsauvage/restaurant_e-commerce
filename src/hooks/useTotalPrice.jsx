@@ -7,7 +7,8 @@ const useTotalPrice = (items) => {
     setTotal(
       items.reduce(
         (previousValue, el) =>
-          previousValue + Number(el.product.price) * Number(el.quantity),
+          previousValue +
+          parseInt(el.product.price, 10) * parseInt(el.quantity, 10),
         0
       )
     );

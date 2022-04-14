@@ -18,7 +18,7 @@ function CardItems({ item, quantity }) {
         <p className={styles.price}>{item.price}€</p>
       </div>
       <div className={styles.image}>
-        <Image src={item.url} layout="fill" objectFit="cover" />
+        <Image src={item.image} layout="fill" objectFit="cover" />
         {quantity ? (
           <div className={styles.quantity}>
             <MdRemove onClick={() => dispach(removeItem(item))} />

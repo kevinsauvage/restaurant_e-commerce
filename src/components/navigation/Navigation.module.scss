@@ -9,8 +9,11 @@
 .navigationList {
   display: flex;
   align-items: center;
-  gap: 40px;
+  justify-content: space-between;
+  gap: 10px;
+  width: 70%;
 }
+
 .navigationRight {
   display: flex;
   align-items: center;
@@ -59,12 +62,34 @@
 }
 
 .logBtn {
-  background-color: black;
-  color: white;
+  background-color: white;
+  color: black;
+  border: 3px solid black;
   border-radius: 20px;
-  border: none;
-  padding: 5px 10px;
-  font-weight: 600;
+  padding: 1px 13px;
+  font-weight: 700;
   font-size: 16px;
   cursor: pointer;
+  transition: 0.1s ease-in;
+
+  &:hover {
+    background-color: black;
+    color: white;
+  }
+}
+.navItem {
+  list-style: none;
+
+  a {
+    padding: 3px 12px;
+    border-radius: 16px;
+    font-size: 16px;
+    font-weight: 600;
+  }
+}
+
+.itemActive {
+  background-color: black;
+  color: white;
+  box-shadow: $box-shadow-primary;
 }
