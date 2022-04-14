@@ -65,7 +65,7 @@
   background-color: white;
   color: black;
   border: 3px solid black;
-  border-radius: 20px;
+  border-radius: $radius-2;
   padding: 1px 13px;
   font-weight: 700;
   font-size: 16px;
@@ -82,7 +82,7 @@
 
   a {
     padding: 3px 12px;
-    border-radius: 16px;
+    border-radius: $radius-2;
     font-size: 16px;
     font-weight: 600;
   }

@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-import { useLayoutEffect, useCallback,  useRef } from 'react';
+import { useCallback, useRef, useEffect } from 'react';
 import useOnScreen from '../../hooks/useOnScreen';
 import useScrollDirection from '../../hooks/useScrollDirection';
 import CardItems from '../CardItem/CardItems';
@@ -40,7 +40,7 @@ function SectionItems({ title, items }) {
     return null;
   }, [onScreen, items]);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     handlePathChange();
   }, [onScreen, items]);
 
@@ -48,9 +48,8 @@ function SectionItems({ title, items }) {
     <section className={styles.SectionItems} id={title} ref={ref}>
       <p className={styles.title}>{title}</p>
       <div className={styles.itemsContainer}>
-        {items.map((item, i) => (
-          // eslint-disable-next-line react/no-array-index-key
-          <CardItems key={i} item={item} />
+        {items.map((item) => (
+          <CardItems key={item.name} item={item} />
         ))}
       </div>
     </section>

@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
 import { useRouter } from 'next/router';
 import { ToastContainer, toast } from 'react-toastify';
 import { useDispatch } from 'react-redux';
@@ -11,6 +10,7 @@ import styles from './login.module.scss';
 import 'react-toastify/dist/ReactToastify.css';
 import apiHelper from '../../helpers/apiHelper';
 import { addUser } from '../../store/user/action';
+import { setItem } from '../../helpers/localStorage';
 
 function Login() {
   const router = useRouter();
@@ -21,7 +21,7 @@ function Login() {
 
     if (res && res.success) {
       dispatch(addUser(res.user));
-
+      setItem('user', res.user);
       if (router?.query?.redirectTo)
         return router.push(router.query.redirectTo);
 

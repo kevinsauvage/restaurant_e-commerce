@@ -4,7 +4,6 @@ const cartInitialState = {
   items: [],
 };
 
-// eslint-disable-next-line default-param-last
 export default function reducer(state = cartInitialState, action) {
   switch (action.type) {
     case cartActionTypes.ADD_ITEM: {

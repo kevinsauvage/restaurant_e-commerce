@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import OrderCard from '../../components/orderCard/OrderCard';
 import getUser from '../../helpers/getUser';
 import isNoUser from '../../helpers/isNoUser';
+import { getItem } from '../../helpers/localStorage';
 import Page from '../../layout/Page/Page';
 import { addUser } from '../../store/user/action';
 import styles from './user.module.scss';
@@ -14,13 +15,15 @@ function User() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (!isNoUser(user)) router.push('/login');
+    if (!getItem('user')) router.push('/login');
   }, [user]);
 
   useEffect(() => {
-    getUser(user.email).then((newUser) => {
-      if (newUser) dispatch(addUser(newUser));
-    });
+    if (isNoUser(user) && user.email) {
+      getUser(user.email).then((newUser) => {
+        if (newUser) dispatch(addUser(newUser));
+      });
+    }
   }, []);
 
   return (
@@ -33,7 +36,10 @@ function User() {
           <h2 className={styles.title}>Last orders</h2>
           <div className={styles.cards}>
             {user?.orders?.map(
-              (order) => order !== null && <OrderCard order={order} />
+              (order) =>
+                order !== null && (
+                  <OrderCard key={order.created} order={order} />
+                )
             )}
           </div>
         </div>

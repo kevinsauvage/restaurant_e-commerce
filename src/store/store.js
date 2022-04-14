@@ -50,7 +50,6 @@ const makeStore = ({ isServer }) => {
 
   const store = createStore(persistedReducer, initialState, bindMiddleware());
 
-  // eslint-disable-next-line no-underscore-dangle
   store.__persisitor = persistStore(store);
   return store;
 };

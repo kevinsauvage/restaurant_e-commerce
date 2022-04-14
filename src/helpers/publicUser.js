@@ -1,4 +1,3 @@
-/* eslint-disable no-underscore-dangle */
 const publicUser = (user) => ({
   firstName: user.firstName,
   lastName: user.lastName,

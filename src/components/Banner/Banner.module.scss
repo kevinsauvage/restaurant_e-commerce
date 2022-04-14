@@ -18,20 +18,27 @@
   bottom: -20%;
   transform: translate(-50%);
   box-shadow: $box-shadow-primary;
+  div {
+    position: relative;
+    width: 220px;
+    height: 220px;
+  }
 }
 
 .titleContainer {
-  padding-top: 70px;
+  padding-top: 60px;
   padding-bottom: 25px;
   text-align: center;
   border-bottom: 0.1px solid $color-secondary;
   border-top: 0.1px solid $color-secondary;
 }
+
 .title {
   font-size: 26px;
 }
+
 .subtitle {
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 500;
   margin-top: 6px;
   opacity: 0.5;

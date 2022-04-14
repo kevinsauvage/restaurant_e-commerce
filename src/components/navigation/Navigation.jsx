@@ -1,5 +1,3 @@
-/* eslint-disable react/no-array-index-key */
-/* eslint-disable jsx-a11y/anchor-is-valid */
 import Link from 'next/link';
 import { MdOutlineShoppingCart } from 'react-icons/md';
 import { useDispatch, useSelector } from 'react-redux';
@@ -11,6 +9,7 @@ import NavItem from '../NavItem/NavItem';
 import styles from './Navigation.module.scss';
 import isNoUser from '../../helpers/isNoUser';
 import { addUser } from '../../store/user/action';
+import { setItem } from '../../helpers/localStorage';
 
 function Navigation({ navItems }) {
   const dispatch = useDispatch();
@@ -22,6 +21,7 @@ function Navigation({ navItems }) {
 
   const handleLogout = () => {
     dispatch(addUser({}));
+    setItem('user', null);
   };
 
   return (
@@ -36,7 +36,9 @@ function Navigation({ navItems }) {
             </Link>
           </li>
           {navItems &&
-            navItems.map((item, i) => <NavItem key={i} title={item.title} />)}
+            navItems.map((item) => (
+              <NavItem key={item.title} title={item.title} />
+            ))}
         </ul>
         <div className={styles.navigationRight}>
           <Link href="/order">

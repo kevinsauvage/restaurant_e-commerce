@@ -2,7 +2,7 @@
   background-color: white;
   max-width: 300px;
   width: 100%;
-  border-radius: 8px;
+  border-radius: $radius-1;
   box-shadow: $box-shadow-primary;
   overflow: hidden;
 }
@@ -14,9 +14,11 @@
 
 .name {
   font-weight: 600;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
+  font-size: 18px;
 }
 
 .details {
   padding: 20px;
+  font-size: 15px;
 }

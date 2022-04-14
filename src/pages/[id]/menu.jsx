@@ -1,19 +1,8 @@
-import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
 import SectionItems from '../../components/SectionItems/SectionItems';
 import Page from '../../layout/Page/Page';
 import items from '../../data/restaurant';
 
-function Menu() {
-  const router = useRouter();
-  const { id } = router.query;
-  const [restaurant, setRestaurant] = useState(null);
-
-  useEffect(() => {
-    const res = items.filter((item) => item.name === id);
-    setRestaurant(res[0]);
-  }, [id]);
-
+function Menu({ restaurant }) {
   return (
     <Page
       renderCart
@@ -37,3 +26,22 @@ function Menu() {
 }
 
 export default Menu;
+
+export async function getStaticProps({ params }) {
+  const restaurant = items.filter((item) => item.name === params.id);
+
+  return {
+    props: {
+      restaurant: restaurant[0],
+    },
+  };
+}
+
+export async function getStaticPaths() {
+  const paths = items.map((item) => ({ params: { id: item.name } }));
+
+  return {
+    paths,
+    fallback: false,
+  };
+}

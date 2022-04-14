@@ -1,6 +1,4 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
 import Image from 'next/image';
-import Link from 'next/link';
 import styles from './Banner.module.scss';
 import BannerImage from '../../assets/images/banner.jpg';
 import Logo from '../../assets/images/logo.png';
@@ -17,11 +15,9 @@ function Banner({ title, subtitle }) {
         />
 
         <div className={styles.logo}>
-          <Link href="/">
-            <a>
-              <Image src={Logo} layout="fill" objectFit="cover" />
-            </a>
-          </Link>
+          <div>
+            <Image src={Logo} layout="fill" objectPosition="center" />
+          </div>
         </div>
       </div>
       <div className={styles.titleContainer}>

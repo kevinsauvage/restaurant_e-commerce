@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
 import 'react-toastify/dist/ReactToastify.css';
 import { useRouter } from 'next/router';
 import { ToastContainer, toast } from 'react-toastify';

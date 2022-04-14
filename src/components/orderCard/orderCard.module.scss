@@ -3,8 +3,34 @@
   padding: 20px;
   border-radius: $radius-1;
   box-shadow: $box-shadow-primary;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: space-between;
 }
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
 .lineItem {
   display: flex;
   justify-content: space-between;
+}
+
+.date {
+  font-size: 13px;
+  background-color: $color-primary;
+  color: $color-tertiary;
+  padding: 3px 8px;
+  border-radius: $radius-1;
+}
+
+.price {
+  margin-top: 20px;
+  margin-left: auto;
+  font-size: 14px;
+  font-weight: 600;
 }
