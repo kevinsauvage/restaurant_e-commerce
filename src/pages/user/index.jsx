@@ -23,8 +23,6 @@ function User() {
     });
   }, []);
 
-  console.log(user);
-
   return (
     <Page
       bannerTitle={`${user?.firstName} ${user?.lastName}`}

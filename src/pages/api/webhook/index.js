@@ -22,7 +22,6 @@ export default async function handler(req, res) {
       const buf = await buffer(req);
       const sig = req.headers['stripe-signature'];
 
-      // eslint-disable-next-line no-unused-vars
       event = stripe.webhooks.constructEvent(
         buf.toString(),
         sig,
@@ -36,8 +35,6 @@ export default async function handler(req, res) {
         const items = await stripe.checkout.sessions.listLineItems(id, {
           limit: 100,
         });
-
-        console.log('items : ', items.data);
 
         const { db } = await connectToDatabase();
 
@@ -55,8 +52,6 @@ export default async function handler(req, res) {
           created: event.created,
           payment_status,
         };
-
-        console.log('new order : ', newOrder);
 
         const userOrders = user?.orders;
 

@@ -1,6 +1,7 @@
 import styles from './orderCard.module.scss';
 
 function OrderCard({ order }) {
+  console.log(order);
   return (
     <div className={styles.card}>
       {/* {order.map((item) => (
