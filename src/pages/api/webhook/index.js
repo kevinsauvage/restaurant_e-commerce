@@ -30,7 +30,6 @@ export default async function handler(req, res) {
       );
 
       if (event.type === 'checkout.session.completed') {
-        console.log('receive event', event.type);
         const { id, client_reference_id, amount_subtotal, payment_status } =
           event.data.object;
 
@@ -38,23 +37,18 @@ export default async function handler(req, res) {
           limit: 100,
         });
 
-        console.log('Items :', items);
-
         const { db } = await connectToDatabase();
 
         const userCollection = await db.collection('users');
 
         const userObjectId = ObjectId(client_reference_id);
-        console.log('userID: ', userObjectId);
 
         const user = await userCollection.findOne({
           _id: userObjectId,
         });
 
-        console.log('user db:', user);
-
         const newOrder = {
-          items,
+          items: items.data,
           totalPrice: amount_subtotal,
           created: event.created,
           payment_status,
@@ -67,20 +61,14 @@ export default async function handler(req, res) {
             ? [...userOrders, newOrder]
             : [newOrder];
 
-        console.log('new orders :', newOrders);
-
-        console.log('updating user');
-
-        const response = await userCollection.updateOne(
+        await userCollection.updateOne(
           { _id: userObjectId },
           { $set: { orders: newOrders } }
         );
-        console.log('res update user :', response);
       }
 
       res.json({ received: true });
     } catch (err) {
-      console.log(err);
       res.status(400).json({ message: `Webhook Error: ${err.message}` });
     }
   } else {

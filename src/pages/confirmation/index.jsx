@@ -9,26 +9,11 @@ import styles from './confirmation.module.scss';
 import succesImg from '../../assets/images/success.png';
 import failImg from '../../assets/images/fail.png';
 import apiHelper from '../../helpers/apiHelper';
-// import { addUser } from '../../store/user/action';
 
 function Confirmation() {
   const { query } = useRouter();
   const dispatch = useDispatch();
   const [success, setSuccess] = useState(null);
-  // const { user } = useSelector((state) => state.user);
-
-  /* const updateUserOrders = async (newOrder) => {
-    const orders = [...user.orders, newOrder];
-    const res = await apiHelper(
-      '/api/user',
-      { updatedFields: { orders }, email: user.email },
-      'PUT'
-    );
-
-    if (res && res.success) {
-      dispatch(addUser(res.user));
-    }
-  }; */
 
   useEffect(() => {
     const getSession = async () => {
@@ -41,7 +26,6 @@ function Confirmation() {
       if (res && res?.session?.payment_status === 'paid') {
         dispatch(setInitalState([]));
         setSuccess(true);
-        // if (res?.session?.id) updateUserOrders(res.session.id);
       } else setSuccess(false);
     };
 
