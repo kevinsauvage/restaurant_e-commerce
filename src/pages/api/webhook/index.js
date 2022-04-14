@@ -37,6 +37,8 @@ export default async function handler(req, res) {
           limit: 100,
         });
 
+        console.log('items : ', items.data);
+
         const { db } = await connectToDatabase();
 
         const userCollection = await db.collection('users');
@@ -53,6 +55,8 @@ export default async function handler(req, res) {
           created: event.created,
           payment_status,
         };
+
+        console.log('new order : ', newOrder);
 
         const userOrders = user?.orders;
 
