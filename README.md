@@ -6,18 +6,6 @@
 
 UpToGo is an online food delivery platform connecting consumers and local restaurants to enable quick and easy ordering and delivery.
 
-## Getting Started
-
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 ### Built With
