@@ -48,7 +48,12 @@ function Navigation({ navItems }) {
             </a>
           </Link>
           {!isNoUser(user.user) ? (
-            <Link href={`/login?redirectTo=${router.asPath}`}>
+            <Link
+              href={{
+                pathname: '/login',
+                query: { redirectTo: router.asPath },
+              }}
+            >
               <a className={styles.logBtn}>Login</a>
             </Link>
           ) : (

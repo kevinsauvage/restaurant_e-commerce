@@ -16,7 +16,10 @@ function Order() {
 
   const redirectToCheckout = async () => {
     if (!getItem('user')) {
-      return router.push(`/login?redirectTo=${router.asPath}`);
+      return router.push({
+        pathname: '/login',
+        query: { redirectTo: router.asPath },
+      });
     }
 
     const res = await apiHelper('/api/checkout_sessions', {
