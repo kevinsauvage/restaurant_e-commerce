@@ -5,7 +5,7 @@ import styles from './RestaurantCard.module.scss';
 function RestaurantCard({ item }) {
   return (
     <div className={styles.container}>
-      <Link href={encodeURI(`/${item.name}/menu`)}>
+      <Link href={encodeURI(`/${item.name.split(' ').join('_')}/menu`)}>
         <a className={styles.link}>
           <div className={styles.img}>
             <Image src={item.image} layout="fill" objectFit="cover" />

@@ -30,7 +30,7 @@ function Menu({ restaurant }) {
 export default Menu;
 
 export async function getStaticProps({ params }) {
-  const restaurant = items.filter((item) => item.name === params.id);
+  const restaurant = items.filter((item) => item.name.split(' ').join('_') === params.id);
 
   return {
     props: {
@@ -40,7 +40,9 @@ export async function getStaticProps({ params }) {
 }
 
 export async function getStaticPaths() {
-  const paths = items.map((item) => ({ params: { id: item.name } }));
+  const paths = items.map((item) => ({
+    params: { id: item.name.split(' ').join('_') },
+  }));
 
   return {
     paths,
