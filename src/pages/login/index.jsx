@@ -19,7 +19,6 @@ function Login() {
   const handleLogin = async (formData) => {
     const res = await apiHelper('/api/login', formData);
 
-    console.log(res);
     if (res && res.success) {
       dispatch(addUser(res.user));
       setItem('user', res.user);
@@ -27,6 +26,18 @@ function Login() {
         return router.push(router.query.redirectTo);
 
       return router.push('/');
+    }
+    if (res && !res.success && res.name === 'notFound') {
+      return toast.error('User not found. Create a account first', {
+        position: 'bottom-right',
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: 'dark',
+      });
     }
 
     return toast.error('Oups, something went wrong, please try again.', {

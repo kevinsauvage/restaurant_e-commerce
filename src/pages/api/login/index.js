@@ -15,17 +15,17 @@ export default async function handler(req, res) {
     try {
       const { email, password } = req.body;
 
-      console.log(email, password);
-
       if (!email || !password)
         return res.status(400).json({ message: 'missing field' });
 
       const { db } = await connectToDatabase();
 
       const user = await db.collection('users').findOne({ email });
-      console.log('user:', user);
 
-      if (!user) return res.status(400).json({ error: 'user not found' });
+      if (!user)
+        return res
+          .status(404)
+          .json({ success: false, error: 'user not found', name: 'notFound' });
 
       const response = await comparePassword(password, user.password);
 
@@ -50,7 +50,6 @@ export default async function handler(req, res) {
         .status(401)
         .json({ success: false, message: 'Wrong password' });
     } catch (error) {
-      console.log(error);
       return res.status(400).json(error);
     }
   } else {
