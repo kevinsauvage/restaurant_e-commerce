@@ -15,13 +15,17 @@ export default async function handler(req, res) {
     try {
       const { email, password } = req.body;
 
+      console.log(email, password);
+
       if (!email || !password)
         return res.status(400).json({ message: 'missing field' });
 
+      console.log('connect to db');
       const { db } = await connectToDatabase();
 
       const user = await db.collection('users').findOne({ email });
 
+      console.log('user:', user);
       const response = await comparePassword(password, user.password);
 
       if (response) {
@@ -45,6 +49,7 @@ export default async function handler(req, res) {
         .status(401)
         .json({ success: false, message: 'Wrong password' });
     } catch (error) {
+      console.log(error);
       return res.status(400).json(error);
     }
   } else {
