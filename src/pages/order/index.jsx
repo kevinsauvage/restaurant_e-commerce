@@ -49,7 +49,7 @@ function Order() {
             ))
           ) : (
             <div className={styles.noItems}>
-              <p className={styles.noItemsTitle}>The order is empty</p>
+              <p className={styles.noItemsTitle}>The cart is empty</p>
               <Button href="/" text="ADD ITEMS" />
             </div>
           )}

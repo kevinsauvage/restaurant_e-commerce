@@ -27,8 +27,10 @@
 .noItems {
   margin: 0 auto;
   background-color: white;
-  padding: 30px;
+  padding:30px 60px;
   border-radius: $radius-1;
+  width: 100%;
+  text-align: center;
 }
 
 .noItemsTitle {
