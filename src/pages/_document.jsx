@@ -7,7 +7,6 @@ export default function Document() {
         <meta charSet="utf-8" />
         <meta name="theme-color" content="#ffffff" />
         <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-
         <link
           rel="icon"
           type="image/png"

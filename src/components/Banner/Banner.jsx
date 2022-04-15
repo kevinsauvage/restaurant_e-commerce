@@ -3,7 +3,7 @@ import styles from './Banner.module.scss';
 import BannerImage from '../../assets/images/banner.jpg';
 import Logo from '../../assets/images/logo.png';
 
-function Banner({ title, subtitle }) {
+function Banner({ restaurant }) {
   return (
     <div className={styles.Banner}>
       <div className={styles.BannerImg}>
@@ -16,14 +16,19 @@ function Banner({ title, subtitle }) {
 
         <div className={styles.logo}>
           <div>
-            <Image src={Logo} layout="fill" objectPosition="center" />
+            <Image
+              src={restaurant?.image || Logo}
+              layout="fill"
+              objectFit="cover"
+              objectPosition="center"
+            />
           </div>
         </div>
       </div>
       <div className={styles.titleContainer}>
-        <h1 className={styles.title}>{title || 'UpToGo'}</h1>
+        <h1 className={styles.title}>{restaurant?.name || 'UpToGo'}</h1>
         <h2 className={styles.subtitle}>
-          {subtitle || 'Ordering your favorite foud made easy'}
+          {restaurant?.address || 'Ordering your favorite foud made easy'}
         </h2>
       </div>
     </div>

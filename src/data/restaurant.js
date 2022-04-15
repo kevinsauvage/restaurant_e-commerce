@@ -219,5 +219,122 @@ const items = [
       },
     ],
   },
+  {
+    name: 'Flexbowl',
+    address: 'Carrer de la Diputació, 289, 08009 Barcelona',
+    type: 'Health food restaurant',
+    image:
+      'https://res.cloudinary.com/glovoapp/w_450,h_250,c_fill,f_auto,q_30/Stores/zkidsgorsj1vmqe5wlmf',
+    products: [
+      {
+        title: 'Garden Bowls',
+        items: [
+          {
+            name: 'Papaya Antiaging Salad',
+            description:
+              'Hojas verdes, papaya, aguacate, tomate cherry, queso feta, zanahoria, semillas de sésamo, lino, chía, calabaza, vinagreta cítrica y nueces. Sin gluten',
+            price: '9,90',
+            image:
+              'https://res.cloudinary.com/glovoapp/w_600,f_auto,q_auto/Products/las67jda9xr7mukejlhq',
+          },
+          {
+            name: 'When Goat is Good Salad',
+            description:
+              'Mezcla de hojas verdes, queso de cabra caramelizado, frutos rojos, nueces, semillas de lino, sésamo, calabaza y chía y vinagreta de sésamo, naranja y miel. Sin gluten',
+            price: '9,90',
+            image:
+              'https://res.cloudinary.com/glovoapp/w_600,f_auto,q_auto/Products/lutrkj8kl8nb56qhm0lv',
+          },
+          {
+            name: 'Alice Mango Salad',
+            description:
+              'Pollo, mango, aguacate, hojas verdes, zanahoria, semillas de sésamo, lino, chía, calabaza y vinagreta cítrica. Ensalada sin gluten y sin lactosa',
+            price: '9,90',
+            image:
+              'https://res.cloudinary.com/glovoapp/w_600,f_auto,q_auto/Products/isgwc369wppd7jynixko',
+          },
+          {
+            name: 'Avocado Bimi Salad',
+            description:
+              'Rúcula, aguacate, bimis, nueces, espinacas plancha, queso feta, huevo pochado y vinagreta de limón. Sin gluten.',
+            price: '9,90',
+            image:
+              'https://res.cloudinary.com/glovoapp/w_600,f_auto,q_auto/Products/tzehvzkiybgse9j2wjih',
+          },
+        ],
+      },
+      {
+        title: 'Signature Bowls',
+        items: [
+          {
+            name: 'Green Power Espirulina Bowl',
+            description:
+              'Tagliatelles integrales orgánicos con espirulina, pesto, aguacate y hojas de espinacas.',
+            price: '11,90',
+            image:
+              'https://res.cloudinary.com/glovoapp/w_600,f_auto,q_auto/Products/e1gtgqja4quwrc4nngfi',
+          },
+          {
+            name: 'Orange Betacaroteno Noodles Bowl',
+            description:
+              'Raw noodles de boniato y calabaza, parpadelle de zanahoria, salsa curry, champiñones, nueces, queso feta, espinacas plancha, semillas y aceite de trufa. Sin gluten.',
+            price: '11,90',
+            image:
+              'https://res.cloudinary.com/glovoapp/w_600,f_auto,q_auto/Products/urokqxl4ju811yb1j0qw',
+          },
+        ],
+      },
+      {
+        title: 'Tostadas',
+        items: [
+          {
+            name: 'Peanut Banana Toast',
+            description:
+              'Tostada con mantequilla de cacahuete orgánica, banana y nibs de cacao',
+            price: '5,95',
+            image:
+              'https://res.cloudinary.com/glovoapp/w_600,f_auto,q_auto/Products/mwccnonfgvgsnvmy2yuh',
+          },
+          {
+            name: 'Avocado Toast',
+            description:
+              'Tostada con aguacate, aceite de oliva, rúcula y semillas',
+            price: '5,95',
+            image:
+              'https://res.cloudinary.com/glovoapp/w_600,f_auto,q_auto/Products/muhoccjhtiyb1oqbkb28',
+          },
+          {
+            name: 'Green Goddess Toast',
+            description:
+              'Tostada con aguacate, espinacas, huevo pochado, tomate cherry y queso de cabra',
+            price: '8,00',
+            image:
+              'https://res.cloudinary.com/glovoapp/w_600,f_auto,q_auto/Products/hb8pzqlxhdzklxfs0bk9',
+          },
+        ],
+      },
+      {
+        title: 'Porridge Bowls',
+        items: [
+          {
+            name: 'Oat & Chia Porridge Oat & Chia Porridge',
+            description:
+              'Avena, chía, leche de almendras, frutos rojos, arándanos, chocolate negro y sirope de agave. Vegano sin lactosa. Aplica como brunch y merienda',
+            price: '8,50',
+            image:
+              'https://res.cloudinary.com/glovoapp/w_600,f_auto,q_auto/Products/rhe1hnmdusk0kbmye2gx',
+          },
+          {
+            name: 'Apple Pie Oatmeal',
+            description:
+              'Avena, leche de almendras, nueces, manzana, canela, sirope de agave, frutos rojos, semillas y pasas. Vegano',
+            price: '8,50',
+            image:
+              'https://res.cloudinary.com/glovoapp/w_600,f_auto,q_auto/Products/mdalqep0f9iv612nyslf',
+          },
+        ],
+      },
+    ],
+  },
 ];
 export default items;

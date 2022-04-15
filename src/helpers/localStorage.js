@@ -1,4 +1,5 @@
 export const getItem = (key) => {
+  if (typeof window === 'undefined') return null;
   const itemStr = localStorage.getItem(key);
   if (!itemStr) return null;
 

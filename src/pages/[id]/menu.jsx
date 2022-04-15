@@ -11,14 +11,14 @@ function Menu({ restaurant }) {
       bannerTitle={restaurant?.name}
       bannerSubtitle={restaurant?.address}
       title={restaurant?.name}
-      description={` Buy Tostadas online at ${restaurant?.name} and receive it at home. Whatever you ask for, in minutes.`}
+      description={` Buy food online at ${restaurant?.name} and receive it at home. Whatever you ask for, in minutes.`}
     >
       <div>
         {restaurant &&
           restaurant.products.map((item) => (
             <SectionItems
               key={item.title}
-              title={item.title}
+              title={item.title.split(' ').join('_')}
               items={item.items}
             />
           ))}

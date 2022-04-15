@@ -7,7 +7,7 @@ import CardItems from '../../components/CardItem/CardItems';
 import Button from '../../components/Button/Button';
 import apiHelper from '../../helpers/apiHelper';
 import getStripe from '../../utils/get-stripe';
-import isNoUser from '../../helpers/isNoUser';
+import { getItem } from '../../helpers/localStorage';
 
 function Order() {
   const { cart, user } = useSelector((state) => state);
@@ -15,7 +15,7 @@ function Order() {
   const router = useRouter();
 
   const redirectToCheckout = async () => {
-    if (!isNoUser(user.user)) {
+    if (!getItem('user')) {
       return router.push(`/login?redirectTo=${router.asPath}`);
     }
 
@@ -32,7 +32,7 @@ function Order() {
   };
 
   return (
-    <Page>
+    <Page title="Order">
       <div className={styles.container}>
         <div className={styles.order}>
           <h3 className={styles.title}>MY ORDER</h3>
@@ -47,7 +47,6 @@ function Order() {
           ) : (
             <div className={styles.noItems}>
               <p className={styles.noItemsTitle}>The order is empty</p>
-
               <Button href="/" text="ADD ITEMS" />
             </div>
           )}

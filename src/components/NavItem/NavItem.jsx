@@ -11,7 +11,9 @@ function NavItem({ title }) {
   useEffect(() => setAsPath(router.asPath), [router.asPath]);
 
   const path = encodeURI(
-    `${router.pathname.replace('[id]', router.query.id)}#${title}`
+    `${router.pathname.replace('[id]', router.query.id)}#${title
+      .split(' ')
+      .join('_')}`
   );
 
   return (

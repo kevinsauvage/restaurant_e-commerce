@@ -19,8 +19,10 @@ function Page({
     <div style={style} className={styles.Page}>
       <Head>
         <title>{`UpToGo | ${title}`}</title>
-        <meta name="description" content={`UpToGo | ${description}`} />
-        <link rel="icon" href="/favicon.ico" />
+        <meta
+          name="description"
+          content={`UpToGo | ${description || '| Ordering food made easy'}`}
+        />
       </Head>
       <Banner
         restaurant={restaurant}
