@@ -12,6 +12,7 @@ function Banner({ restaurant }) {
           layout="fill"
           objectFit="cover"
           objectPosition="top"
+          priority
         />
 
         <div className={styles.logo}>
@@ -21,6 +22,7 @@ function Banner({ restaurant }) {
               layout="fill"
               objectFit="cover"
               objectPosition="center"
+              priority
             />
           </div>
         </div>
