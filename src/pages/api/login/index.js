@@ -20,16 +20,13 @@ export default async function handler(req, res) {
       if (!email || !password)
         return res.status(400).json({ message: 'missing field' });
 
-      console.log('connect to db');
       const { db } = await connectToDatabase();
 
-      console.log('db : ', db);
-
       const user = await db.collection('users').findOne({ email });
+      console.log('user:', user);
 
       if (!user) return res.status(400).json({ error: 'user not found' });
 
-      console.log('user:', user);
       const response = await comparePassword(password, user.password);
 
       if (response) {
