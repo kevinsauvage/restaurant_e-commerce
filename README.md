@@ -1,4 +1,10 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<div id="top"></div>
+
+## About The Project
+
+![UpToGoFull](https://user-images.githubusercontent.com/64160579/163608390-aaa426d6-e77c-4d07-b580-87a0bd9d496b.png)
+
+UpToGo is an online food delivery platform connecting consumers and local restaurants to enable quick and easy ordering and delivery.
 
 ## Getting Started
 
@@ -12,23 +18,30 @@ yarn dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+<p align="right">(<a href="#top">back to top</a>)</p>
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+### Built With
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+* [Next.js](https://nextjs.org/)
+* [SASS](https://sass-lang.com/)
+* [MongoDB](https://www.mongodb.com/)
+* [Redux](https://redux.js.org/)
+* [Redux persist](https://github.com/rt2zz/redux-persist)
+* [Stripe](https://stripe.com/)
+* [Jsonwebtoken](https://github.com/auth0/node-jsonwebtoken#readme)
+* [Bcrypt](https://github.com/kelektiv/node.bcrypt.js#readme)
 
-## Learn More
+<p align="right">(<a href="#top">back to top</a>)</p>
 
-To learn more about Next.js, take a look at the following resources:
+<!-- CONTACT -->
+## Contact
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+kevinsauvage@outlook.com
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+<p align="right">(<a href="#top">back to top</a>)</p>
 
-## Deploy on Vercel
+## Link
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Project Link: [UpToGo](https://uptogo.vercel.app/)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+<p align="right">(<a href="#top">back to top</a>)</p>
