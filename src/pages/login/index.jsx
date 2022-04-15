@@ -19,6 +19,7 @@ function Login() {
   const handleLogin = async (formData) => {
     const res = await apiHelper('/api/login', formData);
 
+    console.log(res);
     if (res && res.success) {
       dispatch(addUser(res.user));
       setItem('user', res.user);

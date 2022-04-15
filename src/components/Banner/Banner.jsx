@@ -3,7 +3,7 @@ import styles from './Banner.module.scss';
 import BannerImage from '../../assets/images/banner.jpg';
 import Logo from '../../assets/images/logo.png';
 
-function Banner({ restaurant }) {
+function Banner({ restaurant, title, subtitle }) {
   return (
     <div className={styles.Banner}>
       <div className={styles.BannerImg}>
@@ -28,9 +28,13 @@ function Banner({ restaurant }) {
         </div>
       </div>
       <div className={styles.titleContainer}>
-        <h1 className={styles.title}>{restaurant?.name || 'UpToGo'}</h1>
+        <h1 className={styles.title}>
+          {restaurant?.name || title || 'UpToGo'}
+        </h1>
         <h2 className={styles.subtitle}>
-          {restaurant?.address || 'Ordering your favorite foud made easy'}
+          {restaurant?.address ||
+            subtitle ||
+            'Ordering your favorite foud made easy'}
         </h2>
       </div>
     </div>
