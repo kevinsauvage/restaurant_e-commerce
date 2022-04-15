@@ -18,7 +18,7 @@ function OrderCard({ order }) {
         {order.items.map((item) => (
           <div key={item.description} className={styles.lineItem}>
             <p>{item.description}</p>
-            <p>x {item.quantity}</p>
+            <p className={styles.quantity}>x {item.quantity}</p>
           </div>
         ))}
       </div>

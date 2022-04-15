@@ -1,8 +1,9 @@
 import Link from 'next/link';
-import { MdOutlineShoppingCart } from 'react-icons/md';
+import { MdOutlineMenu, MdOutlineShoppingCart } from 'react-icons/md';
 import { useDispatch, useSelector } from 'react-redux';
 import { FaRegUser } from 'react-icons/fa';
 import { useRouter } from 'next/router';
+import { useState } from 'react';
 import useTotalItems from '../../hooks/useTotalItems';
 import Container from '../../layout/Container/Container';
 import NavItem from '../NavItem/NavItem';
@@ -14,6 +15,7 @@ import { setItem } from '../../helpers/localStorage';
 function Navigation({ navItems }) {
   const dispatch = useDispatch();
   const router = useRouter();
+  const [navOpen, setNavOpen] = useState(false);
 
   const { cart, user } = useSelector((state) => state);
 
@@ -40,7 +42,14 @@ function Navigation({ navItems }) {
               <NavItem key={item.title} title={item.title} />
             ))}
         </ul>
-        <div className={styles.navigationRight}>
+
+        <div
+          className={
+            `${styles.navigationRight}` +
+            ' ' +
+            `${navOpen ? styles.navigationOpen : ''}`
+          }
+        >
           <Link href="/order">
             <a className={styles.cart}>
               <MdOutlineShoppingCart />
@@ -72,6 +81,9 @@ function Navigation({ navItems }) {
               </button>
             </>
           )}
+        </div>
+        <div className={styles.hamburger}>
+          <MdOutlineMenu onClick={() => setNavOpen((prev) => !prev)} />
         </div>
       </Container>
     </nav>

@@ -4,7 +4,7 @@ import styles from './RestaurantCard.module.scss';
 
 function RestaurantCard({ item }) {
   return (
-    <div className={styles.container}>
+    <div className={styles.card}>
       <Link href={encodeURI(`/${item.name.split(' ').join('_')}/menu`)}>
         <a className={styles.link}>
           <div className={styles.img}>

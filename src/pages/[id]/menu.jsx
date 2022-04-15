@@ -1,6 +1,7 @@
 import SectionItems from '../../components/SectionItems/SectionItems';
 import Page from '../../layout/Page/Page';
 import items from '../../data/restaurant';
+import styles from './menu.module.scss';
 
 function Menu({ restaurant }) {
   return (
@@ -13,7 +14,7 @@ function Menu({ restaurant }) {
       title={restaurant?.name}
       description={` Buy food online at ${restaurant?.name} and receive it at home. Whatever you ask for, in minutes.`}
     >
-      <div>
+      <div className={styles.container}>
         {restaurant &&
           restaurant.products.map((item) => (
             <SectionItems
@@ -30,7 +31,9 @@ function Menu({ restaurant }) {
 export default Menu;
 
 export async function getStaticProps({ params }) {
-  const restaurant = items.filter((item) => item.name.split(' ').join('_') === params.id);
+  const restaurant = items.filter(
+    (item) => item.name.split(' ').join('_') === params.id
+  );
 
   return {
     props: {
