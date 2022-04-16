@@ -12,7 +12,11 @@ function SectionItems({ title, items, handlePathChange }) {
   }, [onScreen, items]);
 
   return (
-    <section className={styles.SectionItems} id={title} ref={ref}>
+    <section
+      className={styles.SectionItems}
+      id={title.split(' ').join('_')}
+      ref={ref}
+    >
       <p className={styles.title}>{title}</p>
       <div className={styles.itemsContainer}>
         {items.map((item) => (

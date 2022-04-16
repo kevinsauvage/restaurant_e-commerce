@@ -18,7 +18,9 @@ function Menu({ restaurant }) {
   const handlePathChange = (title, onScreen) => {
     const actualPath = router.asPath;
     const nextPath = encodeURI(
-      `${router.pathname.replace('[id]', `${router.query.id}`)}#${title}`
+      `${router.pathname.replace('[id]', `${router.query.id}`)}#${title
+        .split(' ')
+        .join('_')}`
     );
 
     if (!window.location.hash) return handlePushHash(nextPath);
@@ -28,7 +30,7 @@ function Menu({ restaurant }) {
       .getBoundingClientRect().top;
 
     const sectionHash = document
-      .querySelector(`#${title}`)
+      .querySelector(`#${title.split(' ').join('_')}`)
       .getBoundingClientRect().top;
 
     if (actualHashTop > sectionHash && scrollDirection === 'down') return null;
@@ -55,7 +57,7 @@ function Menu({ restaurant }) {
             <SectionItems
               handlePathChange={handlePathChange}
               key={item.title}
-              title={item.title.split(' ').join('_')}
+              title={item.title}
               items={item.items}
             />
           ))}

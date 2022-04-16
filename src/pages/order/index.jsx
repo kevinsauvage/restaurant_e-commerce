@@ -1,4 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
+import { MdOutlineArrowBack } from 'react-icons/md';
 import { useRouter } from 'next/router';
 import useTotalPrice from '../../hooks/useTotalPrice';
 import Page from '../../layout/Page/Page';
@@ -44,6 +45,13 @@ function Order() {
   return (
     <Page title="Order">
       <div className={styles.container}>
+        <div
+          className={styles.backBtn}
+          role="presentation"
+          onClick={() => router.back()}
+        >
+          <MdOutlineArrowBack /> <p>Back</p>
+        </div>
         <div className={styles.order}>
           <h3 className={styles.title}>MY ORDER</h3>
           {cart.items.length > 0 ? (
