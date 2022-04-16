@@ -14,7 +14,6 @@ function Banner({ restaurant, title, subtitle }) {
           objectPosition="top"
           priority
         />
-
         <div className={styles.logo}>
           <div>
             <Image

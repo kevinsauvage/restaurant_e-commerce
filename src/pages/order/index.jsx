@@ -1,4 +1,4 @@
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
 import useTotalPrice from '../../hooks/useTotalPrice';
 import Page from '../../layout/Page/Page';
@@ -8,11 +8,13 @@ import Button from '../../components/Button/Button';
 import apiHelper from '../../helpers/apiHelper';
 import getStripe from '../../utils/get-stripe';
 import { getItem } from '../../helpers/localStorage';
+import { addItem } from '../../store/cart/action';
 
 function Order() {
   const { cart, user } = useSelector((state) => state);
   const total = useTotalPrice(cart.items);
   const router = useRouter();
+  const dispatch = useDispatch();
 
   const redirectToCheckout = async () => {
     if (!getItem('user')) {
@@ -34,6 +36,11 @@ function Order() {
     return stripe.redirectToCheckout({ sessionId: res.id });
   };
 
+  const handleAddItem = (e, item) => {
+    e.stopPropagation();
+    dispatch(addItem(item, 1));
+  };
+
   return (
     <Page title="Order">
       <div className={styles.container}>
@@ -45,6 +52,7 @@ function Order() {
                 key={item.product.name}
                 item={item.product}
                 quantity={item.quantity}
+                handleAddItem={handleAddItem}
               />
             ))
           ) : (

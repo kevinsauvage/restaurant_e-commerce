@@ -2,14 +2,20 @@ import Image from 'next/image';
 import { MdOutlineShoppingCart, MdAdd, MdRemove } from 'react-icons/md';
 import { useDispatch } from 'react-redux';
 import { addItem, removeItem } from '../../store/cart/action';
+import { addSelectedItem } from '../../store/user/action';
 import styles from './CardItems.module.scss';
 
-function CardItems({ item, quantity, selectItem }) {
+function CardItems({ item, quantity }) {
   const dispach = useDispatch();
 
   const handleAddItem = (e) => {
     e.stopPropagation();
     dispach(addItem(item, 1));
+  };
+
+  const handleRemoveItem = (e) => {
+    e.stopPropagation();
+    dispach(removeItem(item));
   };
 
   return (
@@ -18,8 +24,7 @@ function CardItems({ item, quantity, selectItem }) {
       className={styles.CardItems}
       role="button"
       tabIndex={0}
-      style={{ cursor: !selectItem ? 'unset' : 'pointer' }}
-      onClick={() => selectItem && selectItem(item)}
+      onClick={() => dispach(addSelectedItem(item))}
     >
       <div className={styles.details}>
         <p className={styles.name}>{item.name}</p>
@@ -34,9 +39,9 @@ function CardItems({ item, quantity, selectItem }) {
         <Image src={item.image} layout="fill" objectFit="cover" />
         {quantity ? (
           <div className={styles.quantity}>
-            <MdRemove onClick={() => dispach(removeItem(item))} />
+            <MdRemove onClick={(e) => handleRemoveItem(e)} />
             <p>{quantity}</p>
-            <MdAdd onClick={() => dispach(addItem(item, 1))} />
+            <MdAdd onClick={(e) => handleAddItem(e)} />
           </div>
         ) : (
           <button
