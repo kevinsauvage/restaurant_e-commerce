@@ -6,16 +6,8 @@ function Modal({ children, handleClose }) {
 
   useEffect(() => setYPos(window.pageYOffset), []);
 
-  const handleKeyDown = (e) => e.key === 'c' && handleClose();
-
   return (
-    <div
-      className={styles.modal}
-      onClick={handleClose}
-      role="button"
-      tabIndex={0}
-      onKeyPress={handleKeyDown}
-    >
+    <div className={styles.modal} onClick={handleClose} role="presentation">
       <div className={styles.inner} style={{ top: yPos + 60 }}>
         {children}
       </div>

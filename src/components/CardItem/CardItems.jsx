@@ -19,11 +19,9 @@ function CardItems({ item, quantity }) {
   };
 
   return (
-    // eslint-disable-next-line jsx-a11y/click-events-have-key-events
     <div
       className={styles.CardItems}
-      role="button"
-      tabIndex={0}
+      role="presentation"
       onClick={() => dispach(addSelectedItem(item))}
     >
       <div className={styles.details}>

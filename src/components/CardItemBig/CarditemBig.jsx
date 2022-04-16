@@ -28,9 +28,7 @@ function CardItemBig({ item }) {
     <div
       className={styles.card}
       onClick={(e) => e.stopPropagation()}
-      onKeyDown={(e) => e.stopPropagation()}
-      role="button"
-      tabIndex={0}
+      role="presentation"
     >
       <div className={styles.img}>
         <Image src={item.image} layout="fill" objectFit="contain" />
