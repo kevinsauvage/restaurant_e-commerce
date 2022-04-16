@@ -1,34 +1,60 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<div id="top"></div>
 
-## Getting Started
+## About The Project
 
-First, run the development server:
+![UpToGoFull](https://user-images.githubusercontent.com/64160579/163608390-aaa426d6-e77c-4d07-b580-87a0bd9d496b.png)
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+UpToGo is an online food delivery platform connecting consumers and local restaurants to enable quick and easy ordering and delivery.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+<p align="right">(<a href="#top">back to top</a>)</p>
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+### Built With
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+* [Next.js](https://nextjs.org/)
+* [SASS](https://sass-lang.com/)
+* [MongoDB](https://www.mongodb.com/)
+* [Redux](https://redux.js.org/)
+* [Redux persist](https://github.com/rt2zz/redux-persist)
+* [Stripe](https://stripe.com/)
+* [Jsonwebtoken](https://github.com/auth0/node-jsonwebtoken#readme)
+* [Bcrypt](https://github.com/kelektiv/node.bcrypt.js#readme)
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+<p align="right">(<a href="#top">back to top</a>)</p>
 
-## Learn More
+<!-- CONTACT -->
+## Contact
 
-To learn more about Next.js, take a look at the following resources:
+kevinsauvage@outlook.com
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+<p align="right">(<a href="#top">back to top</a>)</p>
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Link
 
-## Deploy on Vercel
+Project Link: [UpToGo](https://uptogo.vercel.app/)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+<p align="right">(<a href="#top">back to top</a>)</p>
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+> Restaurant menu page
+
+![UpToGo-Honest-greenRestaurantFull](https://user-images.githubusercontent.com/64160579/163609105-704844e2-10e9-4fa5-a886-c44f25038ac7.png)
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+> User account page
+
+![UpToGo-User-account](https://user-images.githubusercontent.com/64160579/163609245-82f1ab08-1814-4dd4-a2cc-d87dc3d73762.png)
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+> Order page
+
+![UpToGo-Order](https://user-images.githubusercontent.com/64160579/163609671-4d2494b7-27a8-4487-97a0-bb80755a0724.png)
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+
+
+
+
+
+
