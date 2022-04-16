@@ -1,9 +1,50 @@
+import { useCallback } from 'react';
+import { useRouter } from 'next/router';
+import { useSelector, useDispatch } from 'react-redux';
 import SectionItems from '../../components/SectionItems/SectionItems';
 import Page from '../../layout/Page/Page';
 import items from '../../data/restaurant';
 import styles from './menu.module.scss';
+import useScrollDirection from '../../hooks/useScrollDirection';
+import Modal from '../../components/Modal/Modal';
+import CardItemBig from '../../components/CardItemBig/CarditemBig';
+import { addSelectedItem } from '../../store/user/action';
 
 function Menu({ restaurant }) {
+  const router = useRouter();
+  const scrollDirection = useScrollDirection();
+  const { selectedItem } = useSelector((state) => state.user);
+  const dispatch = useDispatch();
+
+  const handlePushHash = useCallback(
+    (path) => router.push(path, undefined, { shallow: true }),
+    []
+  );
+
+  const handlePathChange = (title, onScreen) => {
+    const actualPath = router.asPath;
+    const nextPath = encodeURI(
+      `${router.pathname.replace('[id]', `${router.query.id}`)}#${title}`
+    );
+
+    if (!window.location.hash) return handlePushHash(nextPath);
+
+    const actualHashTop = document
+      .querySelector(window.location.hash)
+      .getBoundingClientRect().top;
+
+    const sectionHash = document
+      .querySelector(`#${title}`)
+      .getBoundingClientRect().top;
+
+    if (actualHashTop > sectionHash && scrollDirection === 'down') return null;
+
+    if (onScreen && actualPath !== nextPath) {
+      handlePushHash(nextPath);
+    }
+    return null;
+  };
+
   return (
     <Page
       renderCart
@@ -14,16 +55,24 @@ function Menu({ restaurant }) {
       title={restaurant?.name}
       description={` Buy food online at ${restaurant?.name} and receive it at home. Whatever you ask for, in minutes.`}
     >
-      <div className={styles.container}>
-        {restaurant &&
-          restaurant.products.map((item) => (
-            <SectionItems
-              key={item.title}
-              title={item.title.split(' ').join('_')}
-              items={item.items}
-            />
-          ))}
-      </div>
+      <>
+        {selectedItem && (
+          <Modal handleClose={() => dispatch(addSelectedItem(undefined))}>
+            <CardItemBig item={selectedItem} />
+          </Modal>
+        )}
+        <div className={styles.container}>
+          {restaurant &&
+            restaurant.products.map((item) => (
+              <SectionItems
+                handlePathChange={handlePathChange}
+                key={item.title}
+                title={item.title.split(' ').join('_')}
+                items={item.items}
+              />
+            ))}
+        </div>
+      </>
     </Page>
   );
 }

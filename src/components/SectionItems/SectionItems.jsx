@@ -1,55 +1,33 @@
-import { useRouter } from 'next/router';
-import { useCallback, useRef, useEffect } from 'react';
+import { useRef, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import useOnScreen from '../../hooks/useOnScreen';
-import useScrollDirection from '../../hooks/useScrollDirection';
+import { addSelectedItem } from '../../store/user/action';
 import CardItems from '../CardItem/CardItems';
 import styles from './SectionItems.module.scss';
 
-function SectionItems({ title, items }) {
+function SectionItems({ title, items, handlePathChange }) {
   const ref = useRef(null);
-  const router = useRouter();
   const onScreen = useOnScreen(ref, '0px 0px -80%', 0);
-  const scrollDirection = useScrollDirection();
-
-  const handlePushHash = useCallback(
-    (path) => router.push(path, undefined, { shallow: true }),
-    []
-  );
-
-  const handlePathChange = useCallback(() => {
-    const actualPath = router.asPath;
-    const nextPath = encodeURI(
-      `${router.pathname.replace('[id]', `${router.query.id}`)}#${title}`
-    );
-
-    if (!window.location.hash) return handlePushHash(nextPath);
-
-    const actualHashTop = document
-      .querySelector(window.location.hash)
-      .getBoundingClientRect().top;
-
-    const sectionHash = document
-      .querySelector(`#${title}`)
-      .getBoundingClientRect().top;
-
-    if (actualHashTop > sectionHash && scrollDirection === 'down') return null;
-
-    if (onScreen && actualPath !== nextPath) {
-      handlePushHash(nextPath);
-    }
-    return null;
-  }, [onScreen, items]);
+  const dispach = useDispatch();
 
   useEffect(() => {
-    handlePathChange();
+    if (handlePathChange) handlePathChange(title, onScreen);
   }, [onScreen, items]);
+
+  const handleSelectItem = (item) => {
+    dispach(addSelectedItem(item));
+  };
 
   return (
     <section className={styles.SectionItems} id={title} ref={ref}>
       <p className={styles.title}>{title}</p>
       <div className={styles.itemsContainer}>
         {items.map((item) => (
-          <CardItems key={item.name} item={item} />
+          <CardItems
+            key={item.name}
+            item={item}
+            selectItem={handleSelectItem}
+          />
         ))}
       </div>
     </section>

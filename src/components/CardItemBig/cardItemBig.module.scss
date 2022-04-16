@@ -1,0 +1,76 @@
+.card {
+  padding: 40px 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.img {
+  position: relative;
+  height: 200px;
+  width: 200px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.detail {
+  text-align: center;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: 700;
+  margin-top: 30px;
+  margin-bottom: 10px;
+}
+
+.price {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.description {
+  font-size: 14px;
+}
+
+.quantity {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px 0;
+  gap: 20px;
+}
+
+.quantityLess,
+.quantityMore {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid $color-primary;
+  border-radius: 50%;
+  font-size: 26px;
+  background-color: rgba($color-primary, 0.2);
+  cursor: pointer;
+
+  svg {
+    color: $color-primary;
+  }
+}
+
+.quantityDisabled {
+  color: grey;
+  background-color: gainsboro;
+  border-color: gray;
+  opacity: 0.6;
+  cursor: unset;
+
+  svg {
+    color: grey;
+  }
+}
+
+.btn {
+  max-width: 300px;
+  margin: 0 auto;
+}

@@ -4,9 +4,10 @@ export const cartActionTypes = {
   SET_INITIAL_STATE: 'SET_INITIAL_STATE',
 };
 
-export const addItem = (newItem) => ({
+export const addItem = (newItem, quantity) => ({
   type: cartActionTypes.ADD_ITEM,
   item: newItem,
+  quantity,
 });
 
 export const removeItem = (item) => ({

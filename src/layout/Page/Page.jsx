@@ -30,6 +30,7 @@ function Page({
         subtitle={bannerSubtitle}
       />
       <Navigation navItems={restaurant?.products} />
+
       <Container style={styles.container}>
         {children}
         {renderCart && <Cart />}

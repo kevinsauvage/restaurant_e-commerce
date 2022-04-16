@@ -16,7 +16,7 @@ export default function reducer(state = cartInitialState, action) {
           if (el.product.name === action.item.name)
             return {
               product: action.item,
-              quantity: Number(el.quantity) + 1,
+              quantity: Number(el.quantity) + Number(action.quantity),
             };
           return el;
         });
@@ -26,7 +26,10 @@ export default function reducer(state = cartInitialState, action) {
           items: newItems,
         };
       }
-      const newItems = [...state.items, { product: action.item, quantity: 1 }];
+      const newItems = [
+        ...state.items,
+        { product: action.item, quantity: Number(action.quantity) },
+      ];
 
       return {
         ...state,

@@ -3,7 +3,7 @@ import { MdOutlineMenu, MdOutlineShoppingCart } from 'react-icons/md';
 import { useDispatch, useSelector } from 'react-redux';
 import { FaRegUser } from 'react-icons/fa';
 import { useRouter } from 'next/router';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import useTotalItems from '../../hooks/useTotalItems';
 import Container from '../../layout/Container/Container';
 import NavItem from '../NavItem/NavItem';
@@ -11,9 +11,11 @@ import styles from './Navigation.module.scss';
 import isNoUser from '../../helpers/isNoUser';
 import { addUser } from '../../store/user/action';
 import { setItem } from '../../helpers/localStorage';
+import useClickOutside from '../../hooks/useClickOutside';
 
 function Navigation({ navItems }) {
   const dispatch = useDispatch();
+  const navRef = useRef();
   const router = useRouter();
   const [navOpen, setNavOpen] = useState(false);
 
@@ -26,8 +28,10 @@ function Navigation({ navItems }) {
     setItem('user', null);
   };
 
+  useClickOutside(navRef, () => navOpen && setNavOpen(false));
+
   return (
-    <nav className={styles.navigation}>
+    <nav className={styles.navigation} ref={navRef}>
       <Container style={styles.container}>
         <ul className={styles.navigationList}>
           <li className={styles.navItem}>
@@ -42,7 +46,6 @@ function Navigation({ navItems }) {
               <NavItem key={item.title} title={item.title} />
             ))}
         </ul>
-
         <div
           className={
             `${styles.navigationRight}` +

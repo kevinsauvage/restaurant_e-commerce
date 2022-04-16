@@ -8,13 +8,13 @@ const useTotalPrice = (items) => {
       items.reduce(
         (previousValue, el) =>
           previousValue +
-          parseInt(el.product.price, 10) * parseInt(el.quantity, 10),
+          Number(el.product.price.replace(',', '.')) * Number(el.quantity),
         0
       )
     );
   }, [items]);
 
-  return total;
+  return total.toFixed(2);
 };
 
 export default useTotalPrice;
