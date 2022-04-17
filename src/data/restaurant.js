@@ -124,13 +124,6 @@ const items = [
             image:
               'https://res.cloudinary.com/kevincloudname/image/upload/v1650187250/uptogo/kombucha-g4b9e06fa6_640_zb2lil.jpg',
           },
-          {
-            name: 'Kombucha tropical (250 ml.)',
-            description: 'Ginger, pineapples, mango',
-            price: '3,95',
-            image:
-              'https://res.cloudinary.com/kevincloudname/image/upload/v1650187250/uptogo/kombucha-g4b9e06fa6_640_zb2lil.jpg',
-          },
         ],
       },
     ],
@@ -260,13 +253,6 @@ const items = [
             image:
               'https://res.cloudinary.com/kevincloudname/image/upload/v1650187250/uptogo/kombucha-g4b9e06fa6_640_zb2lil.jpg',
           },
-          {
-            name: 'Kombucha tropical (250 ml.)',
-            description: 'Ginger, pineapples, mango',
-            price: '3,95',
-            image:
-              'https://res.cloudinary.com/kevincloudname/image/upload/v1650187250/uptogo/kombucha-g4b9e06fa6_640_zb2lil.jpg',
-          },
         ],
       },
     ],
@@ -389,13 +375,6 @@ const items = [
       {
         title: 'Drinks',
         items: [
-          {
-            name: 'Kombucha tropical (250 ml.)',
-            description: 'Ginger, pineapples, mango',
-            price: '3,95',
-            image:
-              'https://res.cloudinary.com/kevincloudname/image/upload/v1650187250/uptogo/kombucha-g4b9e06fa6_640_zb2lil.jpg',
-          },
           {
             name: 'Kombucha tropical (250 ml.)',
             description: 'Ginger, pineapples, mango',

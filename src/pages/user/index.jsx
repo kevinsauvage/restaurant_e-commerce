@@ -33,7 +33,7 @@ function User() {
     >
       <div className={styles.user}>
         <div className={styles.orderInfo}>
-          <h2 className={styles.title}>Last orders</h2>
+          <h2 className={styles.title}>LAST ORDERS</h2>
           <div className={styles.cards}>
             {user && user?.orders && user.orders.length ? (
               user?.orders?.map(
