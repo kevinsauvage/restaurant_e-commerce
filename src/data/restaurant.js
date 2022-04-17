@@ -1,56 +1,44 @@
 const items = [
   {
-    name: 'Honest green',
-    address: 'Rambla de Catalunya, 3, 08007 Barcelona',
-    type: 'Health food restaurant',
+    name: 'Honest food',
+    address: '10 Downing Street, SW1A 2AA, LONDON',
+    type: 'Healthy food',
     image:
-      'https://res.cloudinary.com/glovoapp/w_450,h_250,c_fill,f_auto,q_30/Stores/fnxwywmbkytlvpg6mk9k',
+      'https://res.cloudinary.com/kevincloudname/image/upload/v1650185090/uptogo/chef-g79c40a196_640_edc4ut.jpg',
     products: [
       {
         title: 'Tostadas',
         items: [
           {
-            stripe_id: 'prod_LVR3P4TU9r7YYp',
-            name: 'Avocado tahini',
+            name: 'Avocado toast',
             description:
-              'Aguacate, sal Maldon, brotes, ají deshidratado, salsa tahini y lima',
+              'Avocado, cilantro lime dressing, pesto, big pinch chilli flakes, 2 slices sourdough bread',
             price: '4,90',
             image:
-              'https://res.cloudinary.com/glovoapp/w_600,f_auto,q_auto/Products/ewqovcmtb571ugfm3hfx',
+              'https://res.cloudinary.com/kevincloudname/image/upload/v1650185306/uptogo/toast-g9b4bb4005_640_zot9lc.jpg',
           },
           {
-            stripe_id: 'prod_LVR59sS42EF34q',
-            name: 'Honest pan tumaca',
-            description:
-              'Tomate cherry, salmorejo, plant based feta, albahaca, aceite de oliva virgen extra y espirulina (plant based)',
-            price: '3,90',
-            image:
-              'https://res.cloudinary.com/glovoapp/w_600,f_auto,q_auto/Products/aipfnhcevomm1elv8dmf',
-          },
-          {
-            name: 'Honest tahini',
-            description: 'Hummus de la semana, salsa tahini',
+            name: 'Hummus of the week',
+            description: 'Hummus of the week, tahini',
             price: '3,50',
             image:
-              'https://res.cloudinary.com/glovoapp/w_600,f_auto,q_auto/Products/zilsnuojhfoqh9m9s50n',
+              'https://res.cloudinary.com/kevincloudname/image/upload/v1650185425/uptogo/breakfast-gc0760a440_640_aetnpo.jpg',
           },
           {
-            stripe_id: 'prod_LVR6BatsOg5t8l',
-            name: 'Huevos Florentine con Salmón',
+            name: 'Poached eggs and avocado',
             description:
-              'Un huevo de corral escalfado, espinaca salteada, espárragos, salmón ahumado, salsa holandesa plant based y flores comestibles.',
+              'Avocados, lime juice, poached egg, cherry tomatoes, hot pepper sauce.',
             price: '6,90',
             image:
-              'https://res.cloudinary.com/glovoapp/w_600,f_auto,q_auto/Products/ams33r7szlvnparfrqe7',
+              'https://res.cloudinary.com/kevincloudname/image/upload/v1650185602/uptogo/avocado-g2d1f43edb_640_yrxz1j.jpg',
           },
           {
-            stripe_id: 'prod_LVR6BatsOg5t8l',
-            name: 'Huevos Benedict con Portobello Trufado',
+            name: 'Smoked salmon toast',
             description:
-              'Dos huevos de corral escalfados, setas portobello salteadas, trufa natural, salsa holandesa plant based y bacon de coco.',
+              'Smoked salmon, garlic clove, cream cheese, lemon juice, fresh cracked pepper, chopped scallion, nuts, honey.',
             price: '5,90',
             image:
-              'https://res.cloudinary.com/glovoapp/w_600,f_auto,q_auto/Products/l0mmywqjfjjdihfqcrmz',
+              'https://res.cloudinary.com/kevincloudname/image/upload/v1650185800/uptogo/vicky-ng-ITiXi1rN4xA-unsplash_xiokbv.jpg',
           },
         ],
       },
@@ -58,88 +46,36 @@ const items = [
         title: 'Bowls',
         items: [
           {
-            name: 'Açaí bowl (solo en desayunos)',
+            name: 'Acai Bowl',
             description:
-              'Açaí bowl de plátano, bayas frescas, semillas de cáñamo, keto granola con nueces de macadamia, hecho en casa y sin azucares.',
+              'Acai, banana, blueberries, strawberries, granola, seeds, nuts, granola.',
             price: '7,90',
             image:
-              'https://res.cloudinary.com/glovoapp/w_600,f_auto,q_auto/Products/x9sjnnorvjzluavqiprb',
+              'https://res.cloudinary.com/kevincloudname/image/upload/v1650185980/uptogo/acai-bowl-gfb2d94ada_640_w7ggsz.jpg',
           },
           {
-            name: 'Plant based rose yogurt goodness',
+            name: 'Yogurt bowl',
             description:
-              'Yogurt hecho en casa a base de leches vegetales, probióticos, flor de rosas, fruta fresca, keto granola con nueces de macadamia, almendra tostada y salsa de frutas del bosque.',
+              'Yogurt, blueberries, strawberries, granola, seeds, nuts, granola.',
             price: '5,90',
             image:
-              'https://res.cloudinary.com/glovoapp/w_600,f_auto,q_auto/Products/sj9khmloze1nan4vpgpg',
+              'https://res.cloudinary.com/kevincloudname/image/upload/v1650186148/uptogo/vicky-ng-yIh0i6TYGrs-unsplash_uvglhs.jpg',
           },
+
           {
-            name: 'Protein power overnight oats',
-            description:
-              'Porridge de avena y quinoa tricolor remojado durante un día en leche de coco, fruta de temporada, almendras, quinoa caramelizada y bayas de gojí (plant based, gluten free)',
+            name: 'Chia bowl',
+            description: 'Chia, almond milk, nuts, blueberries.',
             price: '5,90',
             image:
-              'https://res.cloudinary.com/glovoapp/w_600,f_auto,q_auto/Products/vjq0ncffjzmlvynaahwh',
+              'https://res.cloudinary.com/kevincloudname/image/upload/v1650186240/uptogo/bowl-ge271b80c3_640_mvbmwt.jpg',
           },
           {
-            name: 'Chia berry detox pudding',
+            name: 'Smoothy',
             description:
-              'Pudding chía hecho en casa con leche de coco, frutos rojos, plátano, leche de almendra, keto granola con nueces de macadamia hecha en casa y almendra tostada.',
+              'Blackberries, raspberries, strawberries, bananas, peanut butter.',
             price: '5,90',
             image:
-              'https://res.cloudinary.com/glovoapp/w_600,f_auto,q_auto/Products/psuq3ga65sxgjksirczq',
-          },
-          {
-            name: 'Smoothy Azul & Rojo',
-            description:
-              'Smoothie de espirulina azul y rojo, fruta fresca, keto granola con nueces de macadamia hecha en casa, coco rallado, fruta de la pasión y flores comestibles.',
-            price: '5,90',
-            image:
-              'https://res.cloudinary.com/glovoapp/w_600,f_auto,q_auto/Products/b6e5jimaflsr18zpeanx',
-          },
-        ],
-      },
-      {
-        title: 'Snacks',
-        items: [
-          {
-            name: 'Almond protein balls',
-            description:
-              'Dátiles, almendras, coco deshidratado, semillas de chia y quinoa tricolor',
-            price: '2,00',
-            image:
-              'https://res.cloudinary.com/glovoapp/w_600,f_auto,q_auto/Products/trgrj26a4cwq128klzbq',
-          },
-          {
-            name: 'Chia açaí detox',
-            description:
-              'Chia, leche de coco y almendras, frutas de bosque, açaí, almendra laminada, coco y fruta fresca',
-            price: '4,50',
-            image:
-              'https://res.cloudinary.com/glovoapp/w_600,f_auto,q_auto/Products/ndarmx3yuffaqqmkcoau',
-          },
-          {
-            name: 'Cupcake vanilla caramel cream',
-            description:
-              'De vanilla caramel relleno de red velvet, nata de cacao y avellanas caramelizadas',
-            price: '4,00',
-            image:
-              'https://res.cloudinary.com/glovoapp/w_600,f_auto,q_auto/Products/mwkroqbkxwit2hqd0nxx',
-          },
-          {
-            name: 'Cupcake Honest red velvet',
-            description:
-              'De chocolate, crema de remolacha y relleno de nata de vainilla tofu',
-            price: '4,00',
-            image:
-              'https://res.cloudinary.com/glovoapp/w_600,f_auto,q_auto/Products/ljcp1whrbaosqjkhufwj',
-          },
-          {
-            name: 'Chocolate chip cookie',
-            description: 'Guilt free con sal Maldon',
-            price: '4,00',
-            image:
-              'https://res.cloudinary.com/glovoapp/w_600,f_auto,q_auto/Products/sfbhzyttzhhn1iwe1kob',
+              'https://res.cloudinary.com/kevincloudname/image/upload/v1650186332/uptogo/smoothie-ga4bef0ef8_640_b0s0bf.jpg',
           },
         ],
       },
@@ -147,33 +83,34 @@ const items = [
         title: 'Sweet',
         items: [
           {
-            name: 'Raw duo de chocolate',
+            name: 'Trible chocolate cake',
             description:
-              'Tarta cruda de chocolate negro y blanco, frutas del bosque y nibs de cacao',
+              'Chocolate fudge, chocolate mousse, white chocolate mousse',
             price: '4,50',
             image:
-              'https://res.cloudinary.com/glovoapp/w_600,f_auto,q_auto/Products/ufdg9yysthshxrjxouee',
+              'https://res.cloudinary.com/kevincloudname/image/upload/v1650186577/uptogo/cake-gfbe98bb65_640_xdqqcv.jpg',
           },
           {
-            name: 'Cauliflower mocha brownie',
-            description: 'Con caramelo salado de tahini',
+            name: 'Red velvet',
+            description:
+              'Mild cocoa flavor, sweet vanilla, cream cheese frosting.',
             price: '4,50',
             image:
-              'https://res.cloudinary.com/glovoapp/w_600,f_auto,q_auto/Products/jozzwquqceknryeea4ir',
+              'https://res.cloudinary.com/kevincloudname/image/upload/v1650186882/uptogo/red-velvet-cake-g2d4ae6d7a_640_cgyepl.jpg',
           },
           {
             name: 'Matcha love',
-            description: 'Tarta de té matcha, maracuyá y aji deshidratado',
+            description: 'Mtcha cake, cream cheese.',
             price: '4,50',
             image:
-              'https://res.cloudinary.com/glovoapp/w_600,f_auto,q_auto/Products/gujpmuka1yywps0lu9sh',
+              'https://res.cloudinary.com/kevincloudname/image/upload/v1650187065/uptogo/sweets-gbd9246634_640_ofoxzs.jpg',
           },
           {
-            name: 'Macadamia Miso Cheesecake',
-            description: 'Coco, frambuesa y caramelo de miso',
+            name: 'Mango cheesecake',
+            description: 'Mango, 0% fresh cheese',
             price: '4,50',
             image:
-              'https://res.cloudinary.com/glovoapp/w_600,f_auto,q_auto/Products/wpykqgxhbukcvbfqhzmb',
+              'https://res.cloudinary.com/kevincloudname/image/upload/v1650187172/uptogo/cheesecake-g2f9080b0d_640_k0lfkw.jpg',
           },
         ],
       },
@@ -181,156 +118,290 @@ const items = [
         title: 'Drinks',
         items: [
           {
-            name: 'Yellow Kombucha (250 ml.)',
-            description: 'Jengibre y limón ecológicos',
+            name: 'Kombucha tropical (250 ml.)',
+            description: 'Ginger, pineapples, mango',
             price: '3,95',
             image:
-              'https://res.cloudinary.com/glovoapp/w_600,f_auto,q_auto/Products/ts4nnfzq9utelqam8ojp',
+              'https://res.cloudinary.com/kevincloudname/image/upload/v1650187250/uptogo/kombucha-g4b9e06fa6_640_zb2lil.jpg',
           },
           {
-            name: 'Red Kombucha (250 ml.)',
-            description: 'Arándanos, hibisco y fresas ecológicas',
+            name: 'Kombucha tropical (250 ml.)',
+            description: 'Ginger, pineapples, mango',
             price: '3,95',
             image:
-              'https://res.cloudinary.com/glovoapp/w_600,f_auto,q_auto/Products/v4w2cfsntyufdc2j2mwl',
-          },
-        ],
-      },
-      {
-        title: 'Pancakes',
-        items: [
-          {
-            name: 'Gluten Free Ricotta Pancake',
-            description:
-              'Cubierto con queso ricotta, sirope de arce, fruta fresca, bayas, almendras tostadas y granadas.',
-            price: '5,90',
-            image:
-              'https://res.cloudinary.com/glovoapp/w_600,f_auto,q_auto/Products/cozsqxzot3gitoo9sfp5',
-          },
-          {
-            name: 'Breakfast Burrito',
-            description:
-              'Tofu scramble, aguacate, pico de gallo, kale, maíz asado, creme fraîche plant based , bacon de coco, frijoles, cebolla morada encurtida y salsa chipotle.*Contiene gluten',
-            price: '6,90',
-            image:
-              'https://res.cloudinary.com/glovoapp/w_600,f_auto,q_auto/Products/oxwyacqy1n61t1fuo4yg',
+              'https://res.cloudinary.com/kevincloudname/image/upload/v1650187250/uptogo/kombucha-g4b9e06fa6_640_zb2lil.jpg',
           },
         ],
       },
     ],
   },
   {
-    name: 'Flexbowl',
-    address: 'Carrer de la Diputació, 289, 08009 Barcelona',
-    type: 'Health food restaurant',
+    name: 'Freshly made',
+    address: '10 central avenue, SW1A 2AA, LONDON',
+    type: 'Healthy food',
     image:
-      'https://res.cloudinary.com/glovoapp/w_450,h_250,c_fill,f_auto,q_30/Stores/zkidsgorsj1vmqe5wlmf',
+      'https://res.cloudinary.com/kevincloudname/image/upload/v1650187409/uptogo/jakub-kapusnak-4f4YZfDMLeU-unsplash_hym0al.jpg',
     products: [
-      {
-        title: 'Garden Bowls',
-        items: [
-          {
-            name: 'Papaya Antiaging Salad',
-            description:
-              'Hojas verdes, papaya, aguacate, tomate cherry, queso feta, zanahoria, semillas de sésamo, lino, chía, calabaza, vinagreta cítrica y nueces. Sin gluten',
-            price: '9,90',
-            image:
-              'https://res.cloudinary.com/glovoapp/w_600,f_auto,q_auto/Products/las67jda9xr7mukejlhq',
-          },
-          {
-            name: 'When Goat is Good Salad',
-            description:
-              'Mezcla de hojas verdes, queso de cabra caramelizado, frutos rojos, nueces, semillas de lino, sésamo, calabaza y chía y vinagreta de sésamo, naranja y miel. Sin gluten',
-            price: '9,90',
-            image:
-              'https://res.cloudinary.com/glovoapp/w_600,f_auto,q_auto/Products/lutrkj8kl8nb56qhm0lv',
-          },
-          {
-            name: 'Alice Mango Salad',
-            description:
-              'Pollo, mango, aguacate, hojas verdes, zanahoria, semillas de sésamo, lino, chía, calabaza y vinagreta cítrica. Ensalada sin gluten y sin lactosa',
-            price: '9,90',
-            image:
-              'https://res.cloudinary.com/glovoapp/w_600,f_auto,q_auto/Products/isgwc369wppd7jynixko',
-          },
-          {
-            name: 'Avocado Bimi Salad',
-            description:
-              'Rúcula, aguacate, bimis, nueces, espinacas plancha, queso feta, huevo pochado y vinagreta de limón. Sin gluten.',
-            price: '9,90',
-            image:
-              'https://res.cloudinary.com/glovoapp/w_600,f_auto,q_auto/Products/tzehvzkiybgse9j2wjih',
-          },
-        ],
-      },
-      {
-        title: 'Signature Bowls',
-        items: [
-          {
-            name: 'Green Power Espirulina Bowl',
-            description:
-              'Tagliatelles integrales orgánicos con espirulina, pesto, aguacate y hojas de espinacas.',
-            price: '11,90',
-            image:
-              'https://res.cloudinary.com/glovoapp/w_600,f_auto,q_auto/Products/e1gtgqja4quwrc4nngfi',
-          },
-          {
-            name: 'Orange Betacaroteno Noodles Bowl',
-            description:
-              'Raw noodles de boniato y calabaza, parpadelle de zanahoria, salsa curry, champiñones, nueces, queso feta, espinacas plancha, semillas y aceite de trufa. Sin gluten.',
-            price: '11,90',
-            image:
-              'https://res.cloudinary.com/glovoapp/w_600,f_auto,q_auto/Products/urokqxl4ju811yb1j0qw',
-          },
-        ],
-      },
       {
         title: 'Tostadas',
         items: [
           {
-            name: 'Peanut Banana Toast',
+            name: 'Avocado toast',
             description:
-              'Tostada con mantequilla de cacahuete orgánica, banana y nibs de cacao',
-            price: '5,95',
+              'Avocado, cilantro lime dressing, pesto, big pinch chilli flakes, 2 slices sourdough bread',
+            price: '4,90',
             image:
-              'https://res.cloudinary.com/glovoapp/w_600,f_auto,q_auto/Products/mwccnonfgvgsnvmy2yuh',
+              'https://res.cloudinary.com/kevincloudname/image/upload/v1650185306/uptogo/toast-g9b4bb4005_640_zot9lc.jpg',
           },
           {
-            name: 'Avocado Toast',
-            description:
-              'Tostada con aguacate, aceite de oliva, rúcula y semillas',
-            price: '5,95',
+            name: 'Hummus of the week',
+            description: 'Hummus of the week, tahini',
+            price: '3,50',
             image:
-              'https://res.cloudinary.com/glovoapp/w_600,f_auto,q_auto/Products/muhoccjhtiyb1oqbkb28',
+              'https://res.cloudinary.com/kevincloudname/image/upload/v1650185425/uptogo/breakfast-gc0760a440_640_aetnpo.jpg',
           },
           {
-            name: 'Green Goddess Toast',
+            name: 'Poached eggs and avocado',
             description:
-              'Tostada con aguacate, espinacas, huevo pochado, tomate cherry y queso de cabra',
-            price: '8,00',
+              'Avocados, lime juice, poached egg, cherry tomatoes, hot pepper sauce.',
+            price: '6,90',
             image:
-              'https://res.cloudinary.com/glovoapp/w_600,f_auto,q_auto/Products/hb8pzqlxhdzklxfs0bk9',
+              'https://res.cloudinary.com/kevincloudname/image/upload/v1650185602/uptogo/avocado-g2d1f43edb_640_yrxz1j.jpg',
+          },
+          {
+            name: 'Smoked salmon toast',
+            description:
+              'Smoked salmon, garlic clove, cream cheese, lemon juice, fresh cracked pepper, chopped scallion, nuts, honey.',
+            price: '5,90',
+            image:
+              'https://res.cloudinary.com/kevincloudname/image/upload/v1650185800/uptogo/vicky-ng-ITiXi1rN4xA-unsplash_xiokbv.jpg',
           },
         ],
       },
       {
-        title: 'Porridge Bowls',
+        title: 'Bowls',
         items: [
           {
-            name: 'Oat & Chia Porridge Oat & Chia Porridge',
+            name: 'Acai Bowl',
             description:
-              'Avena, chía, leche de almendras, frutos rojos, arándanos, chocolate negro y sirope de agave. Vegano sin lactosa. Aplica como brunch y merienda',
-            price: '8,50',
+              'Acai, banana, blueberries, strawberries, granola, seeds, nuts, granola.',
+            price: '7,90',
             image:
-              'https://res.cloudinary.com/glovoapp/w_600,f_auto,q_auto/Products/rhe1hnmdusk0kbmye2gx',
+              'https://res.cloudinary.com/kevincloudname/image/upload/v1650185980/uptogo/acai-bowl-gfb2d94ada_640_w7ggsz.jpg',
           },
           {
-            name: 'Apple Pie Oatmeal',
+            name: 'Yogurt bowl',
             description:
-              'Avena, leche de almendras, nueces, manzana, canela, sirope de agave, frutos rojos, semillas y pasas. Vegano',
-            price: '8,50',
+              'Yogurt, blueberries, strawberries, granola, seeds, nuts, granola.',
+            price: '5,90',
             image:
-              'https://res.cloudinary.com/glovoapp/w_600,f_auto,q_auto/Products/mdalqep0f9iv612nyslf',
+              'https://res.cloudinary.com/kevincloudname/image/upload/v1650186148/uptogo/vicky-ng-yIh0i6TYGrs-unsplash_uvglhs.jpg',
+          },
+
+          {
+            name: 'Chia bowl',
+            description: 'Chia, almond milk, nuts, blueberries.',
+            price: '5,90',
+            image:
+              'https://res.cloudinary.com/kevincloudname/image/upload/v1650186240/uptogo/bowl-ge271b80c3_640_mvbmwt.jpg',
+          },
+          {
+            name: 'Smoothy',
+            description:
+              'Blackberries, raspberries, strawberries, bananas, peanut butter.',
+            price: '5,90',
+            image:
+              'https://res.cloudinary.com/kevincloudname/image/upload/v1650186332/uptogo/smoothie-ga4bef0ef8_640_b0s0bf.jpg',
+          },
+        ],
+      },
+      {
+        title: 'Sweet',
+        items: [
+          {
+            name: 'Trible chocolate cake',
+            description:
+              'Chocolate fudge, chocolate mousse, white chocolate mousse',
+            price: '4,50',
+            image:
+              'https://res.cloudinary.com/kevincloudname/image/upload/v1650186577/uptogo/cake-gfbe98bb65_640_xdqqcv.jpg',
+          },
+          {
+            name: 'Red velvet',
+            description:
+              'Mild cocoa flavor, sweet vanilla, cream cheese frosting.',
+            price: '4,50',
+            image:
+              'https://res.cloudinary.com/kevincloudname/image/upload/v1650186882/uptogo/red-velvet-cake-g2d4ae6d7a_640_cgyepl.jpg',
+          },
+          {
+            name: 'Matcha love',
+            description: 'Mtcha cake, cream cheese.',
+            price: '4,50',
+            image:
+              'https://res.cloudinary.com/kevincloudname/image/upload/v1650187065/uptogo/sweets-gbd9246634_640_ofoxzs.jpg',
+          },
+          {
+            name: 'Mango cheesecake',
+            description: 'Mango, 0% fresh cheese',
+            price: '4,50',
+            image:
+              'https://res.cloudinary.com/kevincloudname/image/upload/v1650187172/uptogo/cheesecake-g2f9080b0d_640_k0lfkw.jpg',
+          },
+        ],
+      },
+      {
+        title: 'Drinks',
+        items: [
+          {
+            name: 'Kombucha tropical (250 ml.)',
+            description: 'Ginger, pineapples, mango',
+            price: '3,95',
+            image:
+              'https://res.cloudinary.com/kevincloudname/image/upload/v1650187250/uptogo/kombucha-g4b9e06fa6_640_zb2lil.jpg',
+          },
+          {
+            name: 'Kombucha tropical (250 ml.)',
+            description: 'Ginger, pineapples, mango',
+            price: '3,95',
+            image:
+              'https://res.cloudinary.com/kevincloudname/image/upload/v1650187250/uptogo/kombucha-g4b9e06fa6_640_zb2lil.jpg',
+          },
+        ],
+      },
+    ],
+  },
+  {
+    name: 'Organico',
+    address: '10 hight street, SW3A 2AA, LONDON',
+    type: 'Healthy food',
+    image:
+      'https://res.cloudinary.com/kevincloudname/image/upload/v1650187532/uptogo/kayleigh-harrington-yhn4okt6ci0-unsplash_sc44lh.jpg',
+    products: [
+      {
+        title: 'Tostadas',
+        items: [
+          {
+            name: 'Avocado toast',
+            description:
+              'Avocado, cilantro lime dressing, pesto, big pinch chilli flakes, 2 slices sourdough bread',
+            price: '4,90',
+            image:
+              'https://res.cloudinary.com/kevincloudname/image/upload/v1650185306/uptogo/toast-g9b4bb4005_640_zot9lc.jpg',
+          },
+          {
+            name: 'Hummus of the week',
+            description: 'Hummus of the week, tahini',
+            price: '3,50',
+            image:
+              'https://res.cloudinary.com/kevincloudname/image/upload/v1650185425/uptogo/breakfast-gc0760a440_640_aetnpo.jpg',
+          },
+          {
+            name: 'Poached eggs and avocado',
+            description:
+              'Avocados, lime juice, poached egg, cherry tomatoes, hot pepper sauce.',
+            price: '6,90',
+            image:
+              'https://res.cloudinary.com/kevincloudname/image/upload/v1650185602/uptogo/avocado-g2d1f43edb_640_yrxz1j.jpg',
+          },
+          {
+            name: 'Smoked salmon toast',
+            description:
+              'Smoked salmon, garlic clove, cream cheese, lemon juice, fresh cracked pepper, chopped scallion, nuts, honey.',
+            price: '5,90',
+            image:
+              'https://res.cloudinary.com/kevincloudname/image/upload/v1650185800/uptogo/vicky-ng-ITiXi1rN4xA-unsplash_xiokbv.jpg',
+          },
+        ],
+      },
+      {
+        title: 'Bowls',
+        items: [
+          {
+            name: 'Acai Bowl',
+            description:
+              'Acai, banana, blueberries, strawberries, granola, seeds, nuts, granola.',
+            price: '7,90',
+            image:
+              'https://res.cloudinary.com/kevincloudname/image/upload/v1650185980/uptogo/acai-bowl-gfb2d94ada_640_w7ggsz.jpg',
+          },
+          {
+            name: 'Yogurt bowl',
+            description:
+              'Yogurt, blueberries, strawberries, granola, seeds, nuts, granola.',
+            price: '5,90',
+            image:
+              'https://res.cloudinary.com/kevincloudname/image/upload/v1650186148/uptogo/vicky-ng-yIh0i6TYGrs-unsplash_uvglhs.jpg',
+          },
+
+          {
+            name: 'Chia bowl',
+            description: 'Chia, almond milk, nuts, blueberries.',
+            price: '5,90',
+            image:
+              'https://res.cloudinary.com/kevincloudname/image/upload/v1650186240/uptogo/bowl-ge271b80c3_640_mvbmwt.jpg',
+          },
+          {
+            name: 'Smoothy',
+            description:
+              'Blackberries, raspberries, strawberries, bananas, peanut butter.',
+            price: '5,90',
+            image:
+              'https://res.cloudinary.com/kevincloudname/image/upload/v1650186332/uptogo/smoothie-ga4bef0ef8_640_b0s0bf.jpg',
+          },
+        ],
+      },
+      {
+        title: 'Sweet',
+        items: [
+          {
+            name: 'Trible chocolate cake',
+            description:
+              'Chocolate fudge, chocolate mousse, white chocolate mousse',
+            price: '4,50',
+            image:
+              'https://res.cloudinary.com/kevincloudname/image/upload/v1650186577/uptogo/cake-gfbe98bb65_640_xdqqcv.jpg',
+          },
+          {
+            name: 'Red velvet',
+            description:
+              'Mild cocoa flavor, sweet vanilla, cream cheese frosting.',
+            price: '4,50',
+            image:
+              'https://res.cloudinary.com/kevincloudname/image/upload/v1650186882/uptogo/red-velvet-cake-g2d4ae6d7a_640_cgyepl.jpg',
+          },
+          {
+            name: 'Matcha love',
+            description: 'Mtcha cake, cream cheese.',
+            price: '4,50',
+            image:
+              'https://res.cloudinary.com/kevincloudname/image/upload/v1650187065/uptogo/sweets-gbd9246634_640_ofoxzs.jpg',
+          },
+          {
+            name: 'Mango cheesecake',
+            description: 'Mango, 0% fresh cheese',
+            price: '4,50',
+            image:
+              'https://res.cloudinary.com/kevincloudname/image/upload/v1650187172/uptogo/cheesecake-g2f9080b0d_640_k0lfkw.jpg',
+          },
+        ],
+      },
+      {
+        title: 'Drinks',
+        items: [
+          {
+            name: 'Kombucha tropical (250 ml.)',
+            description: 'Ginger, pineapples, mango',
+            price: '3,95',
+            image:
+              'https://res.cloudinary.com/kevincloudname/image/upload/v1650187250/uptogo/kombucha-g4b9e06fa6_640_zb2lil.jpg',
+          },
+          {
+            name: 'Kombucha tropical (250 ml.)',
+            description: 'Ginger, pineapples, mango',
+            price: '3,95',
+            image:
+              'https://res.cloudinary.com/kevincloudname/image/upload/v1650187250/uptogo/kombucha-g4b9e06fa6_640_zb2lil.jpg',
           },
         ],
       },
