@@ -31,7 +31,7 @@ function CardItemBig({ item }) {
       role="presentation"
     >
       <div className={styles.img}>
-        <Image src={item.image} layout="fill" objectFit="contain" />
+        <Image src={item.image} layout="fill" objectFit="cover" />
       </div>
       <div className={styles.detail}>
         <p className={styles.title}>{item.name}</p>
