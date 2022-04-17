@@ -12,6 +12,7 @@ import isNoUser from '../../helpers/isNoUser';
 import { addUser } from '../../store/user/action';
 import { setItem } from '../../helpers/localStorage';
 import useClickOutside from '../../hooks/useClickOutside';
+import apiHelper from '../../helpers/apiHelper';
 
 function Navigation({ navItems }) {
   const dispatch = useDispatch();
@@ -26,6 +27,7 @@ function Navigation({ navItems }) {
   const handleLogout = () => {
     dispatch(addUser({}));
     setItem('user', null);
+    apiHelper('/api/logout');
   };
 
   useClickOutside(navRef, () => navOpen && setNavOpen(false));

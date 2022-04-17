@@ -2,7 +2,6 @@ import { useRouter } from 'next/router';
 import { ToastContainer, toast } from 'react-toastify';
 import { useDispatch } from 'react-redux';
 import Link from 'next/link';
-import { useEffect } from 'react';
 import Button from '../../components/Button/Button';
 import Input from '../../components/input/Input';
 import useForm from '../../hooks/useForm';
@@ -11,20 +10,12 @@ import styles from './login.module.scss';
 import 'react-toastify/dist/ReactToastify.css';
 import apiHelper from '../../helpers/apiHelper';
 import { addUser } from '../../store/user/action';
-import { getItem, setItem } from '../../helpers/localStorage';
+import { setItem } from '../../helpers/localStorage';
+import Loader from '../../components/Loader/Loader';
 
 function Login() {
   const router = useRouter();
   const dispatch = useDispatch();
-
-  const handleRedirect = () => {
-    if (getItem('user')) return router.push('/');
-    return null;
-  };
-
-  useEffect(() => {
-    handleRedirect();
-  }, []);
 
   const handleLogin = async (formData) => {
     const res = await apiHelper('/api/login', formData);
@@ -32,8 +23,15 @@ function Login() {
     if (res && res.success) {
       dispatch(addUser(res.user));
       setItem('user', res.user);
-      return router.back();
+
+      const prevPath = window.sessionStorage.getItem('prevPath');
+
+      if (prevPath === '/register' || !prevPath || prevPath === '/login')
+        return router.push('/');
+
+      return router.push(prevPath);
     }
+
     if (res && !res.success && res.name === 'notFound') {
       return toast.error('User not found. Create a account first', {
         position: 'bottom-right',
@@ -59,13 +57,13 @@ function Login() {
     });
   };
 
-  const { handleInputChange, handleSubmit } = useForm(handleLogin);
+  const { handleInputChange, handleSubmit, loading } = useForm(handleLogin);
 
   return (
     <Page title="Login">
       <form className={styles.form}>
+        {loading && <Loader />}
         <h1 className={styles.title}>Login</h1>
-
         <Input
           type="email"
           id="email"
@@ -88,7 +86,6 @@ function Login() {
             </Link>
           </p>
         </div>
-
         <Button
           text="LOGIN"
           onClick={handleSubmit}
@@ -112,3 +109,20 @@ function Login() {
 }
 
 export default Login;
+
+export async function getServerSideProps(context) {
+  const { token } = context.req.cookies;
+
+  if (token) {
+    return {
+      redirect: {
+        destination: '/',
+        permanent: false,
+      },
+    };
+  }
+
+  return {
+    props: {},
+  };
+}

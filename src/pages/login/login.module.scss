@@ -5,6 +5,7 @@
   background-color: $color-primary;
   margin: 80px auto;
   border-radius: $radius-1;
+  position: relative;
 
   @include respond(mobile_l) {
     padding: 30px 20px;

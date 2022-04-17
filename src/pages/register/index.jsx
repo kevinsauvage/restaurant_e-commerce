@@ -8,6 +8,7 @@ import apiHelper from '../../helpers/apiHelper';
 import useForm from '../../hooks/useForm';
 import Page from '../../layout/Page/Page';
 import styles from './register.module.scss';
+import Loader from '../../components/Loader/Loader';
 
 function Register() {
   const router = useRouter();
@@ -41,11 +42,12 @@ function Register() {
     });
   };
 
-  const { handleInputChange, handleSubmit } = useForm(handleRegister);
+  const { handleInputChange, handleSubmit, loading } = useForm(handleRegister);
 
   return (
     <Page title="Register">
       <form className={styles.form}>
+        {loading && <Loader />}
         <h1 className={styles.title}>Register</h1>
         <Input
           type="text"
@@ -83,7 +85,6 @@ function Register() {
             </Link>
           </p>
         </div>
-
         <Button
           text="REGISTER"
           onClick={handleSubmit}
@@ -107,3 +108,20 @@ function Register() {
 }
 
 export default Register;
+
+export async function getServerSideProps(context) {
+  const { token } = context.req.cookies;
+
+  if (token) {
+    return {
+      redirect: {
+        destination: '/',
+        permanent: false,
+      },
+    };
+  }
+
+  return {
+    props: {},
+  };
+}
