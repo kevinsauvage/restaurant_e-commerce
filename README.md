@@ -1,5 +1,7 @@
 <div id="top"></div>
 
+# UpToGo
+
 ## About The Project
 
 ![UpToGoFull](https://user-images.githubusercontent.com/64160579/163608390-aaa426d6-e77c-4d07-b580-87a0bd9d496b.png)
