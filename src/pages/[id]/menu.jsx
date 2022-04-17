@@ -35,7 +35,7 @@ function Menu({ restaurant }) {
 
     if (actualHashTop > sectionHash && scrollDirection === 'down') return null;
 
-    if (onScreen && actualPath !== nextPath) {
+    if (onScreen && actualPath !== nextPath && scrollDirection === 'down') {
       handlePushHash(nextPath);
     }
     return null;
