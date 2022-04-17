@@ -2,6 +2,7 @@ import { useRouter } from 'next/router';
 import { ToastContainer, toast } from 'react-toastify';
 import { useDispatch } from 'react-redux';
 import Link from 'next/link';
+import { useEffect } from 'react';
 import Button from '../../components/Button/Button';
 import Input from '../../components/input/Input';
 import useForm from '../../hooks/useForm';
@@ -10,11 +11,20 @@ import styles from './login.module.scss';
 import 'react-toastify/dist/ReactToastify.css';
 import apiHelper from '../../helpers/apiHelper';
 import { addUser } from '../../store/user/action';
-import { setItem } from '../../helpers/localStorage';
+import { getItem, setItem } from '../../helpers/localStorage';
 
 function Login() {
   const router = useRouter();
   const dispatch = useDispatch();
+
+  const handleRedirect = () => {
+    if (getItem('user')) return router.push('/');
+    return null;
+  };
+
+  useEffect(() => {
+    handleRedirect();
+  }, []);
 
   const handleLogin = async (formData) => {
     const res = await apiHelper('/api/login', formData);
@@ -22,10 +32,7 @@ function Login() {
     if (res && res.success) {
       dispatch(addUser(res.user));
       setItem('user', res.user);
-      if (router?.query?.redirectTo)
-        return router.push(router.query.redirectTo);
-
-      return router.push('/');
+      return router.back();
     }
     if (res && !res.success && res.name === 'notFound') {
       return toast.error('User not found. Create a account first', {

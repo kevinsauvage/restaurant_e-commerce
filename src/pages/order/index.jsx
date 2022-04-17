@@ -18,12 +18,7 @@ function Order() {
   const dispatch = useDispatch();
 
   const redirectToCheckout = async () => {
-    if (!getItem('user')) {
-      return router.push({
-        pathname: '/login',
-        query: { redirectTo: router.asPath },
-      });
-    }
+    if (!getItem('user')) return router.push('/login');
 
     const res = await apiHelper('/api/checkout_sessions', {
       items: cart.items,
