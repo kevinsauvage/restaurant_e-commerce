@@ -20,6 +20,20 @@
   background-color: white;
   border-radius: $radius-1;
   box-shadow: $box-shadow-primary;
-  position: absolute;
   margin: 0 20px;
+  position: relative;
+}
+
+.btnClose {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+
+  svg {
+    color: black;
+    font-size: 24px;
+  }
 }
