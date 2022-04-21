@@ -43,16 +43,21 @@ const persistConfig = {
   whitelist: ['user', 'cart'], // State to persist
 };
 
+// eslint-disable-next-line import/no-mutable-exports
+let store;
+
 const makeStore = ({ isServer }) => {
   if (isServer) return createStore(masterReducer, {}, bindMiddleware());
 
   const persistedReducer = persistReducer(persistConfig, masterReducer);
 
-  const store = createStore(persistedReducer, initialState, bindMiddleware());
+  store = createStore(persistedReducer, initialState, bindMiddleware());
 
   store.__persisitor = persistStore(store);
   return store;
 };
+
+export { store };
 
 const wrapper = createWrapper(makeStore);
 export default wrapper;

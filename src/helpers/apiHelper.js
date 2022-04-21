@@ -1,3 +1,7 @@
+import { store } from '../store/store';
+import { addUser } from '../store/user/action';
+import { setItem } from './localStorage';
+
 const apiHelper = async (url, data = {}, method = 'POST') => {
   const object = {
     method,
@@ -11,9 +15,11 @@ const apiHelper = async (url, data = {}, method = 'POST') => {
   try {
     const res = await fetch(url, object);
     if (Number(res.status) === 401) {
+      store.dispatch(addUser({}));
+      setItem('user', null);
+      apiHelper('/api/logout');
       window.location.pathname = '/login';
       return false;
-      // need to handle logout
     }
     const result = await res.json();
     return result;

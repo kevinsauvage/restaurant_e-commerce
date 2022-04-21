@@ -1,7 +1,8 @@
 import publicUser from '../../../helpers/publicUser';
 import connectToDatabase from '../../../utils/mongo';
+import withAuth from '../../middleware/withAuth';
 
-export default async function handler(req, res) {
+const handler = async (req, res) => {
   const { method } = req;
 
   if (method === 'GET') {
@@ -44,4 +45,6 @@ export default async function handler(req, res) {
     res.setHeader('Allow', ['POST', 'GET']);
     return res.status(405).end(`Method ${method} Not Allowed`);
   }
-}
+};
+
+export default withAuth(handler);
