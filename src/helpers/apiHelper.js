@@ -17,7 +17,7 @@ const apiHelper = async (url, data = {}, method = 'POST') => {
     if (Number(res.status) === 401) {
       store.dispatch(addUser({}));
       setItem('user', null);
-      apiHelper('/api/logout');
+      await apiHelper('/api/logout');
       window.location.pathname = '/login';
       return false;
     }
