@@ -22,43 +22,20 @@ const Login = () => {
   const handleLogin = async (formData) => {
     const response = await apiHelper('/api/login', formData);
 
-    console.log('🚀 ~ file: index.jsx:25 ~ handleLogin ~ response:', response);
-
     if (response?.success) {
       dispatch(addUser(response.user));
       setItem('user', response.user);
-
       const previousPath = window.sessionStorage.getItem('prevPath');
-
       if (previousPath === '/register' || !previousPath || previousPath === '/login')
         return router.push('/');
-
       return router.push(previousPath);
     }
 
-    if (!response?.success && response.name === 'notFound') {
-      return toast.error('User not found. Create a account first', {
-        autoClose: 5000,
-        closeOnClick: true,
-        draggable: true,
-        hideProgressBar: false,
-        pauseOnHover: true,
-        position: 'bottom-right',
-        progress: undefined,
-        theme: 'dark',
-      });
+    if (response.name === 'notFound') {
+      return toast.error('User not found. Create a account first');
     }
 
-    return toast.error('Oups, something went wrong, please try again.', {
-      autoClose: 5000,
-      closeOnClick: true,
-      draggable: true,
-      hideProgressBar: false,
-      pauseOnHover: true,
-      position: 'bottom-right',
-      progress: undefined,
-      theme: 'dark',
-    });
+    return toast.error('Oups, something went wrong, please try again.');
   };
 
   const { handleInputChange, handleSubmit, loading } = useForm(handleLogin);
@@ -101,6 +78,7 @@ const Login = () => {
         pauseOnFocusLoss
         draggable
         pauseOnHover
+        theme="dark"
       />
     </Page>
   );

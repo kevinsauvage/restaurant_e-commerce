@@ -17,31 +17,9 @@ const Register = () => {
 
   const handleRegister = async (formData) => {
     const response = await apiHelper('/api/register', formData);
-
     if (response?.success) return router.push('/login');
-
-    if (response && response.error?.code === 11_000)
-      return toast.error('Email already registered', {
-        autoClose: 5000,
-        closeOnClick: true,
-        draggable: true,
-        hideProgressBar: false,
-        pauseOnHover: true,
-        position: 'bottom-right',
-        progress: undefined,
-        theme: 'dark',
-      });
-
-    return toast.error('Oups, something went wrong, please try again.', {
-      autoClose: 5000,
-      closeOnClick: true,
-      draggable: true,
-      hideProgressBar: false,
-      pauseOnHover: true,
-      position: 'bottom-right',
-      progress: undefined,
-      theme: 'dark',
-    });
+    if (response?.error?.code === 11_000) return toast.error('Email already registered');
+    return toast.error('Oups, something went wrong, please try again.');
   };
 
   const { handleInputChange, handleSubmit, loading } = useForm(handleRegister);
@@ -97,6 +75,7 @@ const Register = () => {
         rtl={false}
         pauseOnFocusLoss
         draggable
+        theme="dark"
         pauseOnHover
       />
     </Page>

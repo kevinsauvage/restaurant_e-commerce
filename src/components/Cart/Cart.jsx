@@ -7,7 +7,6 @@ import styles from './Cart.module.scss';
 
 const Cart = () => {
   const { items } = useSelector((state) => state.cart);
-
   const total = useTotalPrice(items);
 
   return (

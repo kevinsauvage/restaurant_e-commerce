@@ -8,9 +8,7 @@ import '../styles/globals.scss';
 const storePathValues = () => {
   const storage = window?.sessionStorage;
   if (!storage) return;
-
   const previousPath = storage.getItem('currentPath');
-
   storage.setItem('prevPath', previousPath);
   storage.setItem('currentPath', window.location.pathname);
 };

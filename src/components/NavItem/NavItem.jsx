@@ -6,7 +6,6 @@ import styles from './NavItem.module.scss';
 
 const NavItem = ({ title }) => {
   const router = useRouter();
-
   const [asPath, setAsPath] = useState('');
 
   useEffect(() => setAsPath(router.asPath), [router.asPath]);

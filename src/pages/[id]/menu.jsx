@@ -67,21 +67,10 @@ export default Menu;
 
 export async function getStaticProps({ params }) {
   const restaurant = items.find((item) => item.name.split(' ').join('_') === params.id);
-
-  return {
-    props: {
-      restaurant,
-    },
-  };
+  return { props: { restaurant } };
 }
 
 export async function getStaticPaths() {
-  const paths = items.map((item) => ({
-    params: { id: item.name.split(' ').join('_') },
-  }));
-
-  return {
-    fallback: false,
-    paths,
-  };
+  const paths = items.map((item) => ({ params: { id: item.name.split(' ').join('_') } }));
+  return { fallback: false, paths };
 }

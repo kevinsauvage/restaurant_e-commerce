@@ -27,9 +27,7 @@ const Order = () => {
     });
 
     if (!response || !response.id) return;
-
     const stripe = await getStripe();
-
     return stripe.redirectToCheckout({ sessionId: response.id });
   };
 
