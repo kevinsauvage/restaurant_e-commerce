@@ -45,16 +45,43 @@
         "groups": [
           // Packages `react` related packages come first.
           ["^react", "^@?\\w"],
-          // Internal packages.
-          ["^(@|components)(/.*|$)"],
           // Side effect imports.
           ["^\\u0000"],
           // Parent imports. Put `..` last.
           ["^\\.\\.(?!/?$)", "^\\.\\./?$"],
-          // Other relative imports. Put same-folder imports and `.` last.
-          ["^\\./(?=.*/)(?!/?$)", "^\\.(?!/?$)", "^\\./?$"],
           // Style imports.
-          ["^.+\\.?(css)$"]
+          ["^.+\\.?(css)$"],
+          // Other relative imports. Put same-folder imports and `.` last.
+          [
+            "^\\./(?!assets|components|data|helpers|hooks|layout|pages|store|styles|utils)(?=.*/)(?!/?$)",
+            "^\\./(?!assets|components|data|helpers|hooks|layout|pages|store|styles|utils)(?!/?$)",
+            "^\\./(?!assets|components|data|helpers|hooks|layout|pages|store|styles|utils)\\./?$"
+          ],
+          // Same-folder imports.
+          [
+            "^\\./assets(?=.*/)(?!/?$)",
+            "^\\./assets/.*",
+            "^\\./components(?=.*/)(?!/?$)",
+            "^\\./components/.*",
+            "^\\./data(?=.*/)(?!/?$)",
+            "^\\./data/.*",
+            "^\\./helpers(?=.*/)(?!/?$)",
+            "^\\./helpers/.*",
+            "^\\./hooks(?=.*/)(?!/?$)",
+            "^\\./hooks/.*",
+            "^\\./layout(?=.*/)(?!/?$)",
+            "^\\./layout/.*",
+            "^\\./pages(?=.*/)(?!/?$)",
+            "^\\./pages/.*",
+            "^\\./store(?=.*/)(?!/?$)",
+            "^\\./store/.*",
+            "^\\./styles(?=.*/)(?!/?$)",
+            "^\\./styles/.*",
+            "^\\./utils(?=.*/)(?!/?$)",
+            "^\\./utils/.*"
+          ],
+          // Current folder imports.
+          ["^\\.(?!/?$)", "^\\./?$"]
         ]
       }
     ],

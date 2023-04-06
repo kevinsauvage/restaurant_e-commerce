@@ -4,10 +4,10 @@ import Head from 'next/head';
 import Banner from '../../components/Banner/Banner';
 import CardItemBig from '../../components/CardItemBig/CarditemBig';
 import Cart from '../../components/Cart/Cart';
+import Container from '../../components/Container/Container';
 import Modal from '../../components/Modal/Modal';
 import Navigation from '../../components/navigation/Navigation';
 import { addSelectedItem } from '../../store/user/action';
-import Container from '../Container/Container';
 
 import styles from './Page.module.scss';
 

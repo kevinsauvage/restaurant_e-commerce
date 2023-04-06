@@ -10,8 +10,8 @@ import isNoUser from '../../helpers/isNoUser';
 import { setItem } from '../../helpers/localStorage';
 import useClickOutside from '../../hooks/useClickOutside';
 import useTotalItems from '../../hooks/useTotalItems';
-import Container from '../../layout/Container/Container';
 import { addUser } from '../../store/user/action';
+import Container from '../Container/Container';
 import NavItem from '../NavItem/NavItem';
 
 import styles from './Navigation.module.scss';

@@ -1,18 +1,12 @@
-import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
 import styles from './NavItem.module.scss';
 
 const NavItem = ({ title }) => {
-  const router = useRouter();
-  const [asPath, setAsPath] = useState('');
+  const { asPath } = useRouter();
 
-  useEffect(() => setAsPath(router.asPath), [router.asPath]);
-
-  const path = encodeURI(
-    `${router.pathname.replace('[id]', router.query.id)}#${title?.split(' ').join('_')}`
-  );
+  const path = encodeURI(`${asPath.split('#')[0]}#${title?.split(' ').join('_')}`);
 
   return (
     <li className={styles.NavigationItem}>
