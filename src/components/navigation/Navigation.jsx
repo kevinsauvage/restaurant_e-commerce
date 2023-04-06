@@ -1,22 +1,24 @@
-import Link from 'next/link';
+import { useRef, useState } from 'react';
+import { FaRegUser } from 'react-icons/fa';
 import { MdOutlineMenu, MdOutlineShoppingCart } from 'react-icons/md';
 import { useDispatch, useSelector } from 'react-redux';
-import { FaRegUser } from 'react-icons/fa';
+import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { useRef, useState } from 'react';
-import useTotalItems from '../../hooks/useTotalItems';
-import Container from '../../layout/Container/Container';
-import NavItem from '../NavItem/NavItem';
-import styles from './Navigation.module.scss';
+
+import apiHelper from '../../helpers/apiHelper';
 import isNoUser from '../../helpers/isNoUser';
-import { addUser } from '../../store/user/action';
 import { setItem } from '../../helpers/localStorage';
 import useClickOutside from '../../hooks/useClickOutside';
-import apiHelper from '../../helpers/apiHelper';
+import useTotalItems from '../../hooks/useTotalItems';
+import Container from '../../layout/Container/Container';
+import { addUser } from '../../store/user/action';
+import NavItem from '../NavItem/NavItem';
 
-function Navigation({ navItems }) {
+import styles from './Navigation.module.scss';
+
+const Navigation = ({ navItems }) => {
   const dispatch = useDispatch();
-  const navRef = useRef();
+  const navReference = useRef();
   const router = useRouter();
   const [navOpen, setNavOpen] = useState(false);
 
@@ -26,68 +28,55 @@ function Navigation({ navItems }) {
 
   const handleLogout = () => {
     dispatch(addUser({}));
-    setItem('user', null);
+    setItem('user');
     apiHelper('/api/logout');
   };
 
-  useClickOutside(navRef, () => navOpen && setNavOpen(false));
+  useClickOutside(navReference, () => navOpen && setNavOpen(false));
 
   return (
-    <nav className={styles.navigation} ref={navRef}>
+    <nav className={styles.navigation} ref={navReference}>
       <Container style={styles.container}>
         <ul className={styles.navigationList}>
           <li className={styles.navItem}>
             <Link href="/">
-              <a className={router.asPath === '/' ? styles.itemActive : ''}>
-                Restaurants
-              </a>
+              <a className={router.asPath === '/' ? styles.itemActive : ''}>Restaurants</a>
             </Link>
           </li>
-          {navItems &&
-            navItems.map((item) => (
-              <NavItem key={item.title} title={item.title} />
-            ))}
+          {navItems?.map((item) => (
+            <NavItem key={item.title} title={item.title} />
+          ))}
         </ul>
-        <div
-          className={
-            `${styles.navigationRight}` +
-            ' ' +
-            `${navOpen ? styles.navigationOpen : ''}`
-          }
-        >
+        <div className={`${styles.navigationRight} ${navOpen ? styles.navigationOpen : ''}`}>
           <Link href="/order">
             <a className={styles.cart}>
               <MdOutlineShoppingCart />
               <span className={styles.totalItems}>{totalItems}</span>
             </a>
           </Link>
-          {!isNoUser(user.user) ? (
-            <Link href="/login">
-              <a className={styles.logBtn}>Login</a>
-            </Link>
-          ) : (
+          {isNoUser(user.user) ? (
             <>
               <Link href="/user">
                 <a className={styles.user}>
                   <FaRegUser />
                 </a>
               </Link>
-              <button
-                type="submit"
-                className={styles.logBtn}
-                onClick={handleLogout}
-              >
+              <button type="submit" className={styles.logBtn} onClick={handleLogout}>
                 <p>Logout</p>
               </button>
             </>
+          ) : (
+            <Link href="/login">
+              <a className={styles.logBtn}>Login</a>
+            </Link>
           )}
         </div>
         <div className={styles.hamburger}>
-          <MdOutlineMenu onClick={() => setNavOpen((prev) => !prev)} />
+          <MdOutlineMenu onClick={() => setNavOpen((previous) => !previous)} />
         </div>
       </Container>
     </nav>
   );
-}
+};
 
 export default Navigation;

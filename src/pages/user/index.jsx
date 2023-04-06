@@ -1,21 +1,23 @@
-import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useRouter } from 'next/router';
+
 import OrderCard from '../../components/orderCard/OrderCard';
 import getUser from '../../helpers/getUser';
 import { getItem } from '../../helpers/localStorage';
 import Page from '../../layout/Page/Page';
 import { addUser } from '../../store/user/action';
+
 import styles from './user.module.scss';
 
-function User() {
+const User = () => {
   const { user } = useSelector((state) => state.user);
   const router = useRouter();
   const dispatch = useDispatch();
 
   useEffect(() => {
     if (!getItem('user')) router.push('/login');
-  }, [user]);
+  }, [router, user]);
 
   useEffect(() => {
     if (getItem('user') && user.email) {
@@ -23,7 +25,7 @@ function User() {
         if (newUser) dispatch(addUser(newUser));
       });
     }
-  }, []);
+  }, [dispatch, user.email]);
 
   return (
     <Page
@@ -35,12 +37,9 @@ function User() {
         <div className={styles.orderInfo}>
           <h2 className={styles.title}>LAST ORDERS</h2>
           <div className={styles.cards}>
-            {user && user?.orders && user.orders.length ? (
+            {user?.orders?.length > 0 ? (
               user?.orders?.map(
-                (order) =>
-                  order !== null && (
-                    <OrderCard key={order.created} order={order} />
-                  )
+                (order) => order !== null && <OrderCard key={order.created} order={order} />
               )
             ) : (
               <p>There is no last orders.</p>
@@ -50,6 +49,6 @@ function User() {
       </div>
     </Page>
   );
-}
+};
 
 export default User;

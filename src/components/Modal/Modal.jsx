@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
 import { MdOutlineClose } from 'react-icons/md';
+
 import styles from './Modal.module.scss';
 
-function Modal({ children, handleClose }) {
+const Modal = ({ children, handleClose }) => {
   const [yPos, setYPos] = useState(0);
 
   useEffect(() => setYPos(window.pageYOffset), []);
@@ -17,6 +18,6 @@ function Modal({ children, handleClose }) {
       </div>
     </div>
   );
-}
+};
 
 export default Modal;

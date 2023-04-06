@@ -1,29 +1,31 @@
-import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import Image from 'next/image';
+import { useRouter } from 'next/router';
+
+import failImg from '../../assets/images/fail.png';
+import succesImg from '../../assets/images/success.png';
 import Button from '../../components/Button/Button';
+import apiHelper from '../../helpers/apiHelper';
 import Page from '../../layout/Page/Page';
 import { setInitalState } from '../../store/cart/action';
-import styles from './confirmation.module.scss';
-import succesImg from '../../assets/images/success.png';
-import failImg from '../../assets/images/fail.png';
-import apiHelper from '../../helpers/apiHelper';
 
-function Confirmation() {
+import styles from './confirmation.module.scss';
+
+const Confirmation = () => {
   const { query } = useRouter();
   const dispatch = useDispatch();
-  const [success, setSuccess] = useState(null);
+  const [success, setSuccess] = useState();
 
   useEffect(() => {
     const getSession = async () => {
-      const res = await apiHelper(
+      const response = await apiHelper(
         `/api/checkout_sessions/${query.session_id}`,
-        null,
+        undefined,
         'GET'
       );
 
-      if (res && res?.session?.payment_status === 'paid') {
+      if (response && response?.session?.payment_status === 'paid') {
         dispatch(setInitalState([]));
         setSuccess(true);
       } else setSuccess(false);
@@ -31,7 +33,7 @@ function Confirmation() {
 
     if (query.session_id) getSession();
     if (query.success === 'false') setSuccess(false);
-  }, [query]);
+  }, [dispatch, query]);
 
   return (
     <Page title="Payment confirmation">
@@ -44,7 +46,7 @@ function Confirmation() {
               Your order will reach you really soon.
             </h2>
             <div className={styles.image}>
-              <Image src={succesImg} layout="fill" objectFit="contain" />
+              <Image alt="Success" src={succesImg} layout="fill" objectFit="contain" />
             </div>
             <Button href="/" text="BACK TO HOME" />
           </>
@@ -58,7 +60,7 @@ function Confirmation() {
               please, try again.
             </h2>
             <div className={styles.image}>
-              <Image src={failImg} layout="fill" objectFit="contain" />
+              <Image alt="Fail" src={failImg} layout="fill" objectFit="contain" />
             </div>
             <Button href="/order" text="BACK TO ORDER" />
           </>
@@ -66,6 +68,6 @@ function Confirmation() {
       </div>
     </Page>
   );
-}
+};
 
 export default Confirmation;

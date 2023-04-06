@@ -12,18 +12,19 @@ UpToGo is an online food delivery platform connecting consumers and local restau
 
 ### Built With
 
-* [Next.js](https://nextjs.org/)
-* [SASS](https://sass-lang.com/)
-* [MongoDB](https://www.mongodb.com/)
-* [Redux](https://redux.js.org/)
-* [Redux persist](https://github.com/rt2zz/redux-persist)
-* [Stripe](https://stripe.com/)
-* [Jsonwebtoken](https://github.com/auth0/node-jsonwebtoken#readme)
-* [Bcrypt](https://github.com/kelektiv/node.bcrypt.js#readme)
+- [Next.js](https://nextjs.org/)
+- [SASS](https://sass-lang.com/)
+- [MongoDB](https://www.mongodb.com/)
+- [Redux](https://redux.js.org/)
+- [Redux persist](https://github.com/rt2zz/redux-persist)
+- [Stripe](https://stripe.com/)
+- [Jsonwebtoken](https://github.com/auth0/node-jsonwebtoken#readme)
+- [Bcrypt](https://github.com/kelektiv/node.bcrypt.js#readme)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 <!-- CONTACT -->
+
 ## Contact
 
 kevinsauvage@outlook.com
@@ -53,10 +54,3 @@ Project Link: [UpToGo](https://uptogo.vercel.app/)
 ![UpToGo-Order](https://user-images.githubusercontent.com/64160579/163609671-4d2494b7-27a8-4487-97a0-bb80755a0724.png)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
-
-
-
-
-
-
-

@@ -1,20 +1,19 @@
 import { MongoClient } from 'mongodb';
 
 let cachedClient;
-let cachedDb;
+let cachedDatabase;
 
-const { MONGODB_URI } = process.env;
-const { DB_NAME } = process.env;
+const { MONGODB_URI, DB_NAME } = process.env;
 
 const connectToDatabase = async () => {
-  if (cachedClient && cachedDb) {
+  if (cachedClient && cachedDatabase) {
     return {
       client: cachedClient,
-      db: cachedDb,
+      db: cachedDatabase,
     };
   }
 
-  const opts = {
+  const options = {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   };
@@ -26,16 +25,16 @@ const connectToDatabase = async () => {
     throw new Error('Define the MONGODB_DB environmental variable');
   }
 
-  const client = new MongoClient(MONGODB_URI, opts);
+  const client = new MongoClient(MONGODB_URI, options);
   await client.connect();
-  const db = client.db(DB_NAME);
+  const database = client.db(DB_NAME);
 
   cachedClient = client;
-  cachedDb = db;
+  cachedDatabase = database;
 
   return {
     client: cachedClient,
-    db: cachedDb,
+    db: cachedDatabase,
   };
 };
 

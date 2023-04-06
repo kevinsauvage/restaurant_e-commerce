@@ -1,9 +1,10 @@
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
+
 import styles from './NavItem.module.scss';
 
-function NavItem({ title }) {
+const NavItem = ({ title }) => {
   const router = useRouter();
 
   const [asPath, setAsPath] = useState('');
@@ -11,9 +12,7 @@ function NavItem({ title }) {
   useEffect(() => setAsPath(router.asPath), [router.asPath]);
 
   const path = encodeURI(
-    `${router.pathname.replace('[id]', router.query.id)}#${title
-      .split(' ')
-      .join('_')}`
+    `${router.pathname.replace('[id]', router.query.id)}#${title?.split(' ').join('_')}`
   );
 
   return (
@@ -23,6 +22,6 @@ function NavItem({ title }) {
       </Link>
     </li>
   );
-}
+};
 
 export default NavItem;

@@ -2,25 +2,24 @@
   display: flex;
   justify-content: space-between;
   padding: 8px;
-  background-color: white;
   border-radius: $radius-1;
+  background-color: white;
   box-shadow: $box-shadow-primary;
   cursor: pointer;
 }
 .image {
   position: relative;
+  overflow: hidden;
   min-width: 130px;
   min-height: 130px;
   border-radius: $radius-1;
-  overflow: hidden;
-  position: relative;
 }
 .details {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
   padding: 8px;
   padding-right: 16px;
-  display: flex;
-  flex-direction: column;
-  height: 100%;
 }
 .name {
   margin-bottom: 4px;
@@ -28,9 +27,9 @@
   font-weight: 600;
 }
 .description {
-  opacity: 0.6;
-  font-size: 14px;
   margin-bottom: 10px;
+  font-size: 14px;
+  opacity: 0.6;
 }
 .price {
   margin-top: auto;
@@ -39,19 +38,19 @@
 .addBtn {
   position: absolute;
   z-index: 9999;
+  right: 6px;
   bottom: 6px;
   left: 6px;
-  right: 6px;
-  background-color: black;
-  color: white;
-  border: none;
-  border-radius: $radius-2;
   display: flex;
   align-items: center;
-  padding: 5px;
   justify-content: center;
-  font-weight: 600;
+  padding: 5px;
+  border: none;
+  border-radius: $radius-2;
+  background-color: black;
+  color: white;
   cursor: pointer;
+  font-weight: 600;
 
   svg {
     margin-right: 4px;
@@ -61,16 +60,16 @@
 .quantity {
   position: absolute;
   z-index: 9999;
+  right: 6px;
   bottom: 6px;
   left: 6px;
-  right: 6px;
-  background-color: black;
-  color: white;
   display: flex;
-  justify-content: space-around;
   align-items: center;
+  justify-content: space-around;
   padding: 5px;
   border-radius: $radius-2;
+  background-color: black;
+  color: white;
 
   svg {
     cursor: pointer;

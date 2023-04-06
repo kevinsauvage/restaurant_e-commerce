@@ -1,57 +1,61 @@
-import { useRouter } from 'next/router';
-import { ToastContainer, toast } from 'react-toastify';
 import { useDispatch } from 'react-redux';
+import { toast, ToastContainer } from 'react-toastify';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
+
 import Button from '../../components/Button/Button';
 import Input from '../../components/input/Input';
+import Loader from '../../components/Loader/Loader';
+import apiHelper from '../../helpers/apiHelper';
+import { setItem } from '../../helpers/localStorage';
 import useForm from '../../hooks/useForm';
 import Page from '../../layout/Page/Page';
-import styles from './login.module.scss';
-import 'react-toastify/dist/ReactToastify.css';
-import apiHelper from '../../helpers/apiHelper';
 import { addUser } from '../../store/user/action';
-import { setItem } from '../../helpers/localStorage';
-import Loader from '../../components/Loader/Loader';
 
-function Login() {
+import 'react-toastify/dist/ReactToastify.css';
+import styles from './login.module.scss';
+
+const Login = () => {
   const router = useRouter();
   const dispatch = useDispatch();
 
   const handleLogin = async (formData) => {
-    const res = await apiHelper('/api/login', formData);
+    const response = await apiHelper('/api/login', formData);
 
-    if (res && res.success) {
-      dispatch(addUser(res.user));
-      setItem('user', res.user);
+    console.log('🚀 ~ file: index.jsx:25 ~ handleLogin ~ response:', response);
 
-      const prevPath = window.sessionStorage.getItem('prevPath');
+    if (response?.success) {
+      dispatch(addUser(response.user));
+      setItem('user', response.user);
 
-      if (prevPath === '/register' || !prevPath || prevPath === '/login')
+      const previousPath = window.sessionStorage.getItem('prevPath');
+
+      if (previousPath === '/register' || !previousPath || previousPath === '/login')
         return router.push('/');
 
-      return router.push(prevPath);
+      return router.push(previousPath);
     }
 
-    if (res && !res.success && res.name === 'notFound') {
+    if (!response?.success && response.name === 'notFound') {
       return toast.error('User not found. Create a account first', {
-        position: 'bottom-right',
         autoClose: 5000,
-        hideProgressBar: false,
         closeOnClick: true,
-        pauseOnHover: true,
         draggable: true,
+        hideProgressBar: false,
+        pauseOnHover: true,
+        position: 'bottom-right',
         progress: undefined,
         theme: 'dark',
       });
     }
 
     return toast.error('Oups, something went wrong, please try again.', {
-      position: 'bottom-right',
       autoClose: 5000,
-      hideProgressBar: false,
       closeOnClick: true,
-      pauseOnHover: true,
       draggable: true,
+      hideProgressBar: false,
+      pauseOnHover: true,
+      position: 'bottom-right',
       progress: undefined,
       theme: 'dark',
     });
@@ -64,13 +68,7 @@ function Login() {
       <form className={styles.form}>
         {loading && <Loader />}
         <h1 className={styles.title}>Login</h1>
-        <Input
-          type="email"
-          id="email"
-          label="Email"
-          name="email"
-          onChange={handleInputChange}
-        />
+        <Input type="email" id="email" label="Email" name="email" onChange={handleInputChange} />
         <Input
           type="password"
           id="password"
@@ -106,7 +104,7 @@ function Login() {
       />
     </Page>
   );
-}
+};
 
 export default Login;
 

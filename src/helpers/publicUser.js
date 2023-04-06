@@ -1,8 +1,8 @@
 const publicUser = (user) => ({
-  firstName: user.firstName,
-  lastName: user.lastName,
   email: user.email,
+  firstName: user.firstName,
   id: user._id,
+  lastName: user.lastName,
   orders: user.orders || [],
 });
 

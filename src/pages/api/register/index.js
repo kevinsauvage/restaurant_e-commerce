@@ -1,33 +1,32 @@
 import { hashPassword } from '../../../utils/bcrypt';
 import connectToDatabase from '../../../utils/mongo';
 
-export default async function handler(req, res) {
-  const { method } = req;
+export default async function handler(request, response) {
+  const { method, body } = request;
 
   if (method === 'POST') {
     const { db } = await connectToDatabase();
 
     try {
-      const { firstName, lastName, email, password } = req.body;
+      const { firstName, lastName, email, password } = body;
 
       if (!firstName || !lastName || !email || !password)
-        return res.status(400).json({ message: 'missing field' });
+        return response.status(400).json({ message: 'missing field' });
 
       const hash = await hashPassword(password);
 
-      const user = { firstName, lastName, email, password: hash };
+      const user = { email, firstName, lastName, password: hash };
 
-      const response = await db.collection('users').insertOne(user);
+      const result = await db.collection('users').insertOne(user);
 
-      return res.status(200).json({ success: true, response });
+      return response.status(200).json({ response: result, success: true });
     } catch (error) {
-      if (error.code === 11000)
-        return res.status(409).send({ success: false, error });
+      if (error.code === 11_000) return response.status(409).send({ error, success: false });
 
-      return res.status(400).json(error);
+      return response.status(400).json(error);
     }
   } else {
-    res.setHeader('Allow', ['POST']);
-    return res.status(405).end(`Method ${method} Not Allowed`);
+    response.setHeader('Allow', ['POST']);
+    return response.status(405).end(`Method ${method} Not Allowed`);
   }
 }

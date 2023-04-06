@@ -1,6 +1,6 @@
 export const userActionTypes = {
-  ADD_USER: 'ADD_USER',
   ADD_SELECTED_ITEM: 'ADD_SELECTED_ITEM',
+  ADD_USER: 'ADD_USER',
 };
 
 export const addUser = (user) => ({
@@ -9,6 +9,6 @@ export const addUser = (user) => ({
 });
 
 export const addSelectedItem = (item) => ({
-  type: userActionTypes.ADD_SELECTED_ITEM,
   item,
+  type: userActionTypes.ADD_SELECTED_ITEM,
 });

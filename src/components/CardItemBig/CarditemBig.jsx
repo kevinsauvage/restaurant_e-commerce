@@ -1,37 +1,35 @@
-import Image from 'next/image';
 import { useState } from 'react';
 import { MdAdd, MdRemove } from 'react-icons/md';
 import { useDispatch } from 'react-redux';
+import Image from 'next/image';
+
 import useTotalPrice from '../../hooks/useTotalPrice';
 import { addItem } from '../../store/cart/action';
 import { addSelectedItem } from '../../store/user/action';
 import Button from '../Button/Button';
+
 import styles from './cardItemBig.module.scss';
 
-function CardItemBig({ item }) {
+const CardItemBig = ({ item }) => {
   const [quantity, setQuantity] = useState(1);
   const dispatch = useDispatch();
   const total = useTotalPrice([{ product: item, quantity }]);
 
-  const updateQuantity = (e, newQ) => {
-    e.stopPropagation();
-    if (newQ < 1) return null;
+  const updateQuantity = (event, newQ) => {
+    event.stopPropagation();
+    if (newQ < 1) return;
     return setQuantity(newQ);
   };
 
   const handleAddToCart = () => {
     dispatch(addItem(item, quantity));
-    dispatch(addSelectedItem(undefined));
+    dispatch(addSelectedItem());
   };
 
   return (
-    <div
-      className={styles.card}
-      onClick={(e) => e.stopPropagation()}
-      role="presentation"
-    >
+    <div className={styles.card} onClick={(event) => event.stopPropagation()} role="presentation">
       <div className={styles.img}>
-        <Image src={item.image} layout="fill" objectFit="cover" />
+        <Image src={item.image} alt={item.title} layout="fill" objectFit="cover" />
       </div>
       <div className={styles.detail}>
         <p className={styles.title}>{item.name}</p>
@@ -41,16 +39,8 @@ function CardItemBig({ item }) {
       <div className={styles.quantity}>
         <button
           type="submit"
-          className={
-            `${styles.quantityLess}` +
-            ' ' +
-            `${
-              quantity === 1
-                ? `${styles.quantityDisabled} ${styles.quantityLess}`
-                : ''
-            } `
-          }
-          onClick={(e) => updateQuantity(e, quantity - 1)}
+          className={`${styles.quantityLess} ${quantity === 1 && styles.quantityDisabled}`}
+          onClick={(event) => updateQuantity(event, quantity - 1)}
         >
           <MdRemove />
         </button>
@@ -58,7 +48,7 @@ function CardItemBig({ item }) {
         <button
           type="submit"
           className={styles.quantityMore}
-          onClick={(e) => updateQuantity(e, quantity + 1)}
+          onClick={(event) => updateQuantity(event, quantity + 1)}
         >
           <MdAdd />
         </button>
@@ -71,6 +61,6 @@ function CardItemBig({ item }) {
       />
     </div>
   );
-}
+};
 
 export default CardItemBig;

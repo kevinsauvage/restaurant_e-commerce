@@ -1,9 +1,9 @@
 export const getItem = (key) => {
-  if (typeof window === 'undefined') return null;
-  const itemStr = localStorage.getItem(key);
-  if (!itemStr) return null;
+  if (typeof window === 'undefined') return;
+  const itemString = localStorage.getItem(key);
+  if (!itemString) return;
 
-  const item = JSON.parse(itemStr);
+  const item = JSON.parse(itemString);
 
   if (item.expiry) {
     const now = Date.now();
@@ -12,7 +12,7 @@ export const getItem = (key) => {
 
     if (isNotValid) {
       localStorage.removeItem(key);
-      return null;
+      return;
     }
     return item.value;
   }

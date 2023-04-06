@@ -1,9 +1,11 @@
 import { useSelector } from 'react-redux';
+
 import useTotalPrice from '../../hooks/useTotalPrice';
 import Button from '../Button/Button';
+
 import styles from './Cart.module.scss';
 
-function Cart() {
+const Cart = () => {
   const { items } = useSelector((state) => state.cart);
 
   const total = useTotalPrice(items);
@@ -15,18 +17,17 @@ function Cart() {
         <p>{total} €</p>
       </div>
       <div className={styles.items}>
-        {items &&
-          items.map((el) => (
-            <div key={el.product.name} className={styles.item}>
-              <p className={styles.itemName}>{el.product.name}</p>
-              <p className={styles.itemQuantity}>x {el.quantity}</p>
-            </div>
-          ))}
+        {items?.map((element) => (
+          <div key={element.product.name} className={styles.item}>
+            <p>{element.product.name}</p>
+            <p className={styles.itemQuantity}>x {element.quantity}</p>
+          </div>
+        ))}
       </div>
 
-      <Button href="/order" text="ORDER" style={styles.btn} />
+      <Button href="/order" text="ORDER" />
     </div>
   );
-}
+};
 
 export default Cart;

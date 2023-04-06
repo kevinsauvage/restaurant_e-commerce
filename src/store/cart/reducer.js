@@ -1,60 +1,64 @@
+/* eslint-disable unicorn/prefer-spread */
 import { cartActionTypes } from './action';
 
 const cartInitialState = {
   items: [],
 };
 
-export default function reducer(state = cartInitialState, action) {
+const handleAdd = (state, action) => {
+  const exist = state.items.find((element) => element.product.name === action.item.name);
+
+  if (exist) {
+    const newItems = state.items.map((element) => {
+      if (element.product.name === action.item.name)
+        return {
+          product: action.item,
+          quantity: Number(element.quantity) + Number(action.quantity),
+        };
+      return element;
+    });
+
+    return {
+      ...state,
+      items: newItems,
+    };
+  }
+  const newItems = [...state.items, { product: action.item, quantity: Number(action.quantity) }];
+
+  return {
+    ...state,
+    items: newItems,
+  };
+};
+
+const handleRemove = (state, action) => {
+  const newItems = state.items.reduce((result, element) => {
+    if (element.product.name === action.item.name) {
+      if (Number(element.quantity) > 1) {
+        return result.concat({
+          product: action.item,
+          quantity: Number(element.quantity) - 1,
+        });
+      }
+    } else return [...result, ...(Array.isArray(element) ? element : [element])];
+
+    return result;
+  }, []);
+
+  return {
+    ...state,
+    items: newItems,
+  };
+};
+
+const reducer = (state = cartInitialState, action) => {
   switch (action.type) {
     case cartActionTypes.ADD_ITEM: {
-      const exist = state.items.find(
-        (el) => el.product.name === action.item.name
-      );
-
-      if (exist) {
-        const newItems = state.items.map((el) => {
-          if (el.product.name === action.item.name)
-            return {
-              product: action.item,
-              quantity: Number(el.quantity) + Number(action.quantity),
-            };
-          return el;
-        });
-
-        return {
-          ...state,
-          items: newItems,
-        };
-      }
-      const newItems = [
-        ...state.items,
-        { product: action.item, quantity: Number(action.quantity) },
-      ];
-
-      return {
-        ...state,
-        items: newItems,
-      };
+      return handleAdd(state, action);
     }
 
     case cartActionTypes.REMOVE_ITEM: {
-      const newItems = state.items.reduce((result, el) => {
-        if (el.product.name === action.item.name) {
-          if (Number(el.quantity) > 1) {
-            return result.concat({
-              product: action.item,
-              quantity: Number(el.quantity) - 1,
-            });
-          }
-        } else return result.concat(el);
-
-        return result;
-      }, []);
-
-      return {
-        ...state,
-        items: newItems,
-      };
+      return handleRemove(state, action);
     }
 
     case cartActionTypes.SET_INITIAL_STATE: {
@@ -64,7 +68,10 @@ export default function reducer(state = cartInitialState, action) {
       };
     }
 
-    default:
+    default: {
       return state;
+    }
   }
-}
+};
+
+export default reducer;

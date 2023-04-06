@@ -1,19 +1,19 @@
 .navigation {
+  position: relative;
   display: flex;
   align-items: center;
   background-color: white;
   box-shadow: $box-shadow-primary;
-  position: relative;
 }
 
 .navigationList {
   display: flex;
+  width: fit-content;
+  max-width: 75%;
   align-items: center;
   justify-content: space-between;
-  gap: 15px;
-  max-width: 75%;
-  width: fit-content;
   padding: 20px 0;
+  gap: 15px;
 
   @include respond(laptop_s) {
     width: unset;
@@ -29,15 +29,15 @@
 
   @include respond(laptop_s) {
     position: absolute;
-    flex-direction: column;
-    border: 1px solid black;
-    gap: 30px;
-    background-color: white;
     z-index: 999999;
     top: 105%;
     right: 20px;
+    flex-direction: column;
     padding: 30px;
+    border: 1px solid black;
     border-radius: $radius-1;
+    background-color: white;
+    gap: 30px;
     transform: translateX(130%);
     transition: all 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
   }
@@ -71,32 +71,32 @@
 }
 
 .totalItems {
-  background-color: black;
-  color: white;
-  border-radius: 50%;
-  padding: 3px;
-  width: 18px;
-  height: 18px;
-  display: block;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 12px;
-  font-weight: 600;
+  position: absolute;
   top: -9px;
   right: -9px;
-  position: absolute;
+  display: block;
+  display: flex;
+  width: 18px;
+  height: 18px;
+  align-items: center;
+  justify-content: center;
+  padding: 3px;
+  border-radius: 50%;
+  background-color: black;
+  color: white;
+  font-size: 12px;
+  font-weight: 600;
 }
 
 .logBtn {
-  background-color: white;
-  color: black;
+  padding: 1px 13px;
   border: 3px solid black;
   border-radius: $radius-2;
-  padding: 1px 13px;
-  font-weight: 700;
-  font-size: 16px;
+  background-color: white;
+  color: black;
   cursor: pointer;
+  font-size: 16px;
+  font-weight: 700;
   transition: 0.1s ease-in;
 
   &:hover {
@@ -115,10 +115,10 @@
 }
 
 .itemActive {
-  background-color: black;
-  color: white;
   padding: 3px 12px;
+  background-color: black;
   box-shadow: $box-shadow-primary;
+  color: white;
 }
 
 .hamburger {
@@ -126,14 +126,14 @@
   height: 100%;
 
   @include respond(laptop_s) {
-    font-size: 30px;
-    display: flex;
-    align-items: center;
-    background-color: white;
     position: absolute;
     right: 0;
-    height: 100%;
+    display: flex;
     width: 55px;
+    height: 100%;
+    align-items: center;
     padding: 0 10px;
+    background-color: white;
+    font-size: 30px;
   }
 }

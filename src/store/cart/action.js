@@ -5,17 +5,17 @@ export const cartActionTypes = {
 };
 
 export const addItem = (newItem, quantity) => ({
-  type: cartActionTypes.ADD_ITEM,
   item: newItem,
   quantity,
+  type: cartActionTypes.ADD_ITEM,
 });
 
 export const removeItem = (item) => ({
-  type: cartActionTypes.REMOVE_ITEM,
   item,
+  type: cartActionTypes.REMOVE_ITEM,
 });
 
 export const setInitalState = (items) => ({
-  type: cartActionTypes.SET_INITIAL_STATE,
   items,
+  type: cartActionTypes.SET_INITIAL_STATE,
 });

@@ -1,27 +1,26 @@
 import cookie, { serialize } from 'cookie';
-
-const jwt = require('jsonwebtoken');
+import jwt from 'jsonwebtoken';
 
 const jwtKey = process.env.JSON_TOKEN;
 
 const jwtExpirySeconds = 24 * 60 * 60 * 7; // 7 day
 
-const withAuth = (handler) => async (req, res) => {
+const withAuth = (handler) => async (request, response) => {
   try {
-    if (req.method !== 'POST') return handler(req, res);
+    if (request.method !== 'POST') return handler(request, response);
 
-    const cookies = cookie.parse(req.headers.cookie || '');
+    const cookies = cookie.parse(request.headers.cookie || '');
 
     const { token } = cookies;
 
-    if (!token) return res.status(401).end();
+    if (!token) return response.status(401).end();
 
     const payload = jwt.verify(token, jwtKey);
 
-    const nowUnixSeconds = Math.round(Number(new Date()) / 1000);
+    const nowUnixSeconds = Math.round(Date.now() / 1000);
 
     if (payload.exp - nowUnixSeconds > 60 * 60 * 24 - 60 * 60) {
-      return handler(req, res);
+      return handler(request, response);
     }
 
     // If token expire in 1 day less 1 hour => regenerate token
@@ -30,20 +29,20 @@ const withAuth = (handler) => async (req, res) => {
       expiresIn: jwtExpirySeconds,
     });
 
-    res.setHeader(
+    response.setHeader(
       'Set-Cookie',
       serialize('token', newToken, {
-        path: '/',
         maxAge: jwtExpirySeconds * 1000,
+        path: '/',
       })
     );
 
-    return handler(req, res);
-  } catch (e) {
-    if (e instanceof jwt.JsonWebTokenError) {
-      return res.status(401).end();
+    return handler(request, response);
+  } catch (error) {
+    if (error instanceof jwt.JsonWebTokenError) {
+      return response.status(401).end();
     }
-    return res.status(400).end();
+    return response.status(400).end();
   }
 };
 

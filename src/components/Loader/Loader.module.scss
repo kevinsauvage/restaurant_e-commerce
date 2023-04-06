@@ -1,34 +1,34 @@
 .loader {
   position: absolute;
-  left: 0;
   top: 0;
   right: 0;
   bottom: 0;
+  left: 0;
   display: flex;
   align-items: center;
   justify-content: center;
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
   background: rgba(255, 255, 255, 0.1);
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
 }
 .bars {
-  display: block;
   position: absolute;
   top: 50%;
   left: 50%;
-  height: 50px;
+  display: block;
   width: 50px;
+  height: 50px;
   margin: -25px 0 0 -25px;
 
   span {
     position: absolute;
-    display: block;
     bottom: 10px;
+    display: block;
     width: 9px;
     height: 5px;
-    background: rgba(0, 0, 0, 0.25);
     animation: bars 1.5s infinite ease-in-out;
+    background: rgba(0, 0, 0, 0.25);
   }
   span:nth-child(2) {
     left: 11px;
@@ -55,34 +55,26 @@
 @keyframes bars {
   0% {
     height: 5px;
-    -webkit-transform: translateY(0px);
-    transform: translateY(0px);
-    -webkit-transform: translateY(0px);
-    transform: translateY(0px);
     background: rgba(0, 0, 0, 0.25);
+    -webkit-transform: translateY(0px);
+    transform: translateY(0px);
   }
   25% {
     height: 30px;
-    -webkit-transform: translateY(15px);
-    transform: translateY(15px);
-    -webkit-transform: translateY(15px);
-    transform: translateY(15px);
     background: #000000;
+    -webkit-transform: translateY(15px);
+    transform: translateY(15px);
   }
   50% {
     height: 5px;
-    -webkit-transform: translateY(0px);
-    transform: translateY(0px);
-    -webkit-transform: translateY(0px);
-    transform: translateY(0px);
     background: rgba(0, 0, 0, 0.25);
+    -webkit-transform: translateY(0px);
+    transform: translateY(0px);
   }
   100% {
     height: 5px;
-    -webkit-transform: translateY(0px);
-    transform: translateY(0px);
-    -webkit-transform: translateY(0px);
-    transform: translateY(0px);
     background: rgba(0, 0, 0, 0.25);
+    -webkit-transform: translateY(0px);
+    transform: translateY(0px);
   }
 }

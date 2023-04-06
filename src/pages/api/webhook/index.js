@@ -1,9 +1,9 @@
 /* eslint-disable camelcase */
-import Stripe from 'stripe';
 import { buffer } from 'micro';
-import connectToDatabase from '../../../utils/mongo';
+import { ObjectId } from 'mongodb';
+import Stripe from 'stripe';
 
-const { ObjectId } = require('mongodb');
+import connectToDatabase from '../../../utils/mongo';
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
@@ -14,23 +14,18 @@ export const config = {
 };
 const webhook_secret = process.env.STRIPE_WEBHOOK_SECRET;
 
-export default async function handler(req, res) {
-  if (req.method === 'POST') {
+export default async function handler(request, response) {
+  if (request.method === 'POST') {
     let event;
 
     try {
-      const buf = await buffer(req);
-      const sig = req.headers['stripe-signature'];
+      const buf = await buffer(request);
+      const sig = request.headers['stripe-signature'];
 
-      event = stripe.webhooks.constructEvent(
-        buf.toString(),
-        sig,
-        webhook_secret
-      );
+      event = stripe.webhooks.constructEvent(buf.toString(), sig, webhook_secret);
 
       if (event.type === 'checkout.session.completed') {
-        const { id, client_reference_id, amount_subtotal, payment_status } =
-          event.data.object;
+        const { id, client_reference_id, amount_subtotal, payment_status } = event.data.object;
 
         const items = await stripe.checkout.sessions.listLineItems(id, {
           limit: 100,
@@ -47,31 +42,26 @@ export default async function handler(req, res) {
         });
 
         const newOrder = {
-          items: items.data,
-          totalPrice: amount_subtotal,
           created: event.created,
+          items: items.data,
           payment_status,
+          totalPrice: amount_subtotal,
         };
 
         const userOrders = user?.orders;
 
         const newOrders =
-          userOrders && Array.isArray(userOrders)
-            ? [...userOrders, newOrder]
-            : [newOrder];
+          userOrders && Array.isArray(userOrders) ? [...userOrders, newOrder] : [newOrder];
 
-        await userCollection.updateOne(
-          { _id: userObjectId },
-          { $set: { orders: newOrders } }
-        );
+        await userCollection.updateOne({ _id: userObjectId }, { $set: { orders: newOrders } });
       }
 
-      res.json({ received: true });
-    } catch (err) {
-      res.status(400).json({ message: `Webhook Error: ${err.message}` });
+      response.json({ received: true });
+    } catch (error) {
+      response.status(400).json({ message: `Webhook Error: ${error.message}` });
     }
   } else {
-    res.setHeader('Allow', 'POST');
-    res.status(405).json({ message: 'Method not allowed' });
+    response.setHeader('Allow', 'POST');
+    response.status(405).json({ message: 'Method not allowed' });
   }
 }

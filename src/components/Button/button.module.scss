@@ -1,18 +1,17 @@
 .button {
-  background-color: black;
-  color: white;
   width: 100%;
   border: none;
-  border: none;
   border-radius: $radius-2;
-  cursor: pointer;
+  background-color: black;
   box-shadow: $box-shadow-primary;
+  color: white;
+  cursor: pointer;
 
   a,
   div {
+    display: block;
+    padding: 8px;
     font-size: 18px;
     font-weight: 600;
-    padding: 8px;
-    display: block;
   }
 }

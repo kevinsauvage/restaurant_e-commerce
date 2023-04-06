@@ -1,8 +1,8 @@
 import { userActionTypes } from './action';
 
 const cartInitialState = {
-  user: {},
   selectedItem: undefined,
+  user: {},
 };
 
 export default function reducer(state = cartInitialState, action) {
@@ -21,7 +21,8 @@ export default function reducer(state = cartInitialState, action) {
       };
     }
 
-    default:
+    default: {
       return state;
+    }
   }
 }

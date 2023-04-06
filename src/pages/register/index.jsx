@@ -1,42 +1,44 @@
-import 'react-toastify/dist/ReactToastify.css';
-import { useRouter } from 'next/router';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast, ToastContainer } from 'react-toastify';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
+
 import Button from '../../components/Button/Button';
 import Input from '../../components/input/Input';
+import Loader from '../../components/Loader/Loader';
 import apiHelper from '../../helpers/apiHelper';
 import useForm from '../../hooks/useForm';
 import Page from '../../layout/Page/Page';
-import styles from './register.module.scss';
-import Loader from '../../components/Loader/Loader';
 
-function Register() {
+import 'react-toastify/dist/ReactToastify.css';
+import styles from './register.module.scss';
+
+const Register = () => {
   const router = useRouter();
 
   const handleRegister = async (formData) => {
-    const res = await apiHelper('/api/register', formData);
+    const response = await apiHelper('/api/register', formData);
 
-    if (res && res.success) return router.push('/login');
+    if (response?.success) return router.push('/login');
 
-    if (res && res.error?.code === 11000)
+    if (response && response.error?.code === 11_000)
       return toast.error('Email already registered', {
-        position: 'bottom-right',
         autoClose: 5000,
-        hideProgressBar: false,
         closeOnClick: true,
-        pauseOnHover: true,
         draggable: true,
+        hideProgressBar: false,
+        pauseOnHover: true,
+        position: 'bottom-right',
         progress: undefined,
         theme: 'dark',
       });
 
     return toast.error('Oups, something went wrong, please try again.', {
-      position: 'bottom-right',
       autoClose: 5000,
-      hideProgressBar: false,
       closeOnClick: true,
-      pauseOnHover: true,
       draggable: true,
+      hideProgressBar: false,
+      pauseOnHover: true,
+      position: 'bottom-right',
       progress: undefined,
       theme: 'dark',
     });
@@ -63,13 +65,7 @@ function Register() {
           name="lastName"
           onChange={handleInputChange}
         />
-        <Input
-          type="email"
-          id="email"
-          label="Email"
-          name="email"
-          onChange={handleInputChange}
-        />
+        <Input type="email" id="email" label="Email" name="email" onChange={handleInputChange} />
         <Input
           type="password"
           id="password"
@@ -105,7 +101,7 @@ function Register() {
       />
     </Page>
   );
-}
+};
 
 export default Register;
 

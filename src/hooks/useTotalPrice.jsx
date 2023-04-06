@@ -6,9 +6,9 @@ const useTotalPrice = (items) => {
   useEffect(() => {
     setTotal(
       items.reduce(
-        (previousValue, el) =>
+        (previousValue, element) =>
           previousValue +
-          Number(el.product.price.replace(',', '.')) * Number(el.quantity),
+          Number(element.product.price.replace(',', '.')) * Number(element.quantity),
         0
       )
     );

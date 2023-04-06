@@ -1,8 +1,8 @@
 import apiHelper from './apiHelper';
 
 const getUser = async (email) => {
-  const res = await apiHelper(`/api/user?email=${email}`, null, 'GET');
-  if (res.success) return res.user;
+  const response = await apiHelper(`/api/user?email=${email}`, undefined, 'GET');
+  if (response.success) return response.user;
   return false;
 };
 

@@ -1,17 +1,17 @@
 .card {
-  padding: 40px 60px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  padding: 40px 60px;
 }
 
 .img {
   position: relative;
-  height: 200px;
-  width: 200px;
-  border-radius: 8px;
   overflow: hidden;
+  width: 200px;
+  height: 200px;
+  border-radius: 8px;
 }
 
 .detail {
@@ -19,15 +19,15 @@
 }
 
 .title {
-  font-size: 24px;
-  font-weight: 700;
   margin-top: 30px;
   margin-bottom: 10px;
+  font-size: 24px;
+  font-weight: 700;
 }
 
 .price {
-  font-size: 18px;
   margin-bottom: 10px;
+  font-size: 18px;
 }
 
 .description {
@@ -49,9 +49,9 @@
   justify-content: center;
   border: 1px solid $color-primary;
   border-radius: 50%;
-  font-size: 26px;
   background-color: rgba($color-primary, 0.2);
   cursor: pointer;
+  font-size: 26px;
 
   svg {
     color: $color-primary;
@@ -59,11 +59,11 @@
 }
 
 .quantityDisabled {
-  color: grey;
-  background-color: gainsboro;
   border-color: gray;
-  opacity: 0.6;
+  background-color: gainsboro;
+  color: grey;
   cursor: unset;
+  opacity: 0.6;
 
   svg {
     color: grey;

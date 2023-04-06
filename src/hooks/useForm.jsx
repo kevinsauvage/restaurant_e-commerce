@@ -4,29 +4,26 @@ const useForm = (onSubmit, initialState = {}) => {
   const [formData, setFormData] = useState(initialState);
   const [loading, setLoading] = useState(false);
 
-  const handleInputChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+  const handleInputChange = ({ target }) => {
+    setFormData({ ...formData, [target.name]: target.value });
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const handleSubmit = async (event) => {
+    event.preventDefault();
     setLoading(true);
     await onSubmit?.(formData);
     setLoading(false);
   };
 
-  const handleReset = useCallback(
-    () => setFormData(initialState),
-    [initialState]
-  );
+  const handleReset = useCallback(() => setFormData(initialState), [initialState]);
 
   return {
     formData,
     handleInputChange,
-    handleSubmit,
     handleReset,
-    setFormData,
+    handleSubmit,
     loading,
+    setFormData,
   };
 };
 

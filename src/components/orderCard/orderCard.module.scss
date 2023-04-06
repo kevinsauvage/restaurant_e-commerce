@@ -1,17 +1,17 @@
 .card {
-  background-color: white;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  justify-content: space-between;
   padding: 20px;
   border-radius: $radius-1;
+  background-color: white;
   box-shadow: $box-shadow-primary;
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  justify-content: space-between;
 }
 .header {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
   margin-bottom: 20px;
 }
 
@@ -21,11 +21,11 @@
 }
 
 .date {
-  font-size: 13px;
-  background-color: $color-primary;
-  color: $color-tertiary;
   padding: 3px 8px;
   border-radius: $radius-1;
+  background-color: $color-primary;
+  color: $color-tertiary;
+  font-size: 13px;
 }
 
 .price {
@@ -36,6 +36,6 @@
 }
 
 .quantity {
-  white-space: nowrap;
   font-weight: 600;
+  white-space: nowrap;
 }

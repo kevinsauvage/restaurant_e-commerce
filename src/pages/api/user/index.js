@@ -2,48 +2,47 @@ import publicUser from '../../../helpers/publicUser';
 import connectToDatabase from '../../../utils/mongo';
 import withAuth from '../../middleware/withAuth';
 
-const handler = async (req, res) => {
-  const { method } = req;
+const handler = async (request, response) => {
+  const { method, query, body } = request;
 
   if (method === 'GET') {
     try {
-      const { email } = req.query;
+      const { email } = query;
 
-      if (!email) return res.status(400).json({ message: 'missing field' });
+      if (!email) return response.status(400).json({ message: 'missing field' });
 
       const { db } = await connectToDatabase();
 
       const user = await db.collection('users').findOne({ email });
 
-      return res.status(200).json({ success: true, user: publicUser(user) });
+      return response.status(200).json({ success: true, user: publicUser(user) });
     } catch (error) {
-      return res.status(400).send(error);
+      return response.status(400).send(error);
     }
   }
+
   if (method === 'PUT') {
     const { db } = await connectToDatabase();
 
     try {
-      const { updatedFields, email } = req.body;
+      const { updatedFields, email } = body;
 
-      if (!email) return res.status(400).json({ message: 'missing field' });
+      if (!email) return response.status(400).json({ message: 'missing field' });
 
-      const response = await db
-        .collection('users')
-        .updateOne({ email }, { $set: updatedFields });
+      const result = await db.collection('users').updateOne({ email }, { $set: updatedFields });
 
-      if (response.acknowledged) {
+      if (result.acknowledged) {
         const user = await db.collection('users').findOne({ email });
-        return res.status(200).json({ success: true, user: publicUser(user) });
+        return response.status(200).json({ success: true, user: publicUser(user) });
       }
 
-      return res.status(400).end();
+      return response.status(400).end();
     } catch (error) {
-      return res.status(400).json(error);
+      return response.status(400).json(error);
     }
   } else {
-    res.setHeader('Allow', ['POST', 'GET']);
-    return res.status(405).end(`Method ${method} Not Allowed`);
+    response.setHeader('Allow', ['POST', 'GET']);
+    return response.status(405).end(`Method ${method} Not Allowed`);
   }
 };
 
