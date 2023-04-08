@@ -12,9 +12,12 @@ const MenuLayout = ({ children, restaurant }) => (
     title={restaurant?.name}
     description={` Buy food online at ${restaurant?.name} and receive it at home. Whatever you ask for, in minutes.`}
   >
-    <MenuNavigation restaurant={restaurant} />
     <div className={styles.container}>
-      {children}
+      <div>
+        <h1 className={styles.name}>{restaurant?.name}</h1>
+        <MenuNavigation restaurant={restaurant} />
+        {children}
+      </div>
       <Cart />
     </div>
   </Page>

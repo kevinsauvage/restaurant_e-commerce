@@ -62,7 +62,7 @@ const Confirmation = () => {
             <div className={styles.image}>
               <Image alt="Fail" src={failImg} layout="fill" objectFit="contain" />
             </div>
-            <Button href="/order" text="BACK TO ORDER" />
+            <Button href="/cart" text="BACK TO ORDER" />
           </>
         )}
       </div>

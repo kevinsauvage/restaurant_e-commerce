@@ -3,6 +3,11 @@
   width: 100%;
   gap: 2rem;
   grid-template-columns: 4fr 1fr;
+
+  @include respond(tablet) {
+    display: flex;
+    flex-direction: column-reverse;
+  }
 }
 .cart {
   display: flex;

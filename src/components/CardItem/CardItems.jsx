@@ -28,9 +28,7 @@ const CardItems = ({ item, quantity }) => {
     >
       <div className={styles.details}>
         <p className={styles.name}>{item.name}</p>
-        <p className={styles.description}>{`${
-          item.description.length > 60 ? `${item.description.slice(0, 60)}...` : item.description
-        }`}</p>
+        <p className={styles.description}>{item.description}</p>
         <p className={styles.price}>{item.price}€</p>
       </div>
       <div className={styles.image}>

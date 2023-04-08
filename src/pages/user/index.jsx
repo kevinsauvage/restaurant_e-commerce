@@ -3,8 +3,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
 
 import OrderCard from '../../components/orderCard/OrderCard';
+import apiHelper from '../../helpers/apiHelper';
 import getUser from '../../helpers/getUser';
-import { getItem } from '../../helpers/localStorage';
+import { getItem, setItem } from '../../helpers/localStorage';
 import Page from '../../layout/Page/Page';
 import { addUser } from '../../store/user/action';
 
@@ -27,6 +28,12 @@ const User = () => {
     }
   }, [dispatch, user.email]);
 
+  const handleLogout = () => {
+    dispatch(addUser({}));
+    setItem('user');
+    apiHelper('/api/logout');
+  };
+
   return (
     <Page
       bannerTitle={`${user?.firstName} ${user?.lastName}`}
@@ -34,6 +41,12 @@ const User = () => {
       title="User account"
     >
       <div className={styles.user}>
+        <header>
+          <h1 className={styles.title}>Account</h1>
+          <button type="submit" className={styles.logout} onClick={handleLogout}>
+            <p>Logout</p>
+          </button>
+        </header>
         <div className={styles.orderInfo}>
           <h2 className={styles.title}>LAST ORDERS</h2>
           <div className={styles.cards}>

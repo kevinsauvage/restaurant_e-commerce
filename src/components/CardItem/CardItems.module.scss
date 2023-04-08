@@ -2,7 +2,7 @@
   display: flex;
   height: fit-content;
   justify-content: space-between;
-  padding: 8px;
+  padding: 3px;
   border-radius: $radius-1;
   background-color: white;
   box-shadow: $box-shadow-primary;
@@ -27,14 +27,14 @@
 
 .name {
   margin-bottom: 4px;
-  font-size: 16px;
   font-weight: 600;
+  @include font-size(0.8rem, 1rem);
 }
 
 .description {
   margin-bottom: 10px;
-  font-size: 14px;
-  opacity: 0.6;
+  @include font-size(0.7rem, 0.8rem);
+  @include text-shorten(2);
 }
 
 .price {

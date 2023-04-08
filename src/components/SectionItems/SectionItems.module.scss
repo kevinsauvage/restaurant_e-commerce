@@ -1,9 +1,5 @@
 .SectionItems {
   margin-top: 3rem;
-
-  @include respond(mobile_l) {
-    margin-top: 2rem;
-  }
 }
 
 .title {
@@ -17,4 +13,8 @@
   width: 100%;
   gap: 1rem;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+
+  @include respond(tablet) {
+    grid-template-columns: 1fr;
+  }
 }

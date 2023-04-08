@@ -1,21 +1,36 @@
 .user {
   width: 100%;
-  margin-top: 60px;
+  margin-top: 2rem;
+
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+  }
 }
 
 .title {
-  margin-bottom: 20px;
-  font-size: 20px;
-  line-height: 20px;
 }
 
 .orderInfo {
   width: 100%;
   border-radius: $radius-1;
+
+  .title {
+    margin-bottom: 2rem;
+    @include font-size(1.2rem, 1.3rem);
+  }
 }
 
 .cards {
   display: grid;
   gap: 30px;
   grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+}
+
+.logout {
+  padding: 6px 12px;
+  border: 0.1px solid var(--on-surface-100);
+  border-radius: $radius-1;
 }

@@ -1,83 +1,63 @@
-import { useRef, useState } from 'react';
 import { FaArrowAltCircleLeft, FaRegUser } from 'react-icons/fa';
-import { MdOutlineMenu, MdOutlineShoppingCart } from 'react-icons/md';
-import { useDispatch, useSelector } from 'react-redux';
+import { MdOutlineShoppingCart } from 'react-icons/md';
+import { useSelector } from 'react-redux';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
-import apiHelper from '../../helpers/apiHelper';
 import isNoUser from '../../helpers/isNoUser';
-import { setItem } from '../../helpers/localStorage';
-import useClickOutside from '../../hooks/useClickOutside';
 import useTotalItems from '../../hooks/useTotalItems';
-import { addUser } from '../../store/user/action';
 import goBackOrHome from '../../utils/go-back';
 import Container from '../Container/Container';
+import NavItem from '../NavItem/NavItem';
 
 import styles from './Navigation.module.scss';
 
 const Navigation = () => {
-  const dispatch = useDispatch();
-  const navReference = useRef();
   const { asPath, pathname } = useRouter();
   const router = useRouter();
-  const [navOpen, setNavOpen] = useState(false);
 
   const { cart, user } = useSelector((state) => state);
 
   const totalItems = useTotalItems(cart.items);
 
-  const handleLogout = () => {
-    dispatch(addUser({}));
-    setItem('user');
-    apiHelper('/api/logout');
-  };
-
-  useClickOutside(navReference, () => navOpen && setNavOpen(false));
-
   return (
-    <nav className={styles.navigation} ref={navReference}>
+    <nav className={styles.navigation}>
       <Container style={styles.container}>
         <ul className={styles.navigationList}>
-          <li className={styles.navItem}>
-            <div
-              role="button"
-              tabIndex={0}
-              onClick={() => goBackOrHome(router)}
-              onKeyDown={(event) => event.key === 'Enter' && goBackOrHome(router)}
-              className={asPath === '/' ? styles.itemActive : ''}
-            >
-              {pathname !== '/' && <FaArrowAltCircleLeft />}
-              {pathname === '/' ? 'Restaurant' : 'Back'}
-            </div>
-          </li>
+          <NavItem href="/" title="Home" />
+          {pathname !== '/' && (
+            <li className={styles.navItem}>
+              <div
+                role="button"
+                tabIndex={0}
+                onClick={() => goBackOrHome(router)}
+                onKeyDown={(event) => event.key === 'Enter' && goBackOrHome(router)}
+                className={asPath === '/' ? styles.itemActive : ''}
+              >
+                <FaArrowAltCircleLeft />
+                Back
+              </div>
+            </li>
+          )}
         </ul>
-        <div className={`${styles.navigationRight} ${navOpen ? styles.navigationOpen : ''}`}>
+        <div className={`${styles.navigationRight}`}>
+          {isNoUser(user.user) ? (
+            <Link href="/user">
+              <a className={styles.user}>
+                <FaRegUser />
+              </a>
+            </Link>
+          ) : (
+            <Link href="/login">
+              <a className={styles.logBtn}>Login</a>
+            </Link>
+          )}
           <Link href="/cart">
             <a className={styles.cart}>
               <MdOutlineShoppingCart />
               <span className={styles.totalItems}>{totalItems}</span>
             </a>
           </Link>
-          {isNoUser(user.user) ? (
-            <>
-              <Link href="/user">
-                <a className={styles.user}>
-                  <FaRegUser />
-                </a>
-              </Link>
-              <button type="submit" className={styles.logBtn} onClick={handleLogout}>
-                <p>Logout</p>
-              </button>
-            </>
-          ) : (
-            <Link href="/login">
-              <a className={styles.logBtn}>Login</a>
-            </Link>
-          )}
-        </div>
-        <div className={styles.hamburger}>
-          <MdOutlineMenu onClick={() => setNavOpen((previous) => !previous)} />
         </div>
       </Container>
     </nav>
