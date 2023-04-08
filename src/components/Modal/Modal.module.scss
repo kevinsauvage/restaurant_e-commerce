@@ -1,5 +1,5 @@
 .modal {
-  position: absolute;
+  position: fixed;
   z-index: 9999999;
   top: 0;
   right: 0;
@@ -8,16 +8,19 @@
   display: flex;
   width: 100%;
   height: 100%;
+  align-items: center;
   justify-content: center;
-  padding: 60px 20px;
   background-color: rgba(0, 0, 0, 0.571);
 }
 
 .inner {
   position: relative;
+  overflow: auto;
   width: fit-content;
+  width: 100%;
   max-width: 500px;
   height: fit-content;
+  max-height: 700px;
   border-radius: $radius-1;
   margin: 0 20px;
   background-color: white;
