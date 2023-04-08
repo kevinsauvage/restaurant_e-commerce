@@ -15,7 +15,9 @@ const storePathValues = () => {
 
 const App = ({ Component, pageProps }) => {
   const router = useRouter();
-  useEffect(() => storePathValues(), [router.asPath]);
+  useEffect(() => {
+    storePathValues();
+  }, [router.asPath]);
   return <Component {...pageProps} />;
 };
 

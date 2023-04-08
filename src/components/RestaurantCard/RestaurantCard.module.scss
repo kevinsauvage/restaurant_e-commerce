@@ -14,11 +14,14 @@
 
 .name {
   margin-bottom: 8px;
-  font-size: 18px;
   font-weight: 600;
+  @include font-size(1rem, 1.1rem);
+}
+
+.type {
+  @include font-size(0.7rem, 0.8rem);
 }
 
 .details {
-  padding: 20px;
-  font-size: 15px;
+  padding: 1rem;
 }

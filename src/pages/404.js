@@ -4,7 +4,9 @@ import { useRouter } from 'next/router';
 const Custom404 = () => {
   const router = useRouter();
 
-  useEffect(() => router.push('/'));
+  useEffect(() => {
+    router.push('/');
+  }, [router]);
 
   return <div />;
 };

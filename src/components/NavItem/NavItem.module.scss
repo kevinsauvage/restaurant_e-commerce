@@ -1,4 +1,6 @@
 .NavigationItem {
+  border: 1px solid var(--surface-600);
+  border-radius: $radius-2;
   list-style: none;
   white-space: nowrap;
 

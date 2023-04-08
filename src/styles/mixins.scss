@@ -1,0 +1,48 @@
+@function toRem($value) {
+  $remValue: ($value / 16) + rem;
+  @return $remValue;
+}
+
+@mixin font-size($min, $max, $min-vw: 320px, $max-vw: 1600px, $fallback: false, $line-height: 1.5) {
+  $min-no-unit: strip-units($min);
+  $max-no-unit: strip-units($max);
+  $min-vw-no-unit: strip-units($min-vw);
+  $max-vw-no-unit: strip-units($max-vw);
+
+  @if getUnit($min) == 'rem' or getUnit($min) == 'em' {
+    $min-no-unit: strip-units($min) * 16;
+    $max-no-unit: strip-units($max) * 16;
+  }
+
+  $responsive: calc(
+    #{$min-no-unit}px + (#{$max-no-unit} - #{$min-no-unit}) *
+      ((100vw - #{$min-vw}) / (#{$max-vw-no-unit} - #{$min-vw-no-unit}))
+  );
+
+  @if $fallback {
+    font-size: $fallback;
+  } @else {
+    font-size: $max;
+  }
+
+  font-size: $responsive;
+  line-height: calc(#{$responsive} * #{$line-height});
+
+  @media screen and (max-width: #{$min-vw}) {
+    font-size: $min;
+    line-height: calc(#{$min} * #{$line-height});
+  }
+
+  @media screen and (min-width: #{$max-vw}) {
+    font-size: $max;
+    line-height: calc(#{$max} * #{$line-height});
+  }
+}
+
+@function strip-units($number) {
+  @return $number / ($number * 0 + 1);
+}
+
+@function getUnit($value) {
+  @return str-slice($value * 0 + '', 2, -1);
+}

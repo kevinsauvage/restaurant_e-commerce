@@ -1,0 +1,46 @@
+$surface-light: #c0c0c0;
+
+$colors-light: (
+  primary: #003d5b,
+  secondary: #ff8c00,
+  surface-100: darken($surface-light, 20%),
+  surface-200: darken($surface-light, 15%),
+  surface-300: darken($surface-light, 10%),
+  surface-400: darken($surface-light, 5%),
+  surface-500: $surface-light,
+  surface-600: lighten($surface-light, 5%),
+  surface-700: lighten($surface-light, 10%),
+  surface-800: lighten($surface-light, 15%),
+  surface-900: lighten($surface-light, 20%),
+  on-surface-100: darken($surface-light, 60%),
+  on-surface-200: darken($surface-light, 50%),
+  on-surface-300: darken($surface-light, 40%),
+  on-surface-400: darken($surface-light, 30%),
+  on-surface-500: darken($surface-light, 20%),
+);
+
+@function hex-to-rgb($hex) {
+  @return red($hex), green($hex), blue($hex);
+}
+
+@mixin generate-colors($colors) {
+  @each $color, $value in $colors {
+    @if str-slice(#{$value}, 1, 1) == '#' {
+      --#{$color}: #{$value};
+    } @else {
+      --#{$color}: var(--#{$value});
+    }
+  }
+
+  @each $color, $value in $colors {
+    @if str-slice(#{$value}, 1, 1) == '#' {
+      --rgb-#{$color}: #{hex-to-rgb($value)};
+    } @else {
+      --rgb-#{$color}: var(--RGB_#{$value});
+    }
+  }
+}
+
+html {
+  @include generate-colors($colors-light);
+}

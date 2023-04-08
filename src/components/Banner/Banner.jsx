@@ -5,7 +5,7 @@ import Logo from '../../assets/images/logo.png';
 
 import styles from './Banner.module.scss';
 
-const Banner = ({ restaurant, title, subtitle }) => (
+const Banner = ({ restaurant }) => (
   <div className={styles.Banner}>
     <div className={styles.BannerImg}>
       <Image
@@ -19,7 +19,7 @@ const Banner = ({ restaurant, title, subtitle }) => (
       <div className={styles.logo}>
         <div>
           <Image
-            alt={title}
+            alt={restaurant?.name}
             src={restaurant?.image || Logo}
             layout="fill"
             objectFit="cover"
@@ -28,12 +28,6 @@ const Banner = ({ restaurant, title, subtitle }) => (
           />
         </div>
       </div>
-    </div>
-    <div className={styles.titleContainer}>
-      <h1 className={styles.title}>{restaurant?.name || title || 'UpToGo'}</h1>
-      <h2 className={styles.subtitle}>
-        {restaurant?.address || subtitle || 'Ordering your favorite foud made easy'}
-      </h2>
     </div>
   </div>
 );

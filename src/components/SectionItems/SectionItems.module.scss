@@ -1,20 +1,20 @@
 .SectionItems {
-  margin-top: 100px;
+  margin-top: 3rem;
 
   @include respond(mobile_l) {
-    margin-top: 60px;
+    margin-top: 2rem;
   }
 }
 
 .title {
-  margin-bottom: 30px;
-  font-size: 20px;
+  margin-bottom: 1rem;
   font-weight: 700;
+  @include font-size(1.4rem, 1.6rem);
 }
 
 .itemsContainer {
   display: grid;
   width: 100%;
-  gap: 30px;
+  gap: 1rem;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
 }

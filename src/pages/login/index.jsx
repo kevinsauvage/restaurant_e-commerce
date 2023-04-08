@@ -20,22 +20,27 @@ const Login = () => {
   const dispatch = useDispatch();
 
   const handleLogin = async (formData) => {
-    const response = await apiHelper('/api/login', formData);
+    try {
+      const response = await apiHelper('/api/login', formData);
 
-    if (response?.success) {
-      dispatch(addUser(response.user));
-      setItem('user', response.user);
-      const previousPath = window.sessionStorage.getItem('prevPath');
-      if (previousPath === '/register' || !previousPath || previousPath === '/login')
-        return router.push('/');
-      return router.push(previousPath);
+      if (response?.success) {
+        dispatch(addUser(response.user));
+        setItem('user', response.user);
+        const previousPath = window.sessionStorage.getItem('prevPath');
+        if (previousPath === '/register' || !previousPath || previousPath === '/login')
+          return router.push('/');
+        return router.push(previousPath);
+      }
+
+      if (response.name === 'notFound') {
+        return toast.error('User not found. Create an account first');
+      }
+
+      return toast.error(response.message || 'Oops, something went wrong, please try again.');
+    } catch (error) {
+      console.error(error);
+      return toast.error('An error occurred while logging in. Please try again.');
     }
-
-    if (response.name === 'notFound') {
-      return toast.error('User not found. Create a account first');
-    }
-
-    return toast.error('Oups, something went wrong, please try again.');
   };
 
   const { handleInputChange, handleSubmit, loading } = useForm(handleLogin);

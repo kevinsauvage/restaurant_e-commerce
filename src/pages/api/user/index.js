@@ -9,10 +9,11 @@ const handler = async (request, response) => {
     try {
       const { email } = query;
 
-      if (!email) return response.status(400).json({ message: 'missing field' });
+      if (!email) {
+        return response.status(400).json({ message: 'missing field' });
+      }
 
       const { db } = await connectToDatabase();
-
       const user = await db.collection('users').findOne({ email });
 
       return response.status(200).json({ success: true, user: publicUser(user) });

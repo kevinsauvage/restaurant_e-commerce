@@ -3,15 +3,13 @@ import { useRouter } from 'next/router';
 
 import styles from './NavItem.module.scss';
 
-const NavItem = ({ title }) => {
+const NavItem = ({ title, href, ...rest }) => {
   const { asPath } = useRouter();
-
-  const path = encodeURI(`${asPath.split('#')[0]}#${title?.split(' ').join('_')}`);
 
   return (
     <li className={styles.NavigationItem}>
-      <Link href={path}>
-        <a className={path === asPath ? styles.itemActive : ''}>{title}</a>
+      <Link href={href} {...rest}>
+        <a className={href === asPath ? styles.itemActive : ''}>{title}</a>
       </Link>
     </li>
   );
