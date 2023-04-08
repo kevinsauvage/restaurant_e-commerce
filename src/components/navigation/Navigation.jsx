@@ -11,6 +11,7 @@ import { setItem } from '../../helpers/localStorage';
 import useClickOutside from '../../hooks/useClickOutside';
 import useTotalItems from '../../hooks/useTotalItems';
 import { addUser } from '../../store/user/action';
+import goBackOrHome from '../../utils/go-back';
 import Container from '../Container/Container';
 
 import styles from './Navigation.module.scss';
@@ -19,6 +20,7 @@ const Navigation = () => {
   const dispatch = useDispatch();
   const navReference = useRef();
   const { asPath, pathname } = useRouter();
+  const router = useRouter();
   const [navOpen, setNavOpen] = useState(false);
 
   const { cart, user } = useSelector((state) => state);
@@ -38,16 +40,20 @@ const Navigation = () => {
       <Container style={styles.container}>
         <ul className={styles.navigationList}>
           <li className={styles.navItem}>
-            <Link href="/">
-              <a className={asPath === '/' ? styles.itemActive : ''}>
-                {pathname !== '/' && <FaArrowAltCircleLeft />}
-                {pathname === '/' ? 'Restaurant' : 'Back'}
-              </a>
-            </Link>
+            <div
+              role="button"
+              tabIndex={0}
+              onClick={() => goBackOrHome(router)}
+              onKeyDown={(event) => event.key === 'Enter' && goBackOrHome(router)}
+              className={asPath === '/' ? styles.itemActive : ''}
+            >
+              {pathname !== '/' && <FaArrowAltCircleLeft />}
+              {pathname === '/' ? 'Restaurant' : 'Back'}
+            </div>
           </li>
         </ul>
         <div className={`${styles.navigationRight} ${navOpen ? styles.navigationOpen : ''}`}>
-          <Link href="/order">
+          <Link href="/cart">
             <a className={styles.cart}>
               <MdOutlineShoppingCart />
               <span className={styles.totalItems}>{totalItems}</span>
