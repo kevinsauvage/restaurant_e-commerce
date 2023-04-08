@@ -16,13 +16,14 @@ const Cart = () => {
   const { pathname, push } = useRouter();
 
   const redirectToCheckout = async () => {
-    if (!user) return push('/login');
+    if (!Object.keys(user)?.length) return push('/login');
 
     const response = await apiHelper('/api/checkout_sessions', { items, user });
     if (!response || !response.id) return;
     const stripe = await getStripe();
     return stripe.redirectToCheckout({ sessionId: response.id });
   };
+
   return (
     <div className={styles.Cart}>
       <div className={styles.header}>
