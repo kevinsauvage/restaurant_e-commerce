@@ -29,12 +29,19 @@ const CardItemBig = ({ item }) => {
   return (
     <div className={styles.card} onClick={(event) => event.stopPropagation()} role="presentation">
       <div className={styles.img}>
-        <Image src={item.image} alt={item.title} layout="fill" objectFit="cover" />
+        <Image
+          src={item.image}
+          alt={item.title}
+          layout="responsive"
+          width="100%"
+          height="100%"
+          objectFit="cover"
+        />
       </div>
       <div className={styles.detail}>
         <p className={styles.title}>{item.name}</p>
-        <p className={styles.price}>{item.price}€</p>
         <p className={styles.description}>{item.description}</p>
+        <p className={styles.price}>{item.price}€</p>
       </div>
       <div className={styles.quantity}>
         <button
