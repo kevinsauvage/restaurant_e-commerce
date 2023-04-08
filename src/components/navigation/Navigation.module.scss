@@ -112,6 +112,7 @@
     align-items: center;
     padding: 3px 12px;
     border-radius: $radius-2;
+    cursor: pointer;
     font-weight: 400;
     gap: 0.5rem;
     @include font-size(0.8rem, 0.9rem);
