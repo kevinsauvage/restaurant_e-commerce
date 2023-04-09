@@ -36,3 +36,14 @@ export const iconLess = (
     <path d="M32 0H0V2H32V0Z" fill="black" />
   </svg>
 );
+
+export const iconTrash = (
+  <svg width="34" height="40" viewBox="0 0 34 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path
+      d="M23 0H11C8.8 0 7 1.8 7 4V9H0V11H3V36C3 38.2 4.8 40 7 40H27C29.2 40 31 38.2 31 36V11H34V9H27V4C27 1.8 25.2 0 23 0ZM9 4C9 2.897 9.897 2 11 2H23C24.103 2 25 2.897 25 4V9H9V4ZM29 36C29 37.103 28.103 38 27 38H7C5.897 38 5 37.103 5 36V11H29V36Z"
+      fill="black"
+    />
+    <path d="M14 17H12V31H14V17Z" fill="black" />
+    <path d="M22 17H20V31H22V17Z" fill="black" />
+  </svg>
+);
