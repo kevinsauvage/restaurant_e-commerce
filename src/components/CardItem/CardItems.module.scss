@@ -44,6 +44,7 @@
 .quantity {
   display: flex;
   width: fit-content;
+  height: 30px;
   align-items: center;
   justify-content: center;
   padding: 5px 12px;
@@ -52,10 +53,9 @@
   margin-top: 1rem;
   background-color: black;
   color: white;
-  cursor: pointer;
   font-weight: 500;
   gap: 1rem;
-  @include font-size(0.7rem, 0.8rem);
+  @include font-size(0.7rem, 0.9rem);
 
   svg {
     width: 0.8rem;
@@ -77,5 +77,35 @@
 }
 
 .addBtn {
+  cursor: pointer;
   gap: 6px;
+}
+
+.is-cart {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.remove {
+  display: flex;
+  width: fit-content;
+  width: 30px;
+  height: 30px;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 50%;
+  margin-top: 1rem;
+  background-color: black;
+  cursor: pointer;
+
+  svg {
+    width: 0.9rem;
+    height: 0.9rem;
+
+    path {
+      fill: white;
+    }
+  }
 }

@@ -3,7 +3,7 @@
   gap: 2rem;
   grid-template-columns: 4fr 1fr;
 
-  @include respond(tablet) {
+  @include respond(laptop_s) {
     grid-template-columns: 1fr;
   }
 }

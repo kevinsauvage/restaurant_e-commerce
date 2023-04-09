@@ -5,7 +5,7 @@
   height: fit-content;
   padding: 24px;
   border-radius: $radius-1;
-  background-color: white;
+  background-color: var(--surface-800);
   box-shadow: $box-shadow-primary;
 
   @include respond(tablet) {

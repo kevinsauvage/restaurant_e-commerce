@@ -14,7 +14,7 @@ const MenuLayout = ({ children, restaurant }) => (
   >
     <div className={styles.container}>
       <div>
-        <h1 className={styles.name}>{restaurant?.name}</h1>
+        <h1>{restaurant?.name}</h1>
         <MenuNavigation restaurant={restaurant} />
         {children}
       </div>
