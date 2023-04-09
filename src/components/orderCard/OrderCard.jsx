@@ -16,7 +16,7 @@ const OrderCard = ({ order }) => (
     <div>
       {order.items.map((item) => (
         <div key={item.description} className={styles.lineItem}>
-          <p>{item.description}</p>
+          <small>{item.description}</small>
           <p className={styles.quantity}>x {item.quantity}</p>
         </div>
       ))}
