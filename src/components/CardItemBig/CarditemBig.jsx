@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import Image from 'next/image';
 
 import useTotalPrice from '../../hooks/useTotalPrice';
-import { addItem } from '../../store/cart/action';
+import { updateCart } from '../../store/cart/action';
 import { addSelectedItem } from '../../store/user/action';
 import Button from '../Button/Button';
 
@@ -22,7 +22,7 @@ const CardItemBig = ({ item }) => {
   };
 
   const handleAddToCart = () => {
-    dispatch(addItem(item, quantity));
+    dispatch(updateCart(item, quantity));
     dispatch(addSelectedItem());
   };
 

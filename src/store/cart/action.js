@@ -1,18 +1,12 @@
 export const cartActionTypes = {
-  ADD_ITEM: 'ADD_ITEM',
-  REMOVE_ITEM: 'REMOVE_ITEM',
   SET_INITIAL_STATE: 'SET_INITIAL_STATE',
+  UPDATE_CART: 'UPDATE_CART',
 };
 
-export const addItem = (newItem, quantity) => ({
-  item: newItem,
-  quantity,
-  type: cartActionTypes.ADD_ITEM,
-});
-
-export const removeItem = (item) => ({
+export const updateCart = (item, quantity) => ({
   item,
-  type: cartActionTypes.REMOVE_ITEM,
+  quantity,
+  type: cartActionTypes.UPDATE_CART,
 });
 
 export const setInitalState = (items) => ({

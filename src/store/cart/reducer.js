@@ -5,60 +5,34 @@ const cartInitialState = {
   items: [],
 };
 
-const handleAdd = (state, action) => {
-  const exist = state.items.find((element) => element.product.name === action.item.name);
+const handleUpdateCart = (state, action) => {
+  const { item, quantity } = action;
+
+  const exist = state.items.find((element) => element.product.name === item.name);
 
   if (exist) {
+    if (!quantity) {
+      const newItems = state.items.filter((element) => element.product.name !== item.name);
+      return { ...state, items: newItems };
+    }
+
     const newItems = state.items.map((element) => {
-      if (element.product.name === action.item.name)
-        return {
-          product: action.item,
-          quantity: Number(element.quantity) + Number(action.quantity),
-        };
+      if (element.product.name === item.name) return { product: item, quantity };
       return element;
     });
 
-    return {
-      ...state,
-      items: newItems,
-    };
+    return { ...state, items: newItems };
   }
-  const newItems = [...state.items, { product: action.item, quantity: Number(action.quantity) }];
-
   return {
     ...state,
-    items: newItems,
-  };
-};
-
-const handleRemove = (state, action) => {
-  const newItems = state.items.reduce((result, element) => {
-    if (element.product.name === action.item.name) {
-      if (Number(element.quantity) > 1) {
-        return result.concat({
-          product: action.item,
-          quantity: Number(element.quantity) - 1,
-        });
-      }
-    } else return [...result, ...(Array.isArray(element) ? element : [element])];
-
-    return result;
-  }, []);
-
-  return {
-    ...state,
-    items: newItems,
+    items: [...state.items, { product: item, quantity }],
   };
 };
 
 const reducer = (state = cartInitialState, action) => {
   switch (action.type) {
-    case cartActionTypes.ADD_ITEM: {
-      return handleAdd(state, action);
-    }
-
-    case cartActionTypes.REMOVE_ITEM: {
-      return handleRemove(state, action);
+    case cartActionTypes.UPDATE_CART: {
+      return handleUpdateCart(state, action);
     }
 
     case cartActionTypes.SET_INITIAL_STATE: {
