@@ -28,10 +28,13 @@ const Confirmation = () => {
       if (response && response?.session?.payment_status === 'paid') {
         dispatch(setInitalState([]));
         setSuccess(true);
-      } else setSuccess(false);
+      } else {
+        setSuccess(false);
+      }
     };
 
     if (query.session_id) getSession();
+    else setSuccess(false);
     if (query.success === 'false') setSuccess(false);
   }, [dispatch, query]);
 

@@ -1,7 +1,7 @@
-import { MdAdd, MdOutlineShoppingCart, MdRemove } from 'react-icons/md';
 import { useDispatch } from 'react-redux';
 import Image from 'next/image';
 
+import { iconCart, iconLess, iconMore } from '../../assets/images/svg';
 import { addItem, removeItem } from '../../store/cart/action';
 import { addSelectedItem } from '../../store/user/action';
 
@@ -26,14 +26,15 @@ const CardItems = ({ item, quantity }) => {
         <p className={styles.name}>{item.name}</p>
         <p className={styles.description}>{item.description}</p>
         <p className={styles.price}>{item.price}€</p>
-      </div>
-      <div className={styles.image}>
-        <Image src={item.image} alt={item.name} layout="fill" objectFit="cover" />
         {quantity ? (
           <div className={styles.quantity}>
-            <MdRemove onClick={(event) => handleRemoveItem(event)} />
+            <button type="button" onClick={(event) => handleRemoveItem(event)}>
+              {iconLess}
+            </button>
             <p>{quantity}</p>
-            <MdAdd onClick={(event) => handleAddItem(event)} />
+            <button type="button" onClick={(event) => handleAddItem(event)}>
+              {iconMore}
+            </button>
           </div>
         ) : (
           <button
@@ -41,9 +42,12 @@ const CardItems = ({ item, quantity }) => {
             className={styles.addBtn}
             onClick={() => dispach(addSelectedItem(item))}
           >
-            <MdOutlineShoppingCart /> Add
+            {iconCart} Add
           </button>
         )}
+      </div>
+      <div className={styles.image}>
+        <Image src={item.image} alt={item.name} layout="fill" objectFit="cover" />
       </div>
     </div>
   );

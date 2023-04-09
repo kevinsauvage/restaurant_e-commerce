@@ -1,6 +1,7 @@
 import { useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
 
+import { iconCart } from '../../assets/images/svg';
 import apiHelper from '../../helpers/apiHelper';
 import useTotalPrice from '../../hooks/useTotalPrice';
 import getStripe from '../../utils/get-stripe';
@@ -47,7 +48,7 @@ const Cart = () => {
       {pathname?.startsWith('/cart') && items?.length > 0 ? (
         <Button text="CONFIRM ORDER" onClick={redirectToCheckout} />
       ) : (
-        <Button href="/cart" text="Visit Cart" />
+        <Button href="/cart" text="Visit Cart" svg={iconCart} />
       )}
     </div>
   );
