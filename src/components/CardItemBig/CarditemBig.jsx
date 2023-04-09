@@ -41,19 +41,18 @@ const CardItemBig = ({ item }) => {
       <div className={styles.detail}>
         <p className={styles.title}>{item.name}</p>
         <p className={styles.description}>{item.description}</p>
-        <p className={styles.price}>{item.price}€</p>
       </div>
-      <div className={styles.quantity}>
+      <div className={styles['quantity-form']}>
         <button
-          type="submit"
+          type="button"
           className={`${styles.quantityLess} ${quantity === 1 && styles.quantityDisabled}`}
           onClick={(event) => updateQuantity(event, quantity - 1)}
         >
           <MdRemove />
         </button>
-        <p>{quantity}</p>
+        <p className={styles.quantity}>{quantity}</p>
         <button
-          type="submit"
+          type="button"
           className={styles.quantityMore}
           onClick={(event) => updateQuantity(event, quantity + 1)}
         >
