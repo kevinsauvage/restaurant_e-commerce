@@ -32,8 +32,10 @@ const Cart = () => {
       <div className={styles.items}>
         {items?.map((element) => (
           <div key={element.product.name} className={styles.item}>
-            <small>{element.product.name}</small>
-            <p className={styles.itemQuantity}>x {element.quantity}</p>
+            <small>
+              {element.product.name}, {element.product.price}€
+            </small>
+            <p className={styles.itemQuantity}>x{element.quantity}</p>
           </div>
         ))}
       </div>
