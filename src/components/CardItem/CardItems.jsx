@@ -21,11 +21,7 @@ const CardItems = ({ item, quantity }) => {
   };
 
   return (
-    <div
-      className={styles.CardItems}
-      role="presentation"
-      onClick={() => dispach(addSelectedItem(item))}
-    >
+    <div className={styles.CardItems} role="presentation">
       <div className={styles.details}>
         <p className={styles.name}>{item.name}</p>
         <p className={styles.description}>{item.description}</p>
@@ -40,7 +36,11 @@ const CardItems = ({ item, quantity }) => {
             <MdAdd onClick={(event) => handleAddItem(event)} />
           </div>
         ) : (
-          <button type="submit" className={styles.addBtn} onClick={handleAddItem}>
+          <button
+            type="submit"
+            className={styles.addBtn}
+            onClick={() => dispach(addSelectedItem(item))}
+          >
             <MdOutlineShoppingCart /> Add
           </button>
         )}

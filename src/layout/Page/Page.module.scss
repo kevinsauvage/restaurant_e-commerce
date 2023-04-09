@@ -1,7 +1,11 @@
 .Page {
   position: relative;
   min-height: 100vh;
-  padding-bottom: 100px;
   background-color: var(--surface-900);
   overflow-x: clip;
+}
+
+.container {
+  padding-top: 1rem;
+  padding-bottom: 2rem;
 }

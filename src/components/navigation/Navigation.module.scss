@@ -34,23 +34,6 @@
   justify-content: space-between;
 }
 
-.cart {
-  position: relative;
-  display: flex;
-  align-items: center;
-  svg {
-    font-size: 24px;
-  }
-}
-
-.user {
-  display: flex;
-  align-items: center;
-  svg {
-    font-size: 20px;
-  }
-}
-
 .totalItems {
   position: absolute;
   top: -16px;
@@ -68,42 +51,23 @@
   @include font-size(0.6rem, 0.7rem);
 }
 
-.logBtn {
-  padding: 1px 13px;
-  border: 1px solid black;
-  border-radius: $radius-2;
-  background-color: var(--surface-900);
-  color: var(--on-surface-100);
-  cursor: pointer;
-  transition: 0.1s ease-in;
-  @include font-size(0.8rem, 1rem);
+.list-item {
+  position: relative;
+  display: flex;
+  align-items: center;
 
-  &:hover {
-    background-color: black;
-    color: white;
+  svg {
+    width: 1.2rem;
+    height: 1.2rem;
+
+    path {
+      fill: var(--on-surface-100);
+    }
   }
-}
-.navItem {
-  border: 1px solid var(--surface-600);
-  border-radius: $radius-2;
-  list-style: none;
-
-  div,
   a {
     display: flex;
     align-items: center;
-    padding: 3px 12px;
-    border-radius: $radius-2;
-    cursor: pointer;
-    font-weight: 400;
-    gap: 0.5rem;
-    @include font-size(0.8rem, 0.9rem);
+    font-weight: 500;
+    gap: 4px;
   }
-}
-
-.itemActive {
-  padding: 3px 12px;
-  background-color: black;
-  box-shadow: $box-shadow-primary;
-  color: white;
 }

@@ -28,15 +28,18 @@ const Cart = () => {
     <div className={styles.Cart}>
       <div className={styles.header}>
         <p className={styles.title}>Cart Summary</p>
-        <p>{total} €</p>
       </div>
       <div className={styles.items}>
         {items?.map((element) => (
           <div key={element.product.name} className={styles.item}>
-            <p>{element.product.name}</p>
+            <small>{element.product.name}</small>
             <p className={styles.itemQuantity}>x {element.quantity}</p>
           </div>
         ))}
+      </div>
+      <div className={styles.subtotal}>
+        <small>Subtotal: </small>
+        <p>{total} €</p>
       </div>
 
       {pathname?.startsWith('/cart') && items?.length > 0 ? (

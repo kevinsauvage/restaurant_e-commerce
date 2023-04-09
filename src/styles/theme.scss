@@ -1,8 +1,9 @@
-$surface-light: #c0c0c0;
+$surface-light: #cbcbcb;
 
 $colors-light: (
   primary: #003d5b,
   secondary: #ff8c00,
+  white: #ffffff,
   surface-100: darken($surface-light, 20%),
   surface-200: darken($surface-light, 15%),
   surface-300: darken($surface-light, 10%),

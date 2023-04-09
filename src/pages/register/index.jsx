@@ -56,14 +56,7 @@ const Register = () => {
           name="password"
           onChange={handleInputChange}
         />
-        <div className={styles.login}>
-          <p>
-            Already registered ?{' '}
-            <Link href="/login">
-              <a>Login</a>
-            </Link>
-          </p>
-        </div>
+
         <Button
           text="REGISTER"
           onClick={handleSubmit}
@@ -71,6 +64,14 @@ const Register = () => {
           onChange={handleInputChange}
         />
       </form>
+      <div className={styles.login}>
+        <p>
+          Already registered ?{' '}
+          <Link href="/login">
+            <a>Login</a>
+          </Link>
+        </p>
+      </div>
       <ToastContainer
         position="bottom-right"
         autoClose={5000}

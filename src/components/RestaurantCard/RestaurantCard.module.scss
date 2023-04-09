@@ -1,7 +1,6 @@
 .card {
   overflow: hidden;
   width: 100%;
-  min-width: 300px;
   border-radius: $radius-1;
   background-color: #ffffff;
   box-shadow: $box-shadow-primary;
@@ -9,7 +8,7 @@
 
 .img {
   position: relative;
-  height: 200px;
+  height: 186px;
 }
 
 .name {

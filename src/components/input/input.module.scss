@@ -11,6 +11,6 @@
 .label {
   display: flex;
   flex-direction: column;
-  font-size: 16px;
-  font-weight: 600;
+  font-weight: 500;
+  @include font-size(0.8rem, 0.9rem);
 }

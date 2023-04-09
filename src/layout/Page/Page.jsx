@@ -25,7 +25,7 @@ const Page = ({ children, title, description, style }) => {
       </Head>
       <Banner />
       <Navigation />
-      <Container>
+      <Container style={styles.container}>
         {selectedItem && (
           <Modal handleClose={() => dispatch(addSelectedItem())}>
             <CardItemBig item={selectedItem} />

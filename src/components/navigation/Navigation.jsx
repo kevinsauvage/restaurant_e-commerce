@@ -1,64 +1,53 @@
-import { FaArrowAltCircleLeft, FaRegUser } from 'react-icons/fa';
-import { MdOutlineShoppingCart } from 'react-icons/md';
 import { useSelector } from 'react-redux';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
 
+import { home, iconCart, iconUser } from '../../assets/images/svg';
 import isNoUser from '../../helpers/isNoUser';
 import useTotalItems from '../../hooks/useTotalItems';
-import goBackOrHome from '../../utils/go-back';
 import Container from '../Container/Container';
-import NavItem from '../NavItem/NavItem';
 
 import styles from './Navigation.module.scss';
 
 const Navigation = () => {
-  const { asPath, pathname } = useRouter();
-  const router = useRouter();
-
   const { cart, user } = useSelector((state) => state);
 
   const totalItems = useTotalItems(cart.items);
+
+  const navigationItems = [{ href: '/', label: 'Home', svg: home }];
+  const navigationItemsRight = [
+    { href: isNoUser(user.user) ? '/user' : '/login', svg: iconUser },
+    {
+      child: totalItems > 0 && <span className={styles.totalItems}>{totalItems}</span>,
+      href: '/cart',
+      svg: iconCart,
+    },
+  ];
 
   return (
     <nav className={styles.navigation}>
       <Container style={styles.container}>
         <ul className={styles.navigationList}>
-          <NavItem href="/" title="Home" />
-          {pathname !== '/' && (
-            <li className={styles.navItem}>
-              <div
-                role="button"
-                tabIndex={0}
-                onClick={() => goBackOrHome(router)}
-                onKeyDown={(event) => event.key === 'Enter' && goBackOrHome(router)}
-                className={asPath === '/' ? styles.itemActive : ''}
-              >
-                <FaArrowAltCircleLeft />
-                Back
-              </div>
+          {navigationItems.map((item) => (
+            <li className={styles['list-item']} key={item.label}>
+              <Link href={item.href}>
+                <a>
+                  {item.svg} {item.label}
+                </a>
+              </Link>
             </li>
-          )}
+          ))}
         </ul>
-        <div className={`${styles.navigationRight}`}>
-          {isNoUser(user.user) ? (
-            <Link href="/user">
-              <a className={styles.user}>
-                <FaRegUser />
-              </a>
-            </Link>
-          ) : (
-            <Link href="/login">
-              <a className={styles.logBtn}>Login</a>
-            </Link>
-          )}
-          <Link href="/cart">
-            <a className={styles.cart}>
-              <MdOutlineShoppingCart />
-              <span className={styles.totalItems}>{totalItems}</span>
-            </a>
-          </Link>
-        </div>
+        <ul className={`${styles.navigationRight}`}>
+          {navigationItemsRight.map((item) => (
+            <li className={styles['list-item']} key={item.href}>
+              <Link href={item.href}>
+                <a>
+                  {item.svg} {item.child}
+                </a>
+              </Link>
+            </li>
+          ))}
+        </ul>
       </Container>
     </nav>
   );
