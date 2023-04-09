@@ -24,3 +24,15 @@ export const iconCart = (
     />
   </svg>
 );
+
+export const iconMore = (
+  <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M17 0H15V15H0V17H15V32H17V17H32V15H17V0Z" fill="black" />
+  </svg>
+);
+
+export const iconLess = (
+  <svg width="32" height="2" viewBox="0 0 32 2" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M32 0H0V2H32V0Z" fill="black" />
+  </svg>
+);
