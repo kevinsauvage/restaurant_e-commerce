@@ -16,10 +16,13 @@ const handleUpdateCart = (state, action) => {
       return { ...state, items: newItems };
     }
 
-    const newItems = state.items.map((element) => {
-      if (element.product.name === item.name) return { product: item, quantity };
-      return element;
-    });
+    const newItems = state.items
+      .map((element) => {
+        if (element.product.name === item.name)
+          return { product: item, quantity: element.quantity + quantity };
+        return element;
+      })
+      .filter((element) => element.quantity);
 
     return { ...state, items: newItems };
   }

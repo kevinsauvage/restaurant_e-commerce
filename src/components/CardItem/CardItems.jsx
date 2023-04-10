@@ -19,11 +19,11 @@ const CardItems = ({ item, quantity }) => {
         {quantity ? (
           <div className={styles['is-cart']}>
             <div className={styles.quantity}>
-              <button type="button" onClick={() => dispach(updateCart(item, quantity - 1))}>
+              <button type="button" onClick={() => dispach(updateCart(item, -1))}>
                 {iconLess}
               </button>
               <p>{quantity}</p>
-              <button type="button" onClick={() => dispach(updateCart(item, quantity + 1))}>
+              <button type="button" onClick={() => dispach(updateCart(item, +1))}>
                 {iconMore}
               </button>
             </div>
