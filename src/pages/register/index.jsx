@@ -19,7 +19,7 @@ const Register = () => {
     try {
       const response = await apiHelper('/api/register', formData);
       if (response?.success) return router.push('/login');
-      if (response?.error?.code === 11_000) return toast.error('Email already registered');
+      if (response?.code === 11_000) return toast.error('Email already registered');
       return toast.error(response.message || 'Oops, something went wrong, please try again.');
     } catch (error) {
       console.error(error);

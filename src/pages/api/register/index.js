@@ -21,9 +21,12 @@ export default async function handler(request, response) {
 
       return response.status(200).json({ response: result, success: true });
     } catch (error) {
-      if (error.code === 11_000) return response.status(409).send({ error, success: false });
+      if (error.code === 11_000)
+        return response
+          .status(409)
+          .send({ code: error.code, error: error.message, success: false });
 
-      return response.status(400).json(error);
+      return response.status(400).json({ code: error.code, error: error.message });
     }
   } else {
     response.setHeader('Allow', ['POST']);

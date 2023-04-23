@@ -10,6 +10,8 @@ const handler = async (request, response) => {
       const { items, user } = request.body;
       const { origin } = request.headers;
 
+      if (!Array.isArray(items)) return response.status(404).json({ message: 'Missing items' });
+
       const stripeItems = items.map((item) => {
         const formatedPrice = item.product.price.replace(',', '.').trim();
         const price = formatedPrice * 100;
