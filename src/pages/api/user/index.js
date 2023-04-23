@@ -18,7 +18,7 @@ const handler = async (request, response) => {
 
       return response.status(200).json({ success: true, user: publicUser(user) });
     } catch (error) {
-      return response.status(400).send({ code: error.code, error: error.message });
+      return response.status(400).json({ code: error.code, error: error.message });
     }
   }
 
