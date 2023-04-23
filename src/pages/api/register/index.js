@@ -24,7 +24,7 @@ export default async function handler(request, response) {
       if (error.code === 11_000)
         return response
           .status(409)
-          .send({ code: error.code, error: error.message, success: false });
+          .json({ code: error.code, error: error.message, success: false });
 
       return response.status(400).json({ code: error.code, error: error.message });
     }

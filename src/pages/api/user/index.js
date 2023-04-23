@@ -39,7 +39,7 @@ const handler = async (request, response) => {
 
       return response.status(400).end();
     } catch (error) {
-      return response.status(400).send({ code: error.code, error: error.message });
+      return response.status(400).json({ code: error.code, error: error.message });
     }
   } else {
     response.setHeader('Allow', ['POST', 'GET']);
