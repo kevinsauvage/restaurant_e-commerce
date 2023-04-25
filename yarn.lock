@@ -465,10 +465,10 @@
   resolved "https://registry.yarnpkg.com/@rushstack/eslint-patch/-/eslint-patch-1.2.0.tgz#8be36a1f66f3265389e90b5f9c9962146758f728"
   integrity sha512-sXo/qW2/pAcmT43VoRKOJbDOfV3cYpq3szSVfIThQXNt+E4DfKj361vaAt3c88U5tPUxzEswam7GW48PJqtKAg==
 
-"@stripe/stripe-js@^1.27.0":
-  version "1.27.0"
-  resolved "https://registry.yarnpkg.com/@stripe/stripe-js/-/stripe-js-1.27.0.tgz#ab0c82fa89fd40260de4414f69868b769e810550"
-  integrity sha512-SEiybUBu+tlsFKuzdFFydxxjkbrdzHo0tz/naYC5Dt9or/Ux2gcKJBPYQ4RmqQCNHFxgyNj6UYsclywwhe2inQ==
+"@stripe/stripe-js@^1.52.0":
+  version "1.52.1"
+  resolved "https://registry.yarnpkg.com/@stripe/stripe-js/-/stripe-js-1.52.1.tgz#d821bcd627a34227c20fe87d7c8f8bd4386eaf2e"
+  integrity sha512-fza40OPSpGQlFxc5TZWiYC/6Lk89Sep1fLuv9ss33YS6lCAF8UZbfA1E6W+lwO4c7WRKZIZumHIEbPJfP/O9uw==
 
 "@types/hoist-non-react-statics@^3.3.0":
   version "3.3.1"
