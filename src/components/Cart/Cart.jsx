@@ -20,7 +20,7 @@ const Cart = () => {
     if (!Object.keys(user)?.length) return push('/login');
 
     const response = await apiHelper('/api/checkout_sessions', { items, user });
-    if (!response || !response.id) return;
+    if (!response?.id) return;
     const stripe = await getStripe();
     return stripe.redirectToCheckout({ sessionId: response.id });
   };
