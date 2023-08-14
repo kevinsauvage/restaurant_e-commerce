@@ -13,7 +13,7 @@ const nextConfig = {
     @import "responsive.scss"; 
     @import "colors.scss"; 
     @import "mixins.scss"; 
-    @import "animation.scss";`,
+    `,
   },
 };
 
